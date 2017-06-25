@@ -13,7 +13,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     let cellIdentifer:String = "cellIdentifer"
     var datas = [12,23,42,21,52,53,3,51,65,34,64]
     
-    var sorts = ["Bubble"]
+    var sorts = ["BubbleSort","SelectSort"]
      
     
     override func viewDidLoad() {
@@ -31,12 +31,26 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         view .addSubview(table)
     }
     
-    func gotoNextC() {
+    func gotoSortVC(_ sortName:String) {
+        // 1:动态获取命名空间
+        guard let name = Bundle.main.infoDictionary!["CFBundleExecutable"] as?String else {
+            print("获取命名空间失败")
+            return
+        }
+        
+        let cls: AnyClass? = NSClassFromString(name+"."+sortName)
+        
+        // Swift中如果想通过一个Class来创建一个对象，必须告诉系统这个class的确切类型
+        guard let typeClass = cls as? SortController.Type else {
+            print("cls不能当做UIViewController")
+            return
+        }
         
         
-        let bubVC = BubbleSortController()
-        bubVC.datas = datas
-        self.navigationController?.pushViewController(bubVC, animated: true)
+        let sortVC = typeClass.init()
+        sortVC.datas = datas
+        sortVC.title = sortName
+        self.navigationController?.pushViewController(sortVC, animated: true)
         
     }
     
@@ -54,7 +68,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        gotoNextC()
+        gotoSortVC(sorts[indexPath.row])
     }
     
     

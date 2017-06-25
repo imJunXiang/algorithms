@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "algorithms/allAlgorithms/BubbleSortController.swift"
-            timestampString = "520009826.464706"
+            timestampString = "520054554.974666"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "sortDatas(nums:)"
             landmarkType = "7">
          </BreakpointContent>

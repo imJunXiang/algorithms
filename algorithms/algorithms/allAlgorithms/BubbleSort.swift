@@ -9,31 +9,15 @@
 import Foundation
 import UIKit
 
-class BubbleSortController: UIViewController {
-    
-    let beforeL = UILabel(frame: CGRect(x: 0, y: 0, width: JXScreenWidth, height: JXScreenHeight * 0.5))
-    let afterL = UILabel(frame: CGRect(x: 0, y: JXScreenHeight * 0.5, width: JXScreenWidth, height: JXScreenHeight*0.5))
-    var datas:Array<Int> = []
+class BubbleSort: SortController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.title = "Bubble Sort"
-        view.backgroundColor = .white
-        findView()
         sortDatas(nums: &datas)
     }
     
-    func findView() {
-        
-        beforeL.numberOfLines = 0
-        afterL.numberOfLines = 0
-        beforeL.textAlignment = NSTextAlignment.center
-        afterL.textAlignment = NSTextAlignment.center
-        view.addSubview(beforeL)
-        view.addSubview(afterL)
-    }
-    
+    // 冒泡排序
     func sortDatas( nums:inout Array<Int>) {
         var count = nums.count
         var tempDate:Int = nums[0]
@@ -53,6 +37,4 @@ class BubbleSortController: UIViewController {
         afterL.text = String(describing: nums)
         print(nums)
      }
-    
-    
 }

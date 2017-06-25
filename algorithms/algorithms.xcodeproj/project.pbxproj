@@ -13,7 +13,9 @@
 		C7BB148E1EFEA933000FF9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BB148D1EFEA933000FF9A2 /* Assets.xcassets */; };
 		C7BB14911EFEA933000FF9A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BB148F1EFEA933000FF9A2 /* LaunchScreen.storyboard */; };
 		C7BB14991EFEA946000FF9A2 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14981EFEA946000FF9A2 /* File.swift */; };
-		C7BB14AB1EFEAD75000FF9A2 /* BubbleSortController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14AA1EFEAD75000FF9A2 /* BubbleSortController.swift */; };
+		C7BB14AB1EFEAD75000FF9A2 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14AA1EFEAD75000FF9A2 /* BubbleSort.swift */; };
+		C7BB14AD1EFF6654000FF9A2 /* SortController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14AC1EFF6654000FF9A2 /* SortController.swift */; };
+		C7BB14AF1EFF81E6000FF9A2 /* SelectSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14AE1EFF81E6000FF9A2 /* SelectSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +27,9 @@
 		C7BB14901EFEA933000FF9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7BB14921EFEA933000FF9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7BB14981EFEA946000FF9A2 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		C7BB14AA1EFEAD75000FF9A2 /* BubbleSortController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleSortController.swift; sourceTree = "<group>"; };
+		C7BB14AA1EFEAD75000FF9A2 /* BubbleSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
+		C7BB14AC1EFF6654000FF9A2 /* SortController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortController.swift; sourceTree = "<group>"; };
+		C7BB14AE1EFF81E6000FF9A2 /* SelectSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +77,9 @@
 		C7BB14A71EFEAD2A000FF9A2 /* allAlgorithms */ = {
 			isa = PBXGroup;
 			children = (
-				C7BB14AA1EFEAD75000FF9A2 /* BubbleSortController.swift */,
+				C7BB14AC1EFF6654000FF9A2 /* SortController.swift */,
+				C7BB14AA1EFEAD75000FF9A2 /* BubbleSort.swift */,
+				C7BB14AE1EFF81E6000FF9A2 /* SelectSort.swift */,
 			);
 			path = allAlgorithms;
 			sourceTree = "<group>";
@@ -151,9 +157,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7BB14891EFEA933000FF9A2 /* ViewController.swift in Sources */,
+				C7BB14AF1EFF81E6000FF9A2 /* SelectSort.swift in Sources */,
 				C7BB14991EFEA946000FF9A2 /* File.swift in Sources */,
 				C7BB14871EFEA933000FF9A2 /* AppDelegate.swift in Sources */,
-				C7BB14AB1EFEAD75000FF9A2 /* BubbleSortController.swift in Sources */,
+				C7BB14AD1EFF6654000FF9A2 /* SortController.swift in Sources */,
+				C7BB14AB1EFEAD75000FF9A2 /* BubbleSort.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +325,7 @@
 				C7BB14971EFEA933000FF9A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
