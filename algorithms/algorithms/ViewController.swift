@@ -13,7 +13,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     let cellIdentifer:String = "cellIdentifer"
     var datas = [12,23,42,21,52,53,3,51,65,34,64]
     
-    var sorts = ["BubbleSort","SelectSort"]
+    var sorts = ["BubbleSort","SelectSort","InsertSort"]
      
     
     override func viewDidLoad() {

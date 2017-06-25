@@ -16,6 +16,7 @@
 		C7BB14AB1EFEAD75000FF9A2 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14AA1EFEAD75000FF9A2 /* BubbleSort.swift */; };
 		C7BB14AD1EFF6654000FF9A2 /* SortController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14AC1EFF6654000FF9A2 /* SortController.swift */; };
 		C7BB14AF1EFF81E6000FF9A2 /* SelectSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14AE1EFF81E6000FF9A2 /* SelectSort.swift */; };
+		C7BB14B11EFFC16A000FF9A2 /* InsertSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14B01EFFC16A000FF9A2 /* InsertSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C7BB14AA1EFEAD75000FF9A2 /* BubbleSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
 		C7BB14AC1EFF6654000FF9A2 /* SortController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortController.swift; sourceTree = "<group>"; };
 		C7BB14AE1EFF81E6000FF9A2 /* SelectSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSort.swift; sourceTree = "<group>"; };
+		C7BB14B01EFFC16A000FF9A2 /* InsertSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				C7BB14AC1EFF6654000FF9A2 /* SortController.swift */,
 				C7BB14AA1EFEAD75000FF9A2 /* BubbleSort.swift */,
 				C7BB14AE1EFF81E6000FF9A2 /* SelectSort.swift */,
+				C7BB14B01EFFC16A000FF9A2 /* InsertSort.swift */,
 			);
 			path = allAlgorithms;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			files = (
 				C7BB14891EFEA933000FF9A2 /* ViewController.swift in Sources */,
 				C7BB14AF1EFF81E6000FF9A2 /* SelectSort.swift in Sources */,
+				C7BB14B11EFFC16A000FF9A2 /* InsertSort.swift in Sources */,
 				C7BB14991EFEA946000FF9A2 /* File.swift in Sources */,
 				C7BB14871EFEA933000FF9A2 /* AppDelegate.swift in Sources */,
 				C7BB14AD1EFF6654000FF9A2 /* SortController.swift in Sources */,
