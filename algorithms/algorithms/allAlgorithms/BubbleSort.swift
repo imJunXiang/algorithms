@@ -22,7 +22,6 @@ class BubbleSort: SortController {
         var count = nums.count
         var tempDate:Int = nums[0]
         beforeL.text = String(describing: nums)
-        print(nums)
         
         for _ in 0..<nums.count {
             for i in 0..<count-1 {
@@ -35,6 +34,5 @@ class BubbleSort: SortController {
             count -= 1
         }
         afterL.text = String(describing: nums)
-        print(nums)
      }
 }

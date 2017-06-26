@@ -29,7 +29,6 @@ class SelectSort: SortController {
                     min = i
                 }
             }
-            print(nums[min])
             // 交换第一个位置和最小值
             if min != count {
                 // 避免相同位置的情况
