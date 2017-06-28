@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331C08B91F01F373006AE8E0 /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C08B81F01F373006AE8E0 /* MergeSort.swift */; };
 		3380455F1F00D98F006CC47E /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380455E1F00D98F006CC47E /* QuickSort.swift */; };
 		C7BB14871EFEA933000FF9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14861EFEA933000FF9A2 /* AppDelegate.swift */; };
 		C7BB14891EFEA933000FF9A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14881EFEA933000FF9A2 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		331C08B81F01F373006AE8E0 /* MergeSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
 		3380455E1F00D98F006CC47E /* QuickSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		C7BB14831EFEA933000FF9A2 /* algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BB14861EFEA933000FF9A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				C7BB14AE1EFF81E6000FF9A2 /* SelectSort.swift */,
 				C7BB14B01EFFC16A000FF9A2 /* InsertSort.swift */,
 				3380455E1F00D98F006CC47E /* QuickSort.swift */,
+				331C08B81F01F373006AE8E0 /* MergeSort.swift */,
 			);
 			path = allAlgorithms;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				C7BB14991EFEA946000FF9A2 /* File.swift in Sources */,
 				C7BB14871EFEA933000FF9A2 /* AppDelegate.swift in Sources */,
 				C7BB14AD1EFF6654000FF9A2 /* SortController.swift in Sources */,
+				331C08B91F01F373006AE8E0 /* MergeSort.swift in Sources */,
 				C7BB14AB1EFEAD75000FF9A2 /* BubbleSort.swift in Sources */,
 				3380455F1F00D98F006CC47E /* QuickSort.swift in Sources */,
 			);
