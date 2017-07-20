@@ -13,9 +13,11 @@ class QuickSort: SortController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        beforeL.text = String(describing: datas)
-        quickSort(nums: &datas, beginIndex: 0, endIndex: datas.count-1)
-        afterL.text = String(describing: datas)
+        if datas.count > 0 {
+            beforeL.text = String(describing: datas)
+            quickSort(nums: &datas, beginIndex: 0, endIndex: datas.count-1)
+            afterL.text = String(describing: datas)
+        }
     }
     
     // 插入排序

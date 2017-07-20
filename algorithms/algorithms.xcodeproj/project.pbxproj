@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		331C08B91F01F373006AE8E0 /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C08B81F01F373006AE8E0 /* MergeSort.swift */; };
+		336881981F209F9600BE1E7D /* JXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336881971F209F9600BE1E7D /* JXViewController.swift */; };
+		3368819D1F20A55A00BE1E7D /* JXProblemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368819C1F20A55A00BE1E7D /* JXProblemController.swift */; };
+		336881A01F20A69400BE1E7D /* JXTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368819F1F20A69400BE1E7D /* JXTools.swift */; };
+		336881A21F20B75C00BE1E7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336881A11F20B75C00BE1E7D /* ViewController.swift */; };
 		3380455F1F00D98F006CC47E /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380455E1F00D98F006CC47E /* QuickSort.swift */; };
 		C7BB14871EFEA933000FF9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14861EFEA933000FF9A2 /* AppDelegate.swift */; };
-		C7BB14891EFEA933000FF9A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14881EFEA933000FF9A2 /* ViewController.swift */; };
 		C7BB148C1EFEA933000FF9A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BB148A1EFEA933000FF9A2 /* Main.storyboard */; };
 		C7BB148E1EFEA933000FF9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BB148D1EFEA933000FF9A2 /* Assets.xcassets */; };
 		C7BB14911EFEA933000FF9A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BB148F1EFEA933000FF9A2 /* LaunchScreen.storyboard */; };
@@ -23,10 +26,13 @@
 
 /* Begin PBXFileReference section */
 		331C08B81F01F373006AE8E0 /* MergeSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
+		336881971F209F9600BE1E7D /* JXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXViewController.swift; sourceTree = "<group>"; };
+		3368819C1F20A55A00BE1E7D /* JXProblemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXProblemController.swift; sourceTree = "<group>"; };
+		3368819F1F20A69400BE1E7D /* JXTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXTools.swift; sourceTree = "<group>"; };
+		336881A11F20B75C00BE1E7D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3380455E1F00D98F006CC47E /* QuickSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		C7BB14831EFEA933000FF9A2 /* algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BB14861EFEA933000FF9A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C7BB14881EFEA933000FF9A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C7BB148B1EFEA933000FF9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7BB148D1EFEA933000FF9A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7BB14901EFEA933000FF9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +55,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3368819B1F20A53500BE1E7D /* problems */ = {
+			isa = PBXGroup;
+			children = (
+				3368819C1F20A55A00BE1E7D /* JXProblemController.swift */,
+			);
+			path = problems;
+			sourceTree = "<group>";
+		};
+		3368819E1F20A62A00BE1E7D /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				3368819F1F20A69400BE1E7D /* JXTools.swift */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
 		C7BB147A1EFEA933000FF9A2 = {
 			isa = PBXGroup;
 			children = (
@@ -68,9 +90,11 @@
 		C7BB14851EFEA933000FF9A2 /* algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				3368819E1F20A62A00BE1E7D /* tools */,
+				3368819B1F20A53500BE1E7D /* problems */,
 				C7BB14A71EFEAD2A000FF9A2 /* allAlgorithms */,
 				C7BB14861EFEA933000FF9A2 /* AppDelegate.swift */,
-				C7BB14881EFEA933000FF9A2 /* ViewController.swift */,
+				336881971F209F9600BE1E7D /* JXViewController.swift */,
 				C7BB14981EFEA946000FF9A2 /* File.swift */,
 				C7BB148A1EFEA933000FF9A2 /* Main.storyboard */,
 				C7BB148D1EFEA933000FF9A2 /* Assets.xcassets */,
@@ -83,6 +107,7 @@
 		C7BB14A71EFEAD2A000FF9A2 /* allAlgorithms */ = {
 			isa = PBXGroup;
 			children = (
+				336881A11F20B75C00BE1E7D /* ViewController.swift */,
 				C7BB14AC1EFF6654000FF9A2 /* SortController.swift */,
 				C7BB14AA1EFEAD75000FF9A2 /* BubbleSort.swift */,
 				C7BB14AE1EFF81E6000FF9A2 /* SelectSort.swift */,
@@ -165,15 +190,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7BB14891EFEA933000FF9A2 /* ViewController.swift in Sources */,
 				C7BB14AF1EFF81E6000FF9A2 /* SelectSort.swift in Sources */,
 				C7BB14B11EFFC16A000FF9A2 /* InsertSort.swift in Sources */,
 				C7BB14991EFEA946000FF9A2 /* File.swift in Sources */,
+				336881981F209F9600BE1E7D /* JXViewController.swift in Sources */,
 				C7BB14871EFEA933000FF9A2 /* AppDelegate.swift in Sources */,
 				C7BB14AD1EFF6654000FF9A2 /* SortController.swift in Sources */,
+				336881A21F20B75C00BE1E7D /* ViewController.swift in Sources */,
+				336881A01F20A69400BE1E7D /* JXTools.swift in Sources */,
 				331C08B91F01F373006AE8E0 /* MergeSort.swift in Sources */,
 				C7BB14AB1EFEAD75000FF9A2 /* BubbleSort.swift in Sources */,
 				3380455F1F00D98F006CC47E /* QuickSort.swift in Sources */,
+				3368819D1F20A55A00BE1E7D /* JXProblemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

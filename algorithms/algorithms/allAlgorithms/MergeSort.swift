@@ -12,12 +12,14 @@ class MergeSort: SortController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        beforeL.text = String(describing: datas)
-        let arr = mergeDatas(nums: datas)
+        if datas.count > 0 {
+            beforeL.text = String(describing: datas)
+            let arr = mergeDatas(nums: datas)
         
-        print(datas)
-        afterL.text = String(describing: arr)
-        print(arr)
+            print(datas)
+            afterL.text = String(describing: arr)
+            print(arr)
+        }
         
     }
     

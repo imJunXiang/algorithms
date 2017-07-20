@@ -19,7 +19,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.title = "算法练习"
+        self.title = "排序算法"
         view.backgroundColor = .white
         findView()
     }
@@ -68,7 +68,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        gotoSortVC(sorts[indexPath.row])
+        let typeClass = JXTools.goToVC(sorts[indexPath.row])
+        let sortVC = typeClass?.init() as? SortController
+        if (sortVC == nil) {
+            return
+        }
+        sortVC?.datas = datas
+        sortVC?.title = sorts[indexPath.row]
+        self.navigationController?.pushViewController(sortVC!, animated: true)
     }
 }
 

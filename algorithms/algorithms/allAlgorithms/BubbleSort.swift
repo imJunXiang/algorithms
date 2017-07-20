@@ -14,7 +14,10 @@ class BubbleSort: SortController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        sortDatas(nums: &datas)
+        if datas.count > 0 {
+            sortDatas(nums: &datas)
+        }
+        
     }
     
     // 冒泡排序
