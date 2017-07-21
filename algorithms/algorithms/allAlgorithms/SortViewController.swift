@@ -8,9 +8,8 @@
 
 import UIKit
 
-class SortViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class SortViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
 
-    let cellIdentifer:String = "cellIdentifer"
     var datas = [12,23,42,21,52,53,3,51,65,34,64]
     
     var sorts = ["BubbleSort","SelectSort","InsertSort","QuickSort","MergeSort"]
@@ -21,10 +20,10 @@ class SortViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "排序算法"
         view.backgroundColor = .white
-        findView()
     }
     
-    func findView() {
+    override func findView() {
+        super.findView()
         let table = UITableView(frame: JXScreenRect)
         table.delegate = self
         table.dataSource = self

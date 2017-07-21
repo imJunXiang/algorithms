@@ -8,9 +8,7 @@
 
 import Foundation
 import UIKit
-class JXProblemController : UIViewController,UITableViewDataSource,UITableViewDelegate {
-    
-    let cellIdentifer:String = "cellIdentifer"
+class JXProblemController : BaseViewController,UITableViewDataSource,UITableViewDelegate {
     
     var sorts = ["BubbleSort","SelectSort","InsertSort","QuickSort","MergeSort"]
     
@@ -18,10 +16,10 @@ class JXProblemController : UIViewController,UITableViewDataSource,UITableViewDe
         super.viewDidLoad()
         self.title = "算法题"
         self.view.backgroundColor = .white
-        findView()
     }
     
-    func findView() {
+    override func findView() {
+        super.findView()
         let table = UITableView(frame: JXScreenRect)
         table.delegate = self
         table.dataSource = self

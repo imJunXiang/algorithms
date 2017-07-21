@@ -9,9 +9,8 @@
 import Foundation
 import UIKit
 
-class JXViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class JXViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     
-    let cellIdentifer:String = "cellIdentifer"
     
     var sorts = ["SortViewController","JXProblemController"]
     
@@ -20,10 +19,10 @@ class JXViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "算法练习"
         view.backgroundColor = .white
-        findView()
     }
     
-    func findView(){
+    override func findView(){
+        super.findView()
         let table = UITableView(frame: JXScreenRect)
         table.delegate = self
         table.dataSource = self
