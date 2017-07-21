@@ -13,7 +13,7 @@ class JXViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     let cellIdentifer:String = "cellIdentifer"
     
-    var sorts = ["ViewController"]
+    var sorts = ["SortViewController","JXProblemController"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class JXViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer) ?? UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifer)
+        let cell = ListCell.cellForTableView(tableView: tableView)
         
         cell.textLabel?.text = sorts[indexPath.row]
         

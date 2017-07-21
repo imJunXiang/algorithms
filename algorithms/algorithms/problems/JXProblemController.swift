@@ -8,9 +8,45 @@
 
 import Foundation
 import UIKit
-class JXProblemController : UIViewController {
+class JXProblemController : UIViewController,UITableViewDataSource,UITableViewDelegate {
+    
+    let cellIdentifer:String = "cellIdentifer"
+    
+    var sorts = ["BubbleSort","SelectSort","InsertSort","QuickSort","MergeSort"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "算法题"
+        self.view.backgroundColor = .white
+        findView()
     }
+    
+    func findView() {
+        let table = UITableView(frame: JXScreenRect)
+        table.delegate = self
+        table.dataSource = self
+        view .addSubview(table)
+    }
+    
+    /// tableViewDelegate. tableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sorts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = ListCell.cellForTableView(tableView: tableView)
+        
+        cell.textLabel?.text = sorts[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let typeClass = JXTools.goToVC(sorts[indexPath.row])
+        let sortVC = typeClass?.init()
+        sortVC?.title = sorts[indexPath.row]
+        self.navigationController?.pushViewController(sortVC!, animated: true)
+    }
+
 }
