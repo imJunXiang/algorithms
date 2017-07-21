@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 class JXProblemController : BaseViewController,UITableViewDataSource,UITableViewDelegate {
     
-    var sorts = ["BubbleSort","SelectSort","InsertSort","QuickSort","MergeSort"]
+    var sorts = ["OneProblem"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

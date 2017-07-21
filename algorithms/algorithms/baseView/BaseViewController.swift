@@ -11,14 +11,11 @@ import UIKit
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.navigationController?.automaticallyAdjustsScrollViewInsets = false;
-//        self.navigationController?.navigationBar.isTranslucent = true
-        
+        self.navigationController?.automaticallyAdjustsScrollViewInsets = false;
+        self.navigationController?.navigationBar.isTranslucent = false;
         findView()
     }
     
     func findView() {
-        print("hello world")
     }
 }

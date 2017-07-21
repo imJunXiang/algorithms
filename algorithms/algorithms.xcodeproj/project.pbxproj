@@ -16,6 +16,8 @@
 		336881A61F21A33400BE1E7D /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336881A51F21A33400BE1E7D /* BaseCell.swift */; };
 		336881A81F21D56100BE1E7D /* BaseProblemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336881A71F21D56100BE1E7D /* BaseProblemController.swift */; };
 		336881AA1F21D6C200BE1E7D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336881A91F21D6C200BE1E7D /* BaseViewController.swift */; };
+		336881AC1F21ED5C00BE1E7D /* OneProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336881AB1F21ED5C00BE1E7D /* OneProblem.swift */; };
+		336881AE1F21F2D900BE1E7D /* algorithmTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336881AD1F21F2D900BE1E7D /* algorithmTools.swift */; };
 		3380455F1F00D98F006CC47E /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380455E1F00D98F006CC47E /* QuickSort.swift */; };
 		C7BB14871EFEA933000FF9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB14861EFEA933000FF9A2 /* AppDelegate.swift */; };
 		C7BB148E1EFEA933000FF9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BB148D1EFEA933000FF9A2 /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 		336881A51F21A33400BE1E7D /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		336881A71F21D56100BE1E7D /* BaseProblemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseProblemController.swift; sourceTree = "<group>"; };
 		336881A91F21D6C200BE1E7D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		336881AB1F21ED5C00BE1E7D /* OneProblem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneProblem.swift; sourceTree = "<group>"; };
+		336881AD1F21F2D900BE1E7D /* algorithmTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = algorithmTools.swift; sourceTree = "<group>"; };
 		3380455E1F00D98F006CC47E /* QuickSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		C7BB14831EFEA933000FF9A2 /* algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BB14861EFEA933000FF9A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			children = (
 				3368819C1F20A55A00BE1E7D /* JXProblemController.swift */,
 				336881A71F21D56100BE1E7D /* BaseProblemController.swift */,
+				336881AB1F21ED5C00BE1E7D /* OneProblem.swift */,
 			);
 			path = problems;
 			sourceTree = "<group>";
@@ -74,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				3368819F1F20A69400BE1E7D /* JXTools.swift */,
+				336881AD1F21F2D900BE1E7D /* algorithmTools.swift */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -208,11 +214,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7BB14AF1EFF81E6000FF9A2 /* SelectSort.swift in Sources */,
+				336881AE1F21F2D900BE1E7D /* algorithmTools.swift in Sources */,
 				C7BB14B11EFFC16A000FF9A2 /* InsertSort.swift in Sources */,
 				C7BB14991EFEA946000FF9A2 /* File.swift in Sources */,
 				336881981F209F9600BE1E7D /* JXViewController.swift in Sources */,
 				C7BB14871EFEA933000FF9A2 /* AppDelegate.swift in Sources */,
 				336881AA1F21D6C200BE1E7D /* BaseViewController.swift in Sources */,
+				336881AC1F21ED5C00BE1E7D /* OneProblem.swift in Sources */,
 				336881A61F21A33400BE1E7D /* BaseCell.swift in Sources */,
 				336881A81F21D56100BE1E7D /* BaseProblemController.swift in Sources */,
 				C7BB14AD1EFF6654000FF9A2 /* SortController.swift in Sources */,

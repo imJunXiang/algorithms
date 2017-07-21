@@ -1,32 +1,21 @@
 //
-//  QuickSort.swift
+//  algorithmTools.swift
 //  algorithms
 //
-//  Created by leying on 2017/6/26.
+//  Created by leying on 2017/7/21.
 //  Copyright © 2017年 俊祥. All rights reserved.
 //
 
 import Foundation
-
-class QuickSort: SortController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        if datas.count > 0 {
-            beforeL.text = String(describing: datas)
-            quickSort(nums: &datas, beginIndex: 0, endIndex: datas.count-1)
-            afterL.text = String(describing: datas)
-        }
-    }
-    
-    // 快速排序
-    func quickSort(nums: inout Array<Int>,beginIndex:Int,endIndex:Int) {
+class algorithmTools: NSObject {
+    /**
+     *  数组快速排序
+     */
+    class func quickSort(nums: inout Array<Int>,beginIndex:Int,endIndex:Int) {
         // 1.退出条件
         if beginIndex >= endIndex {
             return
         }
-        
         // 2.第一趟
         var i = beginIndex , j = endIndex
         let key = nums[beginIndex]
@@ -52,6 +41,7 @@ class QuickSort: SortController {
         // 递归方法确定其他位置
         quickSort(nums: &nums, beginIndex: beginIndex, endIndex: i-1)
         quickSort(nums: &nums, beginIndex: i+1, endIndex: endIndex)
-        
     }
+
+    
 }

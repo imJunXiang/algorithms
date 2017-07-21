@@ -27,3 +27,5 @@ class JXTools: NSObject {
         return typeClass
     }
 }
+
+
