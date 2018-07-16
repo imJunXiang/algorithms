@@ -13,7 +13,9 @@ class SelectSort: SortController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        selectSort(nums: &datas)
+        if datas.count > 0 {
+            selectSort(nums: &datas)
+        }
     }
     
     // 选择排序

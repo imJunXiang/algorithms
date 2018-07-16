@@ -12,7 +12,9 @@ class InsertSort: SortController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        insertSort(nums: &datas)
+        if datas.count > 0 {
+            insertSort(nums: &datas)
+        }
     }
     
     // 插入排序
