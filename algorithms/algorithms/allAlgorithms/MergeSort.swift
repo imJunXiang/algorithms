@@ -23,7 +23,7 @@ class MergeSort: SortController {
         
     }
     
-    // 冒泡排序
+    // 归并排序
     func mergeDatas( nums:Array<Int>) -> [Int]{
         var helper = Array(repeating: 0, count: nums.count)
         var arr = nums
