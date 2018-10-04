@@ -18,9 +18,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     NSMutableArray *nums = @[@(3),@5,@1,@7,@9,@4,@18,@23,@12,@20].mutableCopy;
+    
 //    [self sortArr:nums];
-    [self quickSortWithSortArr:nums andLeftIndex:0 andRightIndex:nums.count-1];
-    [self showArr:nums];
+//    [self quickSortWithSortArr:nums andLeftIndex:0 andRightIndex:nums.count-1];
+//    [self showArr:nums];
+    
+    [self mergeArrOne:@[@(1),@(4),@(5),@(8)] andArrTwo:@[@(2),@(4),@(9),@(10)]];
 }
 
 // 冒泡排序
@@ -71,6 +74,54 @@
     // 下一圈 (左右)
     [self quickSortWithSortArr:nums andLeftIndex:left andRightIndex:i-1];
     [self quickSortWithSortArr:nums andLeftIndex:i+1 andRightIndex:right];
+}
+
+// 两个 两个有序数组取交际
+- (void)mergeArrOne:(NSArray *)arr1 andArrTwo:(NSArray *)arr2 {
+    NSMutableArray *newArr = [NSMutableArray array];
+    NSInteger i = 0,j = 0;
+    while (i < arr1.count || j < arr2.count) {
+        NSInteger num1,num2;
+        
+        if (i < arr1.count) {
+            num1 = [arr1[i] integerValue];
+        } else {
+            num2 = [arr2[j] integerValue];
+            [newArr addObject:@(num2)];
+            j++;
+            continue;
+        }
+        
+        if (j < arr2.count) {
+            num2 = [arr2[j] integerValue];
+        } else {
+            num1 = [arr1[i] integerValue];
+            [newArr addObject:@(num1)];
+            i++;
+            continue;
+        }
+        
+        if (num1 < num2) {
+            num1 = [arr1[i] integerValue];
+            [newArr addObject:@(num1)];
+            i++;
+            continue;
+        } else if (num1 == num2) {
+            num1 = [arr1[i] integerValue];
+            [newArr addObject:@(num1)];
+            i++;
+            j++;
+            continue;
+        } else {
+            num2 = [arr2[j] integerValue];
+            [newArr addObject:@(num2)];
+            j++;
+            continue;
+        }
+    }
+    
+    [self showArr:newArr];
+    
 }
 
 - (void)showArr:(NSMutableArray *)nums {
