@@ -81,7 +81,6 @@
         
     }
     
-//    NSLog(@"%@",changeArr.lastObject);
     return @[changeArr.lastObject,@(s)];
     
 }
