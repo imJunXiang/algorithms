@@ -17,9 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self numsOfUpStairs:10];
+    [self numsOfUpStairs:20];
 //    [self numsOfUpStairs2:10];
-    [self numsOfUpStairs3:10];
+    [self numsOfUpStairs3:30];
 }
 
 // 动态规划求解(走楼梯问题，每次只能爬 1 ~ 2 步)
