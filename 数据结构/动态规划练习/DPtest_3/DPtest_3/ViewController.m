@@ -13,14 +13,60 @@
 @end
 
 @implementation ViewController
-// 动态规划 题目 求两个字符串的最大公共子串
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSString *maxString = [self maxCommonString:@"hghahasjfh" andString:@"agasjfjkhhga"];
-    NSLog(@"%@",maxString);
+//    NSString *maxString = [self maxCommonString:@"hghahasjfh" andString:@"agasjfjkhhga"];
+//    NSLog(@"%@",maxString);
+    
+//    gaugygkjhertyudfghytre
+    NSString *maxNoSame = [self maxStringNoSameChar:@"uqingahguudguntq"];
+    NSLog(@"%@",maxNoSame);
 }
 
+// 动态规划 题目 求字符串的最无相同字符的子串 (这个好像不是动态规划 不容易啊. leetcode 第三题)
+- (NSString *)maxStringNoSameChar:(NSString *)str {
+    NSString *res = @"";
+    
+    if (str.length <= 0) {
+        return res;
+    }
+    int realTopMax=0,max = 0,count = 0;    // 最长
+    for (int i = 0; i < str.length; i++) { // 趟数
+        count = 0;
+//        NSLog(@"---%@---",@(i-realTopMax));
+        for (int j = i-realTopMax; j <= i; j++) {
+            if ([str characterAtIndex:i] == [str characterAtIndex:j]) {
+                // 说明相同了
+                if (i == j) {
+                    count = count + 1;
+                } else {
+                    count = 0;
+                }
+                
+            } else {
+                // 不同
+                
+                count = count + 1;
+            }
+            
+            if (count > max) {
+                // 总共的最大
+                max = count;
+                res = [str substringWithRange:(NSRange){i-max+1,max}];
+            }
+        }
+        
+        // 内层循环结束后 记录最大 为topMax
+        realTopMax = count;
+        NSLog(@"%@",@(realTopMax));
+    }
+    
+    return res;
+}
+
+// 动态规划 题目 求两个字符串的最大公共子串
 - (NSString *)maxCommonString:(NSString *)s1 andString:(NSString *)s2 {
     NSString *res = @"";
     
