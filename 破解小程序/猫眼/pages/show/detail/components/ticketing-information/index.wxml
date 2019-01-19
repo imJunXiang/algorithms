@@ -1,0 +1,8 @@
+<view class="new_detail_ticketing_infomation" wx:if="{{richText&&ticketNotes}}">
+    <view class="title">
+        <text class="title-text">购票须知</text>
+    </view>
+    <view class="content">
+        <rich-text nodes="{{ticketNotes}}"></rich-text>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "领取优惠券",
+    "usingComponents": {
+        "coupon": "../../../component/coupon/coupon",
+        "loginsheet": "../../../component/loginsheet/loginsheet"
+    }
+}

@@ -1,0 +1,601 @@
+{
+    "pages": [
+        "pages/movie/index",
+        "pages/movie/movie",
+        "pages/movie/comment",
+        "pages/movie/photo",
+        "pages/movie/preview",
+        "pages/cinema/movie",
+        "pages/cinema/index",
+        "pages/cinema/cinema",
+        "pages/cinema/seat",
+        "pages/cinema/detail",
+        "pages/search/index",
+        "pages/search/movie",
+        "pages/search/cinema",
+        "pages/search/wechat",
+        "pages/search/show",
+        "pages/user/index",
+        "pages/pointcard/index",
+        "pages/citys/citys",
+        "pages/webview/webview",
+        "pages/show/index/index",
+        "pages/show/list/index",
+        "pages/show/detail/index",
+        "pages/show/search/index",
+        "pages/qrshare/index",
+        "pages/bonus/result",
+        "pages/crash/index",
+        "wesai/indexpage/index",
+        "pages/risk/verify",
+        "pages/order/index",
+        "pages/order/order",
+        "pages/order/buy",
+        "pages/order/refund/apply",
+        "pages/order/refund/detail",
+        "pages/order/landing",
+        "pages/order/wepiao-orders",
+        "pages/order/wepiao-detail",
+        "pages/order/share-bonus",
+        "pages/activity/index",
+        "pages/membercard/index",
+        "pages/membercard/deallist",
+        "pages/membercard/status",
+        "pages/membercard/cards",
+        "pages/membercard/coupons",
+        "pages/membercard/city-cards",
+        "pages/coupon/draw-coupon",
+        "wesai/pages/index/index",
+        "wesai/pages/detail/detail",
+        "wesai/pages/noseat/noseat",
+        "wesai/pages/confirm/confirm",
+        "wesai/pages/me/me",
+        "wesai/pages/orderDetail/orderDetail",
+        "wesai/pages/seat/seat",
+        "wesai/pages/screening/screening",
+        "wesai/pages/search/search",
+        "wesai/pages/seatArea/seatArea",
+        "wesai/pages/webview/webview",
+        "wesai/pages/transfer/transfer",
+        "pages/supervip/detail",
+        "pages/supervip/list",
+        "pages/supervip/result",
+        "pages/supervip/share",
+        "pages/goods/buy",
+        "pages/goods/order-detail",
+        "pages/goods/order-result",
+        "pages/goods/refund/apply",
+        "pages/goods/refund/detail",
+        "pages/showsubs/address/index",
+        "pages/showsubs/address/address-edit",
+        "pages/showsubs/ticket/ticket",
+        "pages/showsubs/order/confirm",
+        "pages/showsubs/seats/area",
+        "pages/showsubs/seats/seats",
+        "pages/showsubs/order/index",
+        "pages/showsubs/order/detail-wepiao",
+        "pages/showsubs/mooc/invoice",
+        "pages/showsubs/user/index",
+        "pages/showsubs/user/search-order",
+        "pages/showsubs/webview/webview",
+        "pages/showsubs/question/index",
+        "pages/showsubs/collect/index",
+        "pages/showsubs/venue/list",
+        "pages/showsubs/venue/detail",
+        "pages/showsubs/assistbuy/detail",
+        "pages/showsubs/assistbuy/assist",
+        "pages/showsubs/general-info/index",
+        "pages/showsubs/general-info/realname",
+        "pages/showsubs/general-info/address",
+        "pages/showsubs/publicity/wangfeng/index",
+        "pages/bargain/list/index",
+        "pages/bargain/detail/index",
+        "pages/bargain/user/index",
+        "pages/group-activity/list/index",
+        "pages/group-activity/detail/index",
+        "pages/group-activity/mine/index",
+        "pages/group-activity/group-help/index",
+        "pages/group-activity/logisitics/index",
+        "pages/group-activity/logisitics-fill/index",
+        "pages/group-activity/prize-info/index",
+        "pages/yearend/yearend/index",
+        "pages/yearend/onlook-help/index",
+        "pages/yearend/scene-help/index",
+        "pages/yearend/total-help/index",
+        "pages/employment/index/index",
+        "pages/employment/company/index",
+        "pages/employment/school/index",
+        "pages/employment/intern/index",
+        "pages/minigame/home/index",
+        "pages/minigame/witness/index",
+        "pages/minigame/questionHistory/index",
+        "pages/minigame/replyResult/index",
+        "pages/minigame/rank/index",
+        "pages/minigame/steal/index",
+        "pages/papay/index",
+        "pages/template/index",
+        "pages/template/help",
+        "pages/template/share",
+        "pages/template/address-edit",
+        "pages/usersys/privilege/index",
+        "pages/usersys/privilege/info",
+        "pages/usersys/levels/index",
+        "pages/usersys/userinfo/index",
+        "pages/usersys/userinfo/interests",
+        "pages/usersys/growth/index",
+        "pages/usersys/growth/info",
+        "pages/usersys/ec-canvas/ec-canvas",
+        "pages/prepay/index",
+        "pages/prepay/help",
+        "pages/prepayVoucher/index",
+        "pages/prepayVoucher/myBonus",
+        "pages/emanshop/index",
+        "pages/vmall/index",
+        "pages/vmall/pre-order",
+        "pages/vmall/product-detail",
+        "pages/vmall/vorder/order-list",
+        "pages/vmall/vorder/order-detail",
+        "pages/vmall/vorder/transport",
+        "pages/vmall/vcoin/index",
+        "pages/vmall/vcoin/miao-coin-rules",
+        "pages/school/index",
+        "pages/school/success",
+        "pages/school/myPrize",
+        "pages/school/rank",
+        "pages/school/answer",
+        "pages/school/questions",
+        "pages/signin/detail/index",
+        "pages/signin/help/index",
+        "pages/usersub/favourite",
+        "pages/moviesub/wish",
+        "pages/moviesub/watched",
+        "pages/reviewsub/review",
+        "pages/reviewsub/review-share",
+        "pages/commentsub/comment-detail",
+        "pages/commentsub/sub-comment",
+        "pages/dealsub/deal-center",
+        "pages/memberActivity/list",
+        "pages/memberActivity/detail",
+        "pages/gamecenter/index",
+        "pages/vod/detail/index",
+        "pages/vod/comment/index",
+        "pages/vod/group-help/index",
+        "pages/vod/trailer/index",
+        "pages/vod/invite/index",
+        "pages/vod/gift-package/order",
+        "pages/vod/gift-package/order-list",
+        "pages/vod/share-image/index",
+        "pages/onlineVideo/index",
+        "pages/fans/detail/index",
+        "pages/fans/celebrity-list/index",
+        "pages/fans/welfare-list/index",
+        "pages/fans/help/index",
+        "pages/fans/gather/index",
+        "pages/fans/myphoto",
+        "pages/fans/photo",
+        "pages/fans/makephoto",
+        "pages/fans/tomakephoto",
+        "pages/fans/address",
+        "pages/fansClub/pages/activity/list",
+        "pages/fansClub/pages/activity/detail",
+        "pages/fansClub/pages/activity/enroll-result",
+        "pages/fansClub/pages/activity/enroll-session",
+        "pages/fansClub/pages/activity/enroll-submit",
+        "pages/fansClub/pages/activity/sign",
+        "pages/fansClub/pages/activity/attendance",
+        "pages/fansClub/pages/user/examination",
+        "pages/fansClub/pages/user/manual-examination",
+        "pages/fansClub/pages/user/index",
+        "pages/achievement/index",
+        "pages/achievement/info",
+        "pages/reserve/index",
+        "pages/debug/index"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#1F1F26",
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "电影演出赛事",
+        "backgroundColor": "#f5f5f5",
+        "backgroundTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#696969",
+        "selectedColor": "#EF4238",
+        "borderStyle": "#d8d8d8",
+        "backgroundColor": "#FFFFFF",
+        "list": [
+            {
+                "text": "电影",
+                "pagePath": "pages/movie/index",
+                "iconPath": "tabs-icon/tab-movie.png",
+                "selectedIconPath": "tabs-icon/tab-movie-active.png"
+            },
+            {
+                "text": "影院",
+                "pagePath": "pages/cinema/index",
+                "iconPath": "tabs-icon/tab-cinema.png",
+                "selectedIconPath": "tabs-icon/tab-cinema-active.png"
+            },
+            {
+                "text": "演出",
+                "pagePath": "pages/show/index/index",
+                "iconPath": "tabs-icon/tab-show.png",
+                "selectedIconPath": "tabs-icon/tab-show-active.png"
+            },
+            {
+                "text": "赛事",
+                "pagePath": "wesai/indexpage/index",
+                "iconPath": "tabs-icon/tab-sport.png",
+                "selectedIconPath": "tabs-icon/tab-sport-active.png"
+            },
+            {
+                "text": "我的",
+                "pagePath": "pages/user/index",
+                "iconPath": "tabs-icon/tab-mine.png",
+                "selectedIconPath": "tabs-icon/tab-mine-active.png"
+            }
+        ]
+    },
+    "subPackages": [
+        {
+            "root": "pages/risk",
+            "pages": [
+                "pages/risk/verify"
+            ]
+        },
+        {
+            "root": "pages/order",
+            "pages": [
+                "pages/order/index",
+                "pages/order/order",
+                "pages/order/buy",
+                "pages/order/refund/apply",
+                "pages/order/refund/detail",
+                "pages/order/landing",
+                "pages/order/wepiao-orders",
+                "pages/order/wepiao-detail",
+                "pages/order/share-bonus"
+            ]
+        },
+        {
+            "root": "pages/activity",
+            "pages": [
+                "pages/activity/index"
+            ]
+        },
+        {
+            "root": "pages/membercard",
+            "pages": [
+                "pages/membercard/index",
+                "pages/membercard/deallist",
+                "pages/membercard/status",
+                "pages/membercard/cards",
+                "pages/membercard/coupons",
+                "pages/membercard/city-cards"
+            ]
+        },
+        {
+            "root": "pages/coupon",
+            "pages": [
+                "pages/coupon/draw-coupon"
+            ]
+        },
+        {
+            "root": "wesai/pages/",
+            "pages": [
+                "wesai/pages/index/index",
+                "wesai/pages/detail/detail",
+                "wesai/pages/noseat/noseat",
+                "wesai/pages/confirm/confirm",
+                "wesai/pages/me/me",
+                "wesai/pages/orderDetail/orderDetail",
+                "wesai/pages/seat/seat",
+                "wesai/pages/screening/screening",
+                "wesai/pages/search/search",
+                "wesai/pages/seatArea/seatArea",
+                "wesai/pages/webview/webview",
+                "wesai/pages/transfer/transfer"
+            ]
+        },
+        {
+            "root": "pages/supervip",
+            "pages": [
+                "pages/supervip/detail",
+                "pages/supervip/list",
+                "pages/supervip/result",
+                "pages/supervip/share"
+            ]
+        },
+        {
+            "root": "pages/goods",
+            "pages": [
+                "pages/goods/buy",
+                "pages/goods/order-detail",
+                "pages/goods/order-result",
+                "pages/goods/refund/apply",
+                "pages/goods/refund/detail"
+            ]
+        },
+        {
+            "root": "pages/showsubs",
+            "pages": [
+                "pages/showsubs/address/index",
+                "pages/showsubs/address/address-edit",
+                "pages/showsubs/ticket/ticket",
+                "pages/showsubs/order/confirm",
+                "pages/showsubs/seats/area",
+                "pages/showsubs/seats/seats",
+                "pages/showsubs/order/index",
+                "pages/showsubs/order/detail-wepiao",
+                "pages/showsubs/mooc/invoice",
+                "pages/showsubs/user/index",
+                "pages/showsubs/user/search-order",
+                "pages/showsubs/webview/webview",
+                "pages/showsubs/question/index",
+                "pages/showsubs/collect/index",
+                "pages/showsubs/venue/list",
+                "pages/showsubs/venue/detail",
+                "pages/showsubs/assistbuy/detail",
+                "pages/showsubs/assistbuy/assist",
+                "pages/showsubs/general-info/index",
+                "pages/showsubs/general-info/realname",
+                "pages/showsubs/general-info/address",
+                "pages/showsubs/publicity/wangfeng/index"
+            ]
+        },
+        {
+            "root": "pages/bargain",
+            "pages": [
+                "pages/bargain/list/index",
+                "pages/bargain/detail/index",
+                "pages/bargain/user/index"
+            ]
+        },
+        {
+            "root": "pages/group-activity",
+            "pages": [
+                "pages/group-activity/list/index",
+                "pages/group-activity/detail/index",
+                "pages/group-activity/mine/index",
+                "pages/group-activity/group-help/index",
+                "pages/group-activity/logisitics/index",
+                "pages/group-activity/logisitics-fill/index",
+                "pages/group-activity/prize-info/index"
+            ]
+        },
+        {
+            "root": "pages/yearend",
+            "pages": [
+                "pages/yearend/yearend/index",
+                "pages/yearend/onlook-help/index",
+                "pages/yearend/scene-help/index",
+                "pages/yearend/total-help/index"
+            ]
+        },
+        {
+            "root": "pages/employment",
+            "pages": [
+                "pages/employment/index/index",
+                "pages/employment/company/index",
+                "pages/employment/school/index",
+                "pages/employment/intern/index"
+            ]
+        },
+        {
+            "root": "pages/minigame",
+            "pages": [
+                "pages/minigame/home/index",
+                "pages/minigame/witness/index",
+                "pages/minigame/questionHistory/index",
+                "pages/minigame/replyResult/index",
+                "pages/minigame/rank/index",
+                "pages/minigame/steal/index"
+            ]
+        },
+        {
+            "root": "pages/papay",
+            "pages": [
+                "pages/papay/index"
+            ]
+        },
+        {
+            "root": "pages/template",
+            "pages": [
+                "pages/template/index",
+                "pages/template/help",
+                "pages/template/share",
+                "pages/template/address-edit"
+            ]
+        },
+        {
+            "root": "pages/usersys",
+            "pages": [
+                "pages/usersys/privilege/index",
+                "pages/usersys/privilege/info",
+                "pages/usersys/levels/index",
+                "pages/usersys/userinfo/index",
+                "pages/usersys/userinfo/interests",
+                "pages/usersys/growth/index",
+                "pages/usersys/growth/info",
+                "pages/usersys/ec-canvas/ec-canvas"
+            ]
+        },
+        {
+            "root": "pages/prepay",
+            "pages": [
+                "pages/prepay/index",
+                "pages/prepay/help"
+            ]
+        },
+        {
+            "root": "pages/prepayVoucher",
+            "pages": [
+                "pages/prepayVoucher/index",
+                "pages/prepayVoucher/myBonus"
+            ]
+        },
+        {
+            "root": "pages/emanshop",
+            "pages": [
+                "pages/emanshop/index"
+            ]
+        },
+        {
+            "root": "pages/vmall",
+            "pages": [
+                "pages/vmall/index",
+                "pages/vmall/pre-order",
+                "pages/vmall/product-detail",
+                "pages/vmall/vorder/order-list",
+                "pages/vmall/vorder/order-detail",
+                "pages/vmall/vorder/transport",
+                "pages/vmall/vcoin/index",
+                "pages/vmall/vcoin/miao-coin-rules"
+            ]
+        },
+        {
+            "root": "pages/school",
+            "pages": [
+                "pages/school/index",
+                "pages/school/success",
+                "pages/school/myPrize",
+                "pages/school/rank",
+                "pages/school/answer",
+                "pages/school/questions"
+            ]
+        },
+        {
+            "root": "pages/signin",
+            "pages": [
+                "pages/signin/detail/index",
+                "pages/signin/help/index"
+            ]
+        },
+        {
+            "root": "pages/usersub",
+            "pages": [
+                "pages/usersub/favourite"
+            ]
+        },
+        {
+            "root": "pages/moviesub",
+            "pages": [
+                "pages/moviesub/wish",
+                "pages/moviesub/watched"
+            ]
+        },
+        {
+            "root": "pages/reviewsub",
+            "pages": [
+                "pages/reviewsub/review",
+                "pages/reviewsub/review-share"
+            ]
+        },
+        {
+            "root": "pages/commentsub",
+            "pages": [
+                "pages/commentsub/comment-detail",
+                "pages/commentsub/sub-comment"
+            ]
+        },
+        {
+            "root": "pages/dealsub",
+            "pages": [
+                "pages/dealsub/deal-center"
+            ]
+        },
+        {
+            "root": "pages/memberActivity",
+            "pages": [
+                "pages/memberActivity/list",
+                "pages/memberActivity/detail"
+            ]
+        },
+        {
+            "root": "pages/gamecenter",
+            "pages": [
+                "pages/gamecenter/index"
+            ]
+        },
+        {
+            "root": "pages/vod",
+            "pages": [
+                "pages/vod/detail/index",
+                "pages/vod/comment/index",
+                "pages/vod/group-help/index",
+                "pages/vod/trailer/index",
+                "pages/vod/invite/index",
+                "pages/vod/gift-package/order",
+                "pages/vod/gift-package/order-list",
+                "pages/vod/share-image/index"
+            ]
+        },
+        {
+            "root": "pages/onlineVideo",
+            "pages": [
+                "pages/onlineVideo/index"
+            ]
+        },
+        {
+            "root": "pages/fans",
+            "pages": [
+                "pages/fans/detail/index",
+                "pages/fans/celebrity-list/index",
+                "pages/fans/welfare-list/index",
+                "pages/fans/help/index",
+                "pages/fans/gather/index",
+                "pages/fans/myphoto",
+                "pages/fans/photo",
+                "pages/fans/makephoto",
+                "pages/fans/tomakephoto",
+                "pages/fans/address"
+            ]
+        },
+        {
+            "root": "pages/fansClub/pages",
+            "pages": [
+                "pages/fansClub/pages/activity/list",
+                "pages/fansClub/pages/activity/detail",
+                "pages/fansClub/pages/activity/enroll-result",
+                "pages/fansClub/pages/activity/enroll-session",
+                "pages/fansClub/pages/activity/enroll-submit",
+                "pages/fansClub/pages/activity/sign",
+                "pages/fansClub/pages/activity/attendance",
+                "pages/fansClub/pages/user/examination",
+                "pages/fansClub/pages/user/manual-examination",
+                "pages/fansClub/pages/user/index"
+            ]
+        },
+        {
+            "root": "pages/achievement",
+            "pages": [
+                "pages/achievement/index",
+                "pages/achievement/info"
+            ]
+        },
+        {
+            "root": "pages/reserve",
+            "pages": [
+                "pages/reserve/index"
+            ]
+        },
+        {
+            "root": "pages/debug",
+            "pages": [
+                "pages/debug/index"
+            ]
+        }
+    ],
+    "navigateToMiniProgramAppIdList": [
+        "wx575a058005382780",
+        "wxe326406ceb0d5120",
+        "wx45556c9d996962ae",
+        "wx28d3fabd22c59503",
+        "wx9db2c16d0633c2e7",
+        "wxbd687630cd02ce1d",
+        "wxd973539423b6ca58",
+        "wx7649daed8f2335c4",
+        "wxcd10170e55a1f55d",
+        "wx5de0c309a1472da6"
+    ]
+}

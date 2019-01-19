@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "my-switch": "../../../components/switch/index",
+        "dialog": "../../../components/dialog/_index",
+        "goods-area": "../components/goods-area/_index"
+    }
+}

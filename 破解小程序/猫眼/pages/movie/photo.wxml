@@ -1,0 +1,14 @@
+<scroll-view class="tab-container one-px-border-both" scrollX="true">
+    <view class="tab-list">
+        <view bindtap="typeChangeHandler" class="tab-item {{item.type===type?'current':''}}" data-index="{{index}}" wx:for="{{types}}" wx:key="index">
+            <text>{{item.desc}}</text>
+        </view>
+    </view>
+</scroll-view>
+<view class="images-container">
+    <view class="image-border scroll-view-stats" data-val_lab="{ movie_id: {{movieId}}}" data-view_bid="b_1otr2f42" wx:for="{{photosMap[type]}}" wx:key="{{index}}">
+        <image bindtap="imagePreview" class="img" data-url="{{item.olink}}" data-val_bid="b_isl6c93g" data-val_lab="{ movie_id: {{movieId}}}" mode="aspectFill" src="{{item.tlink}}"></image>
+    </view>
+    <view style="font-size: 28rpx;color: #999999;text-align:center; margin-top: 80rpx;" wx:if="{{!photosMap[type]||!photosMap[type].length}}">正在加载...</view>
+</view>
+<include src="/footer.wxml"></include>

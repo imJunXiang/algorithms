@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "账号验证",
+    "usingComponents": {
+        "yoda-slider": "../../../components/yoda-sdk/component/slider/slider"
+    }
+}

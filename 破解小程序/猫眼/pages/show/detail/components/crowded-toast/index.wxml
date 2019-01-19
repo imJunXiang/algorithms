@@ -1,0 +1,8 @@
+<view catchtap="noop" catchtouchmove="noop" class="crowded-toast" wx:if="{{show}}">
+    <view class="crowded-text-container">
+        <view class="crowded-text">喵～ 本场演出热度冲天</view>
+        <view class="crowded-text">页面挤爆了，喵喵建议稍后再试</view>
+    </view>
+    <view class="crowded-count">{{number}}</view>
+</view>
+<view catchtap="noop" catchtouchmove="noop" class="crowded-toast-modal" wx:if="{{show}}">这是一个modal</view>

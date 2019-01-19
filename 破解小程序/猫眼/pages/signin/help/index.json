@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "为好友助力",
+    "usingComponents": {
+        "dialog": "../../../components/dialog/_index",
+        "goods-area": "../components/goods-area/_index"
+    }
+}

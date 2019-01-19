@@ -1,0 +1,57 @@
+<view class="header-tabs-container one-px-border-bottom">
+    <view bindtap="switchToPoint" class="header-tab pull-left {{activeTab=='point'?'active':''}}">观影卡</view>
+    <view bindtap="switchToBonus" class="header-tab pull-right {{activeTab=='bonus'?'active':''}}">电影票</view>
+</view>
+<view class="pointcard" hidden="{{activeTab=='bonus'}}">
+    <view class="card-content one-px-border-bottom">
+        <view class="add-card">
+            <input bindinput="bindInput" placeholder="请输入观影卡密码"></input>
+            <text bindtap="addCard" class="add-btn">添加</text>
+        </view>
+        <view class="card-list" wx:if="{{!!cards.length}}">
+            <view wx:for="{{cards}}" wx:key="pointCardId">
+                <view class="card-item {{item.useStatus==3?'timeout':''}}">
+                    <view class="card-info">
+                        <view class="title">
+                            <text class="small">卡号：</text>{{item.pointCardNo}}</view>
+                        <view class="left-money">{{item.pointDesc[0]}}<text class="redtext">{{item.pointDesc[1]}}</text>{{item.pointDesc[2]}}<text class="redtext">{{item.pointDesc[3]}}</text>{{item.pointDesc[4]}}</view>
+                    </view>
+                    <view class="card-more">
+                        <text class="left-time">{{item.validEndDate}}</text>
+                        <text class="desc">{{item.validItemDesc}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="no-card" wx:if="{{cards.length===0}}">
+            <text class="title">暂无已绑定的卡</text>
+        </view>
+    </view>
+    <view class="card-prompt {{isIphoneX?'iphonex':''}}">
+        <view class="prompt-title">温馨提示：</view>
+        <view class="prompt-desc">
+            <text>1、娱票儿会员卡、礼品卡、V卡，可在此页面输入密码进行绑定。</text>
+            <text>2、娱票儿点卡、猫眼观影卡不支持与账户绑定，请直接在确认订单页观影卡一栏中输入密码进行验证后使用。</text>
+        </view>
+    </view>
+</view>
+<view class="bonus" hidden="{{activeTab=='point'}}">
+    <view class="bonus-list" wx:if="{{bonuslist&&bonuslist.length>0}}">
+        <view class="bonus-item {{item.useStatus==3?'overtime':item.useStatus==4?'used':''}}" wx:for="{{bonuslist}}" wx:key="index">
+            <view class="name">{{item.nameNum}}<text class="name-text">元电影票</text>
+            </view>
+            <view bindtap="gotoUse" class="gotoUse" data-movieid="{{item.limitMovies&&item.limitMovies[0]&&item.limitMovies[0].movieId}}" wx:if="{{item.useStatus==0}}">去使用</view>
+            <view class="bonusDesc flex">
+                <view class="dueTm">有效期至{{item.dueTm}}</view>
+                <view class="limit text-ellipsis">{{item.limit}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="no-bonus-list" wx:elif="{{bonuslist&&bonuslist.length==0}}">
+        <view class="content">
+            <icon></icon>
+            <text class="desc-text">暂无可用电影票</text>
+        </view>
+    </view>
+</view>
+<include src="/footer.wxml"></include>

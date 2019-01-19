@@ -1,0 +1,21 @@
+<template name="cinema">
+    <view bindtap="tapCinema" class="cinema {{index==0?'':'one-px-border-top'}}" data-id="{{cinemaId}}" data-sell="{{sellTicket}}">
+        <view class="collected" hidden="{{!favorite}}"></view>
+        <view class="title text-ellipsis">{{cinemaName}}</view>
+        <view class="desc">
+            <text class="addr text-ellipsis">{{address}}</text>
+            <text class="distance" wx:if="{{distance}}">{{distance}}km</text>
+        </view>
+    </view>
+</template>
+<template name="memberRight">
+    <view class="memberright">
+        <view class="right-icon">
+            <image src="{{iconImg}}"></image>
+        </view>
+        <view>
+            <view class="title">{{desc}}</view>
+            <view class="desc">{{subDesc}}</view>
+        </view>
+    </view>
+</template>

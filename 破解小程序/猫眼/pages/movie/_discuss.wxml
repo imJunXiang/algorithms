@@ -1,0 +1,20 @@
+<template name="discuss">
+    <view class="discuss-pop-cover">
+        <view class="discuss-pop">
+            <image bindtap="closePop" class="discuss-pop-icon" src="http://p0.meituan.net/scarlett/1ffda960139d69aeaf21ef0084e076761355.png"></image>
+            <view class="discuss-pop-title">
+                <view class="title-icon"></view>
+                <view class="title-icon left"></view>
+                <view class="title-name">什么是讨论</view>
+                <view class="title-icon right"></view>
+                <view class="title-icon"></view>
+            </view>
+            <view class="discuss-pop-content">
+                <view class="content-text">讨论功能为用户发表意见、分享交流想法的通道。</view>
+                <view class="content-text">每个人都有独一无二的经历，每一部电影都会聚集有相同兴趣的人。我们希望为大家提供一个开放、舒适的交流平台，你可以在这里分享故事，找到共鸣，获得更全面的观影体验。</view>
+                <view class="content-text">设置头像和昵称，认真发布讨论，能增加你的讨论被推荐为精选讨论的机率。和以前一样，你也可以在发布讨论的时候为电影打分，但仍然只有真实购票观影用户的评分会计入猫眼评分。</view>
+                <view class="content-text">我们欢迎认真的讨论态度，在参与讨论时请尽量表达自己更好的一面。我们会对低质量的讨论内容进行降权，减少被看到的几率。对于多次违反社区规则的用户，我们也保留封禁账号的权利。</view>
+            </view>
+        </view>
+    </view>
+</template>

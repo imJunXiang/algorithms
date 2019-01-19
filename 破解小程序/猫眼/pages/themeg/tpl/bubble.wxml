@@ -1,0 +1,5 @@
+<template name="bubbleList">
+    <div class="bubble-list">
+        <image class="bubble-item" src="{{item.src}}" style="width: {{item.width}}rpx; height: {{item.height}}rpx; animation-name: animate-{{index}}; animation-delay: {{item.delay}}s" wx:for="{{bubble}}"></image>
+    </div>
+</template>

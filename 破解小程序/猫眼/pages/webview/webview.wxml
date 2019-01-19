@@ -1,0 +1,2 @@
+<web-view src="{{url}}"></web-view>
+<include src="/footer.wxml"></include>

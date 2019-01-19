@@ -1,0 +1,18 @@
+<template name="ad-banner">
+    <swiper autoplay circular bindchange="onBannerChagne" class="ad-banner" current="{{current}}" duration="500" indicatorActiveColor="rgba(255,255,255,0.9)" indicatorColor="rgba(255,255,255,0.4)" indicatorDots="{{isDisplayDots}}" interval="4000" wx:if="{{banner&&banner.length}}">
+        <block wx:for="{{banner}}" wx:for-item="bannerItem" wx:key="index">
+            <block wx:if="{{bannerItem.url=='/maoyan/redpocket2016'}}">
+                <swiper-item wx:if="{{popIconShow}}">
+                    <view catchtap="popOpen">
+                        <image class="ad-banner" mode="aspectFill" src="{{bannerItem.imgUrl}}"></image>
+                    </view>
+                </swiper-item>
+            </block>
+            <swiper-item wx:else>
+                <view catchtap="onTapAdBanner" data-idx="{{index}}" data-url="{{bannerItem.link}}">
+                    <image class="ad-banner" mode="aspectFill" src="{{bannerItem.image}}"></image>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</template>

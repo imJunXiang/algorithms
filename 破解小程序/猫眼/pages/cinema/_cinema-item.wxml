@@ -1,0 +1,39 @@
+<template name="cinema">
+    <navigator openType="{{openType||'navigate'}}" url="/pages/cinema/cinema?cinemaId={{id}}">
+        <view class="cinema-container {{noline?'':'one-px-border-bottom'}}">
+            <view class="label" wx:if="{{mark===3}}">会员</view>
+            <view class="label" wx:if="{{mark===2}}">常去</view>
+            <view class="label" wx:if="{{mark===1}}">常去</view>
+            <view class="cinema-name text-ellipsis" wx:if="{{isRedName}}">
+                <text class="{{text===keyword?'text-red':''}}" decode="{{true}}" wx:for="{{nm}}" wx:for-item="text" wx:key="index">{{text}}</text>
+            </view>
+            <view class="cinema-name text-ellipsis" wx:else>{{nm}}</view>
+            <view class="price" wx:if="{{showPrice&&showPrice!=0}}">
+                <text class="num">{{sellPrice}}</text>
+                <text>元</text>
+                <text class="numUnit">起</text>
+            </view>
+            <view class="address text-ellipsis" wx:if="{{isRedName}}">
+                <text class="{{text===keyword?'text-red':''}}" decode="{{true}}" wx:for="{{addr}}" wx:for-item="text" wx:key="index">{{text}}</text>
+            </view>
+            <view class="address text-ellipsis" wx:else>{{addr}}</view>
+            <view class="distance" wx:if="{{isRedName&&resolvedDistance}}">
+                <text class="{{text===keyword?'text-red':''}}" decode="{{true}}" wx:for="{{resolvedDistance}}" wx:for-item="text" wx:key="index">{{text}}</text>
+            </view>
+            <view class="distance" wx:if="{{!isRedName&&resolvedDistance}}">{{resolvedDistance}}</view>
+            <view class="tag-list">
+                <view wx:if="{{tag.deal||deal}}">团</view>
+                <view wx:if="{{tag.allowRefund||allowRefund}}">退</view>
+                <view wx:if="{{tag.endorse||endorse}}">改签</view>
+                <view class="featrue" wx:if="{{tag.snack||snack}}">小吃</view>
+                <view class="featrue" wx:if="{{tag.vipTag||vipTag}}">{{tag.vipTag}}</view>
+                <view class="super-vip" wx:if="{{tag.svip}}">超级会员</view>
+                <view wx:for="{{tag.hallType||hallType}}" wx:key="{{ index }}">{{item}}</view>
+            </view>
+            <view class="activity-tag platform-activity-tag" wx:if="{{promotion.platformActivityTag}}">{{promotion.platformActivityTag}}</view>
+            <view class="activity-tag merchant-activity-tag" wx:if="{{promotion.merchantActivityTag}}">{{promotion.merchantActivityTag}}</view>
+            <view class="activity-tag card-promotion-tag" wx:if="{{promotion.cardPromotionTag}}">{{promotion.cardPromotionTag}}</view>
+            <view class="activity-tag coupon-promotion-tag" wx:if="{{promotion.couponPromotionTag}}">{{promotion.couponPromotionTag}}</view>
+        </view>
+    </navigator>
+</template>

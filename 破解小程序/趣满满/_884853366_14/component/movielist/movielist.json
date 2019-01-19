@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "loginsheet": "/component/loginsheet/loginsheet"
+    }
+}

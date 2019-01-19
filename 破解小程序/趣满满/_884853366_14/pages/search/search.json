@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "搜索",
+    "usingComponents": {
+        "cinamerlist": "../../component/cinamerlist/cinamerlist",
+        "movielist": "../../component/movielist/movielist"
+    }
+}

@@ -1,0 +1,18 @@
+<view class="change-container">
+    <view class="change-item">
+        <image class="login-logo" src="{{avatarUrl}}"></image>
+        <text class="login-name">{{nickName}}</text>
+        <text class="iconfont icon-weixin login-type" wx:if="{{wxlogin}}"></text>
+        <text class="iconfont icon-shouji login-type" style="color:{{colors.fontcolor}}" wx:if="{{phonelogin}}"></text>
+    </view>
+    <view bindtap="handleToPhoneLogin" class="change-item" wx:if="{{!phonelogin}}">
+        <text class="type-des">切换成手机号登录</text>
+        <text class="iconfont icon-shouyejiantouyou"></text>
+    </view>
+    <view class="change-item" wx:if="{{!wxlogin}}">
+        <button bindgetuserinfo="getUserInfoFun" class="wxbutton-opacity" openType="getUserInfo"></button>
+        <text class="type-des">切换成微信登录</text>
+        <text class="iconfont icon-shouyejiantouyou"></text>
+    </view>
+    <button bindtap="loginOut" class="loginout-btn" wx:if="{{hidden}}">退出当前账号</button>
+</view>

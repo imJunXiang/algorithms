@@ -1,0 +1,46 @@
+<template name="redpacket-modal">
+    <view class="redpacket-container" style="{{scale!==1?'transform: scale('+scale+');':''}}">
+        <view catchtap="hideModal" class="redpacket-close">
+            <image class="redpacket-image" mode="aspectFit" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/close-btn.png"></image>
+        </view>
+        <block wx:if="{{data&&data.length>0}}">
+            <view class="redpacket-header">
+                <image class="redpacket-image" mode="aspectFit" src="{{theme.headMap||'http://p0.meituan.net/mmdb/5588792351738270a31e4debe5861990192241.png'}}"></image>
+            </view>
+            <view class="redpacket" style="{{theme.backColor?'background:'+theme.backColor:''}}">
+                <view class="redpacket-coupon-list">
+                    <view class="redpacket-coupon-list-item" wx:for="{{data}}">
+                        <view class="redpacket-coupon-left">
+                            <view class="main-info">
+                                <view class="movie-image">
+                                    <image class="redpacket-image" src="{{item.couponTheme||'http://p1.meituan.net/mmdb/98b11a3135684dc0c8f2631d8ac5b7d18672.png'}}"></image>
+                                </view>
+                                <view class="main-info-content">
+                                    <view class="main-info-content-title ellipsis-wrap">{{item.title}}</view>
+                                    <view class="main-info-content-subtitle text-ellipsis">{{item.expire}}</view>
+                                </view>
+                            </view>
+                            <view class="extra-info">
+                                <view class="extra-info-title text-ellipsis">
+                                    <block wx:if="{{item.value.length>1}}">
+                                        <text class="extra-info-title-unit">{{item.value[0]}}</text>{{item.value[1]}}</block>
+                                    <block wx:else>{{item.value[0]}}</block>
+                                </view>
+                                <view class="extra-info-subtitle text-ellipsis">{{item.priceLimit}}</view>
+                            </view>
+                        </view>
+                        <view catchtap="onTapRedpacketModal" class="redpacket-coupon-right" data-url="{{item.toUserUrl}}" data-val_bid="{{use_val_bid}}" data-val_lab="{{val_lab}}">去使用</view>
+                    </view>
+                </view>
+                <view class="redpacket-conpon-info" wx:if="{{text}}">{{text}}</view>
+                <view catchtap="onTapRedpacketModal" class="redpacket-view-button" data-url="/pages/membercard/coupons" data-val_bid="{{view_btn_val_bid}}" data-val_lab="{{val_lab}}">查看红包</view>
+            </view>
+        </block>
+        <view class="no-redpacket" wx:else>
+            <view class="no-redpacket-image">
+                <image class="redpacket-image" mode="aspectFit" src="http://p0.meituan.net/mmdb/b010cd1881c3e3abb86097d2427477d921142.png"></image>
+            </view>
+            <view class="no-redpacket-info">您来晚一步，红包抢光啦</view>
+        </view>
+    </view>
+</template>

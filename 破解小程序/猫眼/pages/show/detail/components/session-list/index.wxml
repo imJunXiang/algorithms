@@ -1,0 +1,10 @@
+<v-mask></v-mask>
+<view class="session-list">
+    <view class="session-list__title">选择场次<view bindtap="onSessionCloseClick" class="close"></view>
+    </view>
+    <view class="session-list__wrapper">
+        <view bindtap="onSessionItemClick" class="session-item{{item.hasInventory&&selected===item.showId?' session-item--active':''}}{{item.hasInventory?'':stockout?' session-item--stockout':' session-item--soldout'}}" data-index="{{index}}" wx:for="{{sessions}}" wx:key="{{item.showId}}">
+            <view class="session-item__name">{{item.name}}</view>
+        </view>
+    </view>
+</view>

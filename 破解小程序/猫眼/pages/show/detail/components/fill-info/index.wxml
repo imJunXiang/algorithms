@@ -1,0 +1,8 @@
+<view bindtap="openFillInfo" class="bar" wx:if="{{flag}}">
+    <image class="bar-icon" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/show/newDetail/order@2x.png"></image>
+    <text class="bar-text">预填信息</text>
+    <view class="bar-note">
+        <text class="bar-note-text">抢票快人一步</text>
+        <image class="bar-note-img" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/arrow-right.png"></image>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "确认订单",
+    "usingComponents": {
+        "moviecard": "../../component/moviecard/moviecard",
+        "coupon": "../../component/coupon/coupon"
+    }
+}

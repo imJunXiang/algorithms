@@ -1,0 +1,15 @@
+<view class="container-class container">
+    <view class="label-class label" wx:if="{{label}}">
+        <view class="label-content-class label-content">{{label}}</view>
+        <view class="tip-class tip {{required?'tip-required':''}}" wx:if="{{tip}}">（{{tip}}）</view>
+    </view>
+    <view class="main">
+        <view class="surface-class surface {{required?'required':''}}" style="border-radius: {{radius}}">
+            <slot name="prefix"></slot>
+            <input adjustPosition="{{adjustPosition}}" bindblur="onBlur" bindconfirm="onConfirm" bindfocus="onFocus" bindinput="onInput" class="input-class input" confirmHold="{{confirmHold}}" confirmType="{{confirmType}}" cursor="{{cursor}}" cursorSpacing="{{cursorSpacing}}" disabled="{{disabled}}" focus="{{focus}}" maxlength="{{maxlength}}" name="{{name}}" password="{{password}}" placeholder="{{placeholder}}" placeholderClass="placeholder" placeholderStyle="{{placeholderStyle}}" selectionENd="{{selectionEnd}}" selectionStart="{{selectionStart}}" type="{{type}}" value="{{value}}"></input>
+            <view catchtap="onClear" class="clear-class clear" wx:if="{{showClear}}"></view>
+            <slot name="input-btn" wx:else></slot>
+        </view>
+        <slot name="suffix"></slot>
+    </view>
+</view>

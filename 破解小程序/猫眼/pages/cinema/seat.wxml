@@ -1,0 +1,177 @@
+<import src="/tpl/seat-toast.wxml"></import>
+<import src="../../tpl/mobile-confirm.wxml"></import>
+<import src="../../tpl/access-limit.wxml"></import>
+<import src="/tpl/rain.wxml"></import>
+<view class="seat-block {{isIphoneX?'iphonex':''}}" style="width:100%;" wx:if="{{regions}}">
+    <template is="rain" data="{{...rain}}"></template>
+    <view catchtap="hideGuide" class="blacker{{showGuide?' show':''}}"></view>
+    <view class="remind-block" wx:if="{{showRemind}}">
+        <view class="remind-content">
+            <text>{{seatData.beforeRemindTime}}</text>
+            <strong style="color: #e54847;">
+                <text>{{seatData.remindTime}}</text>
+            </strong>
+            <text>{{seatData.afterRemindTime}}</text>
+        </view>
+        <rich-text class="remind-content" nodes="{{seatData.remindNode}}"></rich-text>
+    </view>
+    <view class="info-block" style="width:100%;">
+        <view class="movie-info middle">
+            <view class="show-info">
+                <text class="title line-ellipsis">{{seatData.movieName}}</text>
+                <view class="info line-ellipsis">
+                    <view>{{seatData.showDateText}} {{seatData.showTime}}</view>
+                    <view style="margin-left: 5px;color: {{seatData.langWarn?'#EF4238':'#9b9b9b'}}">{{seatData.lang}}{{seatData.dim}}</view>
+                </view>
+            </view>
+            <image class="icon-chinese-dubbing" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/icon_chinese_dubbing.png" wx:if="{{show.langWarn&&show.lang==='国语'}}"></image>
+        </view>
+        <view class="one-px-border-bottom line-both"></view>
+        <view class="notice-block-container" wx:if="{{seatData.notice&&seatData.notice.length>0}}">
+            <view class="notice-block {{seatData.showNotice?'showing':''}}">
+                <view class="notice-info-block">
+                    <view class="notice-info" wx:if="{{seatData.showNotice||index===0}}" wx:for="{{seatData.notice}}" wx:for-item="notice">
+                        <image class="notice-icon" src="{{notice.imgUrl}}"></image>
+                        <view class="notice-detail line-ellipsis">{{notice.detail}}</view>
+                    </view>
+                </view>
+                <view bindtap="showNotice" class="show-notice" wx:if="{{seatData.notice&&(seatData.notice.length>1||seatData.notice[0].detail.length>seatData.noticeMaxLength)}}">
+                    <text>{{seatData.notice.length}}个通知</text>
+                    <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/rectangle.png"></image>
+                </view>
+            </view>
+            <view class="notice-block-placeholder"></view>
+        </view>
+    </view>
+    <view class="main" style="height:{{content.displayHeight}}vh; line-height:{{content.displayHeight}}vh;">
+        <view class="container">
+            <view class="side" hidden="{{!showSide}}" style="-webkit-transform: scaleY({{scaleInfo.scaleTo}}); -webkit-transform-origin: {{originX}}% {{originY}}%; position: absolute; top: {{-(scaleInfo.seatTop-40-20*scaleInfo.scaleTo+scrollTop)}}px; left: 0px; transition: top .1s">
+                <view class="ol">
+                    <view class="{{regions.length>1?'rows-section':'row-section'}}" wx:for="{{regions}}" wx:for-item="s">
+                        <block wx:for="{{s.rows}}" wx:for-item="rows">
+                            <view class="number" style="-webkit-transform:scaleY({{1/scaleInfo.scaleTo}});display:flex;flex:1;align-items:center;justify-content:center;height:30px;padding:5px 0;" wx:if="{{rows.rowId!=''}}">{{rows.rowId}}</view>
+                            <view class="number" style="-webkit-transform:scaleY({{1/scaleInfo.scaleTo}});display:flex;flex:1;align-items:center;justify-content:center;height:30px;padding:5px 0;" wx:else></view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <scroll-view bindscroll="scroll" bindtouchend="touchend" bindtouchmove="touchmove" bindtouchstart="touchstart" scrollLeft="{{translateX}}" scrollTop="{{translateY}}" scrollX="{{allowScroll}}" scrollY="{{allowScroll}}" style="height: 65vh; position: relative;">
+                <view style="-webkit-transform: scale({{scaleInfo.scaleTo}}); -webkit-transform-origin: {{originX}}% {{originY}}%; width: {{seatWidth}}px; height: {{seatHeight+225}}px; z-index: -1; position: absolute; top: 0; left: 40px"></view>
+                <view bindtransitionend="setOrigin" class="item" data-scaleto="{{scaleInfo.scaleTo}}" data-sectionid="1" data-sectionname="{{regions[0].regionName}}" style="-webkit-transform: scale({{scaleInfo.scaleTo}}); -webkit-transform-origin: {{originX}}% {{originY}}%; transition: -webkit-transform .5s; position: absolute; top: {{-scaleInfo.seatTop}}px; left: {{-(scaleInfo.seatLeft-40)}}px">
+                    <view class="h3 hallname line-ellipsis" hidden="{{!showSide}}" style="top: {{scrollTop}}px;-webkit-transform: scale({{1/scaleInfo.scaleTo}}); -webkit-transform-origin: 50% 0%" wx:if="{{seatData.hallName}}">{{seatData.hallName}}</view>
+                    <view>
+                        <view class="c-tips" style="-webkit-transform: scale({{1/scaleInfo.scaleTo}}); margin: auto; top: {{10+25/scaleInfo.scaleTo}}px;"></view>
+                        <view class="c-tips_line" style="height: {{seatHeight}}px; top: {{30+40/scaleInfo.scaleTo}}px"></view>
+                    </view>
+                    <view style="margin-top: {{35+40/scaleInfo.scaleTo}}px;">
+                        <view class="section" wx:for="{{regions}}" wx:for-index="k" wx:for-item="s">
+                            <view class="p" wx:for="{{s.rows}}" wx:for-index="i" wx:for-item="rows">
+                                <block wx:for="{{rows.seats}}" wx:for-index="j" wx:for-item="seat">
+                                    <view wx:if="{{seat.seatStatus==1&&seat.seatType==='N'}}">
+                                        <view catchtap="handleSelect" class="seat {{seat.selected?'checked':'active'}}" data-checked="{{seat.selected}}" data-column="{{seat.columnId}}" data-no="{{seat.seatNo}}" data-region="{{s.regionId}}" data-row="{{rows.rowNum}}" data-seat-status="{{seat.seatStatus}}" data-seat-type="{{seat.seatType}}" data-section="{{seat.sectionId}}" style="{{seat.style}}"></view>
+                                    </view>
+                                    <view wx:elif="{{seat.seatStatus==0}}">
+                                        <view class="seat" data-column="{{seat.columId}}" data-no="{{seat.seatNo}}" data-region="{{s.regionId}}" data-row="{{rows.rowNum}}" data-seat-status="{{seat.seatStatus}}" data-seat-type="{{seat.seatType}}" data-section="{{seat.sectionId}}"></view>
+                                    </view>
+                                    <view wx:elif="{{seat.seatStatus===2||seat.seatStatus===3||seat.seatStatus===4}}">
+                                        <view class="seat disabled" data-column="{{seat.columnId}}" data-no="{{seat.seatNo}}" data-region="{{s.regionId}}" data-row="{{rows.rowNum}}" data-seat-status="{{seat.seatStatus}}" data-seat-type="{{seat.seatType}}" data-section="{{seat.sectionId}}" style="{{seat.style}}"></view>
+                                    </view>
+                                    <view wx:elif="{{seat.seatType=='L'||seat.seatType=='R'}}">
+                                        <view catchtap="handleSelect" class="seat lover {{seat.seatType=='L'?'lover-left':'lover-right'}} {{seat.selected?'lover-selected':''}}" data-column="{{seat.columnId}}" data-no="{{seat.seatNo}}" data-region="{{s.regionId}}" data-row="{{rows.rowNum}}" data-seat-status="{{seat.seatStatus}}" data-seat-type="{{seat.seatType}}" data-section="{{seat.sectionId}}" style="{{seat.style}}"></view>
+                                    </view>
+                                    <view wx:else>
+                                        <view class="seat"></view>
+                                    </view>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="mew-info" style="background-image:url({{seatData.watermark}}); -webkit-transform: scale({{1/scaleInfo.scaleTo}}); bottom: {{-60/scaleInfo.scaleTo}}px"></view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="buy-block" style="{{showGuide?'z-index: 10000;':''}}">
+        <form bindsubmit="formSubmit" class="form" reportSubmit="true">
+            <view catchtap="hideGuide" class="blacker{{showGuide?' show':''}}"></view>
+            <image catchtap="hideGuide" class="guide-img{{showGuide?' show':''}}" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/seat-section-guide.png"></image>
+            <view class="seat-info" wx:if="{{selectedData.length===0}}">
+                <view class="seat-info-item" wx:for="{{seatData.image.seatLegends}}">
+                    <image class="{{item.legendName==='情侣座'?'double-width':''}}" src="{{item.legendIcon}}"></image>
+                    <text>{{item.legendName}}</text>
+                </view>
+            </view>
+            <view class="seat-section-info" style="{{showGuide?'z-index: 10000; position: relative; background: #fff':''}}" wx:if="{{selectedData.length===0&&seatData.sections.length>1}}">
+                <view class="seat-section-item" wx:for="{{seatData.sections}}">
+                    <image class="seat-section-icon" src="{{item.sectionIcon}}"></image>
+                    <text class="seat-section-name" style="color:{{item.sectionColor}}">{{item.sectionName}}</text>
+                    <text class="seat-section-price" wx:if="{{item.sectionPrice}}">¥{{item.sectionPrice}}</text>
+                    <text class="seat-section-activity" wx:if="{{item.sectionActivity}}">{{item.sectionActivity}}</text>
+                </view>
+            </view>
+            <view class="buy-seatinfo-wrapper{{recommendSeats.length>0&&isShowRecommend?' buy-seatinfo-wrapper-recommend':''}}{{selectedData.length>0?' buy-seatinfo-wrapper-selected':''}}">
+                <block wx:if="{{recommendSeats.length>0&&isShowRecommend}}">
+                    <view class="selected-text">推荐座位</view>
+                    <view class="recommend-info">
+                        <button catchtap="handleRecommend" class="recommend-item {{recommendItem.count?'':'recommend-item-disabled'}}" data-remind="{{recommendItem.seatDesc.remind}}" data-seats="{{recommendItem.seats}}" formType="submit" style="background-color:{{cancelColor}};" wx:for="{{recommendSeats}}" wx:for-item="recommendItem">
+                            <text>{{recommendItem.count}}人</text>
+                        </button>
+                    </view>
+                </block>
+                <block wx:if="{{selectedData.length>0&&!isShowRecommend}}">
+                    <view class="selected-text">已选座位</view>
+                    <view bindtap="showPriceDetail" class="price-detail" wx:if="{{seatsPriceDetail.display}}">
+                        <text class="detail-icon">!</text>价格说明<view class="detail-price" wx:if="{{showPriceDetail}}">
+                            <view class="close"></view>
+                            <text class="original-price">原票价¥{{seatsPriceDetail.originPrice}}/张</text>
+                            <view wx:for="{{seatsPriceDetail.detail}}">
+                                <view class="price-desc">
+                                    <text class="price-value">¥{{item.price}}</text>
+                                    <view wx:for="{{item.desc}}" wx:for-item="desc">
+                                        <text>{{desc}}
+</text>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="sqrt"></view>
+                        </view>
+                    </view>
+                    <view class="selected-info">
+                        <block wx:if="{{selectedData.length>0}}">
+                            <view catchtap="handleCancelSeat" class="selected-seats {{idx==3?'selected-seats-last':''}}" data-column="{{selectedItem.columnId}}" data-no="{{selectedItem.seatNo}}" data-region="{{selectedItem.regionId}}" data-row="{{selectedItem.rowNum}}" data-section="{{seat.sectionId}}" style="background-color:{{cancelColor}};" wx:for="{{selectedData}}" wx:for-index="idx" wx:for-item="selectedItem">
+                                <view class="selected-seat-info">
+                                    <text>{{selectedItem.rowId}}排{{selectedItem.columnId}}座
+</text>
+                                    <view wx:if="{{desc[idx].price}}">
+                                        <text class="price-icon" wx:if="{{!!desc[idx].activity}}">{{desc[idx].activity}}</text>
+                                        <text class="selected-seat-price">¥{{desc[idx].price}}</text>
+                                    </view>
+                                </view>
+                                <view class="cancel-selected"></view>
+                            </view>
+                        </block>
+                    </view>
+                </block>
+            </view>
+            <view class="submit-block">
+                <view class="can-submit" wx:if="{{selectedData.length>0&&selectedData.length<=seatData.buyNumLimit}}">
+                    <button bindgetphonenumber="onGetPhoneNumber" bindtap="{{!hasMobile&&!hasShownAuth?'':'submitOrder'}}" class="submit flex" data-cinemaid="{{cinemaId}}" data-seats="{{checkedSeats}}" data-seqNo="{{seatData.seqNo}}" formType="submit" openType="{{!hasMobile&&!hasShownAuth?'getPhoneNumber':''}}">
+                        <text wx:if="{{totalPrice}}">¥{{totalPrice}}</text>确认选座</button>
+                </view>
+                <view class="cannot-submit" wx:else>
+                    <button class="submit flex">请先选座</button>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>
+<loading bindchange="loadingChange" hidden="{{pageToastData.loading_hidden}}">获取座位图...</loading>
+<loading bindchange="loadingChange" hidden="{{pageToastData.submitOrder_hidden}}">正在为您订座</loading>
+<template is="mobile-confirm" data="{{...MobileConfirm}}"></template>
+<template is="toast_seats_limit_alert" data="{{...pageToastData}}"></template>
+<template is="toast_seats_select_alert" data="{{...pageToastData}}"></template>
+<template is="toast_seats_select_alert2" data="{{...pageToastData}}"></template>
+<modal noCancel bindconfirm="confirmDesc" confirmText="知道了" hidden="{{pageToastData.submitOrder_fail_hidden}}" title="预定失败">{{orderErrorMsg||'抱歉，您的座位已被其他用户选中，请重新选择'}}</modal>
+<modal noCancel bindconfirm="confirmDesc" cancelText="返回" confirmText="继续选座" hidden="{{pageToastData.goback_slectseats_hidden}}">返回后，您当前选中的座位将不再保留</modal>
+<template is="access-limit-modal" data="{{...AccessLimit}}"></template>
+<include src="/footer.wxml"></include>

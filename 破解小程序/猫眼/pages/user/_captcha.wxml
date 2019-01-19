@@ -1,0 +1,25 @@
+<template name="captcha">
+    <view catchtouchmove="doNothing" class="login-modal-layer" wx:if="{{showCaptcha}}">
+        <view class="login-modal">
+            <view class="login-modal-body">
+                <view class="captcha-container line-middle">
+                    <view class="captcha-input-container">
+                        <input bindinput="onInputCaptcha" name="captcha" placeholder="请输入图片动态码" placeholderClass="placeholder" value="{{inputCaptcha}}"></input>
+                    </view>
+                    <image bindtap="updateCaptcha" class="captcha" src="http://www.meituan.com/account/appcaptcha?uuid={{uuid}}&captchaHash={{captchaHash}}"></image>
+                    <view bindtap="updateCaptcha" class="captcha-update">
+                        <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/update.png"></image>
+                    </view>
+                </view>
+                <view class="captcha-error-container">
+                    <view class="line-middle" wx:if="{{errorMsg&&showCaptcha}}">
+                        <icon size="18" type="warn"></icon>{{errorMsg}}</view>
+                </view>
+            </view>
+            <view class="login-modal-foot">
+                <navigator bindtap="onHideCaptcha" class="login-modal-cancel">关闭</navigator>
+                <navigator bindtap="onConfirmCaptcha" class="login-modal-confirm left-border">确定</navigator>
+            </view>
+        </view>
+    </view>
+</template>

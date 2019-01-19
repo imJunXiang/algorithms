@@ -1,0 +1,23 @@
+<template name="seven-day-tab-bar">
+    <view class="seven-day-tab-bar-container {{isIphoneX?'iphoneX':''}}">
+        <view bindtap="changeTab" class="sd-left" data-tab="home">
+            <image class="image-box" src="http://p0.meituan.net/scarlett/ee7daec9ded9183efeb56cce51292b5e623.png" wx:if="{{activeTab=='home'}}"></image>
+            <image class="image-box" src="https://p1.meituan.net/scarlett/4c66f3fee63b0e52eb261672e5d94afb576.png" wx:else></image>
+            <view class="label-box {{activeTab=='home'?'activeColor':''}}">首页</view>
+        </view>
+        <view bindtap="createProfess" class="sd-center">
+            <view class="create-button">
+                <image class="start-img-f" src="http://p1.meituan.net/scarlett/03196d397a31320c689a899f0f92765a645.png"></image>
+                <image class="start-img-s" src="http://p1.meituan.net/scarlett/f24eb8658ed04218c8b57176afe07353704.png"></image>
+                <image class="start-img-t" src="http://p0.meituan.net/scarlett/120f842bb99cbd256bf5b55e62aa2482642.png"></image>
+            </view>
+            <view class="image-box"></view>
+            <view class="label-box {{activeTab=='home'?'activeColor':''}}">发表白</view>
+        </view>
+        <view bindtap="changeTab" class="sd-right" data-tab="mine">
+            <image class="image-box" src="http://p0.meituan.net/scarlett/44d27d2f10f80161b9b0d33447d91517699.png" wx:if="{{activeTab=='mine'}}"></image>
+            <image class="image-box" src="http://p0.meituan.net/scarlett/0d6aa75c82c8f821f4c038cd793164ae676.png" wx:else></image>
+            <view class="label-box {{activeTab=='mine'?'activeColor':''}}">我的</view>
+        </view>
+    </view>
+</template>

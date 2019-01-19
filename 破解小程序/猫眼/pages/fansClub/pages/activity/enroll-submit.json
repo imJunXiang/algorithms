@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "活动报名",
+    "usingComponents": {
+        "stepper": "../../tpl/stepper/index",
+        "my-input": "../../tpl/input/index"
+    }
+}

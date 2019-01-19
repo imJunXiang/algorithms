@@ -1,0 +1,15 @@
+<view class="cus-modal-layer" wx:if="{{isShow}}">
+    <view class="cus-modal custom-class">
+        <view class="cus-modal-body">
+            <view class="cus-modal-text" wx:if="{{titleText}}">{{titleText}}</view>
+            <view bindtap="_handleClose" class="cus-modal-close" wx:if="{{isShowCloseBtn}}">
+                <image class="close" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/bargain/detail/close.png"></image>
+            </view>
+            <slot name="body"></slot>
+            <view class="btn-container custom-btn-group" wx:if="{{buttons&&buttons.length>0}}">
+                <button catchtap="_buttonClicked" class="button custom-btn-main {{index>0&&'margin-left'}} {{item.secondary&&'secondary custom-btn-secondary'}} {{item.disabled&&'disabled'}}" data-index="{{index}}" disabled="{{item.disabled}}" id="{{item.id}}" openType="{{item.openType||''}}" wx:for="{{buttons}}">{{item.text}}</button>
+            </view>
+            <slot name="footer"></slot>
+        </view>
+    </view>
+</view>

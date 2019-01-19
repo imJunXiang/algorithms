@@ -1,0 +1,1 @@
+<view catchtouchmove="noop" class="mask" wx:if="{{showMask}}"></view>

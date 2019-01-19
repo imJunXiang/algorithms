@@ -1,0 +1,4 @@
+<import src="./modal.wxml"></import>
+<import src="./sidebar.wxml"></import>
+<template is="activity-modal" data="{{...activityModal}}"></template>
+<template is="operation-sidebar" data="{{...operationSidebar}}"></template>

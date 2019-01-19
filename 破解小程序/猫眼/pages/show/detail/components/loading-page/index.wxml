@@ -1,0 +1,6 @@
+<view class="detail-loading-page">
+    <view class="detail-loading-image-container">
+        <image class="detail-loading-image" mode="aspectFit" src="../pics/loading.png"></image>
+    </view>
+    <view class="detail-loading-tips">喵呜～～玩命加载中,请稍等哦～～</view>
+</view>

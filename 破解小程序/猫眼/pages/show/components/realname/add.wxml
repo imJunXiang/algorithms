@@ -1,0 +1,21 @@
+<form bindsubmit="formSubmit">
+    <view class="section outline-b">
+        <view class="label required">姓名</view>
+        <input bindinput="handleChange" id="userName" name="userName" placeholder="请输入姓名" value="{{userName||''}}"></input>
+    </view>
+    <view class="section realname-address">
+        <view class="label required">证件类型</view>
+        <view class="realname-address-text">身份证</view>
+    </view>
+    <view class="section">
+        <view class="label required">证件号</view>
+        <input bindinput="handleChange" id="idNumber" name="idNumber" placeholder="请输入证件号" value="{{idNumber||''}}"></input>
+    </view>
+    <view class="section default-set">
+        <view class="label required">设为默认购票人</view>
+        <view class="switch-box">
+            <switch bindtap="handleSwitch" checked="{{switched}}" color="#FC9927"></switch>
+        </view>
+    </view>
+    <button class="btn submit-btn {{disabled?'disabled-btn':''}}" disabled="{{disabled}}" formType="submit" hoverClass="submit-btn-hover">确定</button>
+</form>

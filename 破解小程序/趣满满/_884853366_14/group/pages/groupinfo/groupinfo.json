@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "loginsheet": "../../../component/loginsheet/loginsheet",
+        "share-canvas": "../../../component/sharecanvas/sharecanvas"
+    }
+}

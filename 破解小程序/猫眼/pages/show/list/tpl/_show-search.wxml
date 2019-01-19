@@ -1,0 +1,34 @@
+<template name="show-search">
+    <navigator catchtap="onTapNavi" class="show clearfix" data-url="{{pageUrl}}" data-val_bid="{{val_bid||'list_item_click'}}" data-val_lab="{ index: {{index+1}}, id: {{id}} }" hoverClass="none" openType="{{redir?'redirect':'navigate'}}">
+        <image class="img show-img def-img" lazyLoad="{{true}}" mode="aspectFill" src="{{posterUrl}}"></image>
+        <text class="show-tips" style="background: {{tagColor}}" wx:if="{{tagPromotion}}">{{tagPromotion}}</text>
+        <view class="show-info flex flex-column flex-between">
+            <view wx:if="{{isRedName}}">
+                <text class="show-name">
+                    <text class="{{text===keyword?'text-red':''}}" decode="{{true}}" wx:for="{{name}}" wx:for-item="text" wx:key="index">{{text}}</text>
+                </text>
+                <text class="show-time">
+                    <text class="{{text===keyword?'text-red':''}}" decode="{{true}}" wx:for="{{showTimeDesc}}" wx:for-item="text" wx:key="index">{{text}}</text>
+                </text>
+                <view class="show-addr">
+                    <text class="{{text===keyword?'text-red':''}}" decode="{{true}}" wx:for="{{cityshop}}" wx:for-item="text" wx:key="index">{{text}}</text>
+                </view>
+            </view>
+            <view wx:else>
+                <text class="show-name">{{name}}</text>
+                <view class="show-time">
+                    <text>{{showTimeDesc}}</text>
+                </view>
+                <view class="show-addr">
+                    <text>{{cityshop}}</text>
+                </view>
+            </view>
+            <view class="show-bottom flex flex-row flex-middle" wx:if="{{priceDesc}}">
+                <text class="show-price {{priceRangeType===1?'show-price-unknow':''}}">{{priceDesc}}</text>
+                <view class="tag-space"></view>
+                <text class="show-tag show-tag-{{salesChannelTag==='自营'?'self':'other'}}" wx:if="{{salesChannelTag}}">{{salesChannelTag}}</text>
+                <text class="show-tag show-tag-select" wx:if="{{seatType&&seatType!==0}}"></text>
+            </view>
+        </view>
+    </navigator>
+</template>

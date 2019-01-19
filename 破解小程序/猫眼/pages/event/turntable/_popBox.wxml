@@ -1,0 +1,55 @@
+<template name="pop">
+    <view bindtap="closePop" catchtouchmove="doNothing" class="pop-mask {{isHidden?'hide':''}}">
+        <view class="pop-wrapper">
+            <template is="{{type}}" data="{{msg:msg,jumpUrl:jumpUrl}}"></template>
+        </view>
+    </view>
+</template>
+<template name="rule">
+    <view class="pop-rule">
+        <view class="img-title"></view>
+        <view class="pop-fields">
+            <view class="field-item">
+                <view class="field-label">活动时间：</view>
+                <view class="field-text">7 月 26 日~8 月 1 日</view>
+            </view>
+            <view class="field-item">
+                <view class="field-label">抽奖条件：</view>
+                <view class="field-text">所有会员每天有 3 次抽奖机会，其中 1 次默认抽奖机会，剩余 2 次需要分享给好友获得，同一好友最多只能助力一次</view>
+            </view>
+            <view class="field-item">
+                <view class="field-label">大奖攻略：</view>
+                <view class="field-text">会员等级越高，获得大奖几率越高；修炼每日任务，也可以提高中奖概率</view>
+            </view>
+            <view class="field-item">
+                <view class="field-label">奖品说明</view>
+                <view class="field-text"></view>
+            </view>
+            <view class="field-item">
+                <view class="field-label">通兑券、代金券：</view>
+                <view class="field-text">在获得之日起 7 内有效，仅限猫眼小程序购买电影票时使用，会员获得奖品后，进入【我的优惠券】点击查看具体券使用规则</view>
+            </view>
+            <view class="field-item">
+                <view class="field-label">成长值：</view>
+                <view class="field-text">用于提升会员等级，获得后可进入【会员成长值】页查看明细</view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="error">
+    <view class="pop-error">
+        <view class="title">{{msg}}</view>
+        <view class="img-error"></view>
+    </view>
+</template>
+<template name="success">
+    <view class="pop-success">
+        <view class="title">{{msg}}</view>
+        <view class="operate">
+            <navigator data-need-login catchtap="onTapNavi" data-url="{{jumpUrl}}" hoverClass="none">
+                <view class="btn-view"></view>
+            </navigator>
+            <view bindtap="closePop" class="btn-know"></view>
+        </view>
+    </view>
+</template>

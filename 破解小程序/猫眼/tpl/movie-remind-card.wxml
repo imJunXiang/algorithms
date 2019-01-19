@@ -1,0 +1,28 @@
+<template name="movie-remind-card">
+    <view class="hour-movie-card" wx:if="{{isShow}}">
+        <view class="card-remind-icon"></view>
+        <view class="movie-card-content">
+            <view bindtap="goMovieRemindModal" class="card-top" data-val-bid="b_bcg2xxf7" data-val-lab="{ cinemaId: {{cinemaId}} }">
+                <view class="card-top-pic" style="background:url({{picUrl}}) no-repeat; background-size:100% 100%;"></view>
+                <view class="count-down-area">
+                    <view class="count-down-content {{hasPlay?'count-down-content-done':'count-down-content-will'}}">
+                        <view class="time-text">{{hasPlay?'已开场':'距开场'}}</view>
+                        <view class="time-card">{{time.minutes}}</view>
+                        <view class="time-dot"></view>
+                        <view class="time-card">{{time.second}}</view>
+                    </view>
+                </view>
+                <view class="card-top-info">
+                    <view class="card-top-info-name text-nowrap">{{movieName}}</view>
+                    <view class="card-top-info-detail text-nowrap">{{screenName}} {{seats}}</view>
+                    <view class="card-top-info-detail text-nowrap">{{cinemaName}}</view>
+                </view>
+            </view>
+            <view class="card-bot">
+                <view bindtap="goMovieRemindModal" class="card-bot-btns toMoiveBtn" data-val-bid="b_bcg2xxf7" data-val-lab="{ cinemaId: {{cinemaId}} }">
+                    <view class="qrcode-icon"></view>查看取票码</view>
+                <view bindtap="gotoDealCenter" class="card-bot-btns toGoodsBtn" data-val-bid="b_m4ggn4dr" data-val-lab="{ cinemaId: {{cinemaId}} }" wx:if="{{hasSale===0&&minSalePrice}}">{{minSalePrice}}</view>
+            </view>
+        </view>
+    </view>
+</template>

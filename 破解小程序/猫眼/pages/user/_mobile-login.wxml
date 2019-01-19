@@ -1,0 +1,22 @@
+<template name="mobile-login">
+    <form bindsubmit="onSubmitMobileLogin">
+        <view class="input-container">
+            <view class="input-block">
+                <text class="input-name">手机号</text>
+                <input bindinput="onInputMobile" class="input" maxlength="11" name="mobile" placeholder="仅支持中国大陆手机号" placeholderClass="placeholder" type="number" value="{{inputMobile}}"></input>
+                <view class="btn-del line-middle">
+                    <image bindtap="onDeleteMobile" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/close.png" wx:if="{{showMobileDel}}"></image>
+                </view>
+                <view bindtap="onTapGetCode" class="btn-getcode {{codeBtnDisabled?'disabled':''}} {{codeHasSent?'sent':''}}" data-disabled="{{!!codeBtnDisabled}}">{{codeBtnMsg}}</view>
+            </view>
+            <view class="input-block code-input-block">
+                <text class="input-name">验证码</text>
+                <input bindinput="onInputCode" class="input" name="code" placeholder="请输入验证码" placeholderClass="placeholder" type="number" value="{{inputCode}}"></input>
+                <view class="btn-del line-middle"></view>
+            </view>
+        </view>
+        <view class="btn-container" style="text-align: center;margin-top: 50rpx;padding: 0 30rpx">
+            <button class="btn-login {{submitDisabled?'submit-disabled':''}}" disabled="{{submitDisabled}}" formType="submit">登录</button>
+        </view>
+    </form>
+</template>

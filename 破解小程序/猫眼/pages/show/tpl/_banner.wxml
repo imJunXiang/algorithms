@@ -1,0 +1,9 @@
+<template name="banner">
+    <view class="banner" wx:if="{{banners.length}}">
+        <swiper autoplay="{{swiperOptions.autoplay}}" bindchange="onBannerChange" circular="{{swiperOptions.circular}}" duration="{{swiperOptions.duration}}" indicatorActiveColor="#fff" indicatorColor="rgba(255, 255, 255, .6)" indicatorDots="{{swiperOptions.indicatorDots}}" interval="{{swiperOptions.interval}}">
+            <swiper-item catchtap="bannerClickDot" data-index="{{index}}" data-web-view="{{item}}" wx:for="{{banners}}" wx:key="{{item.link}}">
+                <image src="{{item.thumb}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+</template>

@@ -1,0 +1,11 @@
+<v-mask wx:if="{{hasMask}}"></v-mask>
+<view class="popup">
+    <view class="popup__header">
+        <view catchtap="onBackTap" class="popup__headerbtn popup__back" wx:if="{{history.length>1}}"></view>
+        <view class="popup__title">{{info.title}}</view>
+        <view catchtap="onCloseTap" class="popup__headerbtn popup__close"></view>
+    </view>
+    <view class="popup__body">
+        <slot></slot>
+    </view>
+</view>

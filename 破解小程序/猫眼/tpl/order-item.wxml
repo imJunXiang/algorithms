@@ -1,0 +1,19 @@
+<template name="orderItem">
+    <view bindtap="onTapDetail" class="order-item" data-bid-data="{{bid_data}}" data-goto-detail="{{gotoDetail}}" data-order-id="{{orderId}}" data-vorder-id="{{vorderId}}">
+        <view class="orderType{{refundStatus?'5':mainStatus}} order-header" wx:if="{{!hideOrderHeader}}">{{statusDesc||mainDesc[mainStatus]}}</view>
+        <view class="order-content" style="{{contentBackGd?'background: #FAFAFA;':'border-bottom: 1rpx solid #E8E8E8'}}">
+            <view class="productItem" wx:for="{{skuList}}" wx:for-item="product" wx:key="skuId">
+                <view class="imageWrap">
+                    <image binderror="onErrorImage" data-image-index="{{imageName+'.skuList.'+index+'.skuPic'||''}}" lazyLoad="true" src="{{product.skuPic}}"></image>
+                </view>
+                <view class="order-info">
+                    <view class="order-name text-ellipsis2">{{product.skuName}}</view>
+                    <view class="order-price">{{totalVirtualCoin}} 喵币</view>
+                </view>
+            </view>
+        </view>
+        <view class="order-pay-price">实付<view class="pay-num">{{payVirtualCoin}}</view>
+            <view class="pay-unit">喵币</view>
+        </view>
+    </view>
+</template>

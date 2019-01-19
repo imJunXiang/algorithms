@@ -1,0 +1,4 @@
+<view catchtap="selectRegion" class="selectRegion  {{regionname=='全部区域'?'active':''}}" data-name="{{'全部区域'}}">全部区域</view>
+<view catchtap="selectRegion" class="selectRegion {{regionname==item.regionname?'active':''}}" data-name="{{item}}" wx:for="{{region}}" wx:for-index="idx" wx:key="{{this}}">
+   {{item.regionname}}
+  </view>

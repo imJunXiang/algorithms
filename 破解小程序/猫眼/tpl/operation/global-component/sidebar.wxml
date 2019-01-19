@@ -1,0 +1,15 @@
+<template name="operation-sidebar">
+    <block wx:if="{{showSideBar}}">
+        <block wx:if="{{appId}}">
+            <view catchtap="navToMiniProgram" class="operation-sidebar" style="{{style}}" wx:if="{{navUseAPI}}">
+                <image mode="aspectFit" src="{{backgroundImageUrl||'http://p0.meituan.net/movie/f9a02ec14fe8af9bfe88445df777e846178868.gif'}}"></image>
+            </view>
+            <navigator appId="{{appId}}" catchtap="nullFuncButBindStats" class="operation-sidebar" data-val_bid="{{val_bid}}" data-val_lab="{{val_lab}}" openType="navigate" path="{{path}}" style="{{style}}" target="miniProgram" version="{{version}}" wx:else>
+                <image mode="aspectFit" src="{{backgroundImageUrl||'http://p0.meituan.net/movie/f9a02ec14fe8af9bfe88445df777e846178868.gif'}}"></image>
+            </navigator>
+        </block>
+        <view catchtap="onTapSideBar" class="operation-sidebar" style="{{style}}" wx:else>
+            <image mode="aspectFit" src="{{backgroundImageUrl||'http://p0.meituan.net/movie/f9a02ec14fe8af9bfe88445df777e846178868.gif'}}"></image>
+        </view>
+    </block>
+</template>

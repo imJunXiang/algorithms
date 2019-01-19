@@ -1,0 +1,6 @@
+<view bindtap="handleSwitchChange" checked="{{checked}}" class="my-switch my-switch--{{checked?'on':'off'}} {{disabled?'my-switch--disabled':''}}" disabled="{{disabled}}" loading="{{loading}}">
+    <view class="my-switch__circle">
+        <view class="my-switch__loading" hidden="{{!loading}}"></view>
+    </view>
+    <view class="my-switch__bg"></view>
+</view>

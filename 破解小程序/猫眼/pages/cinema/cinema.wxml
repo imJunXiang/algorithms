@@ -1,0 +1,234 @@
+<import src="../../tpl/deal.wxml"></import>
+<import src="../../tpl/access-limit.wxml"></import>
+<view class="{{isIphoneX?'iphonex':''}} {{modal.current.length?'dontmove':''}}" wx:if="{{showPage}}">
+    <view class="callboard-info" wx:if="{{cinema.callboardInfo&&cinema.callboardInfo.desc}}">{{cinema.callboardInfo.desc}}</view>
+    <view class="cinema-info-container" wx:if="{{cinema.nm}}">
+        <navigator class="cinema-info" url="./detail?cinemaId={{cinema.cinemaId}}">
+            <view class="cinema-name">
+                <text class="title text-ellipsis">{{cinema.nm}}</text>
+            </view>
+            <view class="cinema-address">{{cinema.addr}}</view>
+        </navigator>
+        <navigator bindtap="showMap" class="showMap" hoverClass="hover">
+            <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/map.png"></image>
+            <text>地图</text>
+        </navigator>
+    </view>
+    <view class="cinema-promotion-wrapper" wx:if="{{cinema.saleInfo}}">
+        <view bindtap="gotoDealCenter" class="cinema-promotion" data-val-lab="{ cinemaId: {{cinema.cinemaId}} }" data-val_bid="b_pazycdhh">
+            <image class="cinema-promotion-logo" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/cinema-promotion-logo.png"></image>
+            <view class="cinema-promotion-detail">
+                <view class="cinema-promotion-title">{{cinema.saleInfo.title}}</view>
+                <view>{{cinema.saleInfo.content}}<text class="price">{{cinema.saleInfo.specialContent}}</text>
+                </view>
+            </view>
+            <view class="cinema-promotion-link">{{cinema.saleInfo.hasProm?'限时选购':'立即选购'}}<view class="arrow"></view>
+            </view>
+        </view>
+        <view class="cinema-promotion-icon" wx:if="{{cinema.saleInfo.hasProm}}">促</view>
+    </view>
+    <view class="movie-list-container" wx:if="{{movies&&movies.length}}">
+        <view class="bg" style="background-image: url({{movie.img}})"></view>
+        <view class="movie-list" style="{{animation?'transition: transform .3s;':''}}-webkit-transform:translateX({{scrollLeft}}px)">
+            <view class="movie-card {{index===0?'movie-card-start':''}} {{movie.id==item.id?'current':''}}" data-index="{{index}}" wx:for="{{movies}}">
+                <image class="img" mode="aspectFill" src="{{item.img}}"></image>
+                <view class="tag" wx:if="{{item.preferential}}">
+                    <view>惠</view>
+                </view>
+            </view>
+            <view class="movie-card movie-card-end"></view>
+        </view>
+        <scroll-view scrollX="true" style="position:absolute;left:0;top:0;right:0;bottom:0;">
+            <view bindtap="tapMovie" bindtouchcancel="touchcancel" bindtouchend="touchend" bindtouchmove="touchmove" bindtouchstart="touchstart" style="width:754rpx;height:292rpx;"></view>
+        </scroll-view>
+    </view>
+    <view class="movie-list-conn" wx:if="{{movies&&movies.length}}"></view>
+    <view class="movie-info" wx:if="{{movie.id}}">
+        <view>
+            <text class="name">{{movie.nm}}</text>
+            <text class="score" wx:if="{{!movie.globalReleased}}">{{movie.wish}}<text class="unit">人想看</text>
+            </text>
+            <text class="score no-score" wx:elif="{{!movie.hasScore}}">暂无评分</text>
+            <text class="score" wx:else>{{movie.sc}}<text class="unit">分</text>
+            </text>
+        </view>
+        <view>{{movie.desc}}</view>
+    </view>
+    <scroll-view class="tab-container one-px-border-both" scrollLeft="{{dateScrollLeft}}" scrollWithAnimation="true" scrollX="true" wx:if="{{dates&&dates.length}}">
+        <view class="date-list tab-list">
+            <view bindtap="dayChangeHandler" class="tab-item {{item.day===day?'current':''}}" data-date="{{item.day}}" data-index="{{index}}" wx:for="{{dates}}">
+                <text>{{item.text}}</text>
+                <text class="tag" wx:if="{{item.preferential}}">惠</text>
+            </view>
+        </view>
+    </scroll-view>
+    <view bindtap="showActivityCell" class="pre-info {{vipInfo&&vipInfo.length||cityCardInfo&&cityCardInfo.length?'':'one-px-border-bottom'}}" wx:if="{{preInfo.length}}">
+        <view class="tag">活动</view>
+        <view class="title text-ellipsis">{{preInfo[0].title}}</view>
+        <view class="process">{{preInfo.length}}个活动<view class="arrow"></view>
+        </view>
+    </view>
+    <view bindtap="showCouponListCell" class="pre-info coupon {{vipInfo&&vipInfo.length||cityCardInfo&&cityCardInfo.length?'':'one-px-border-bottom'}}" wx:if="{{couponList.length}}">
+        <view class="tag">领券</view>
+        <view class="title text-ellipsis">限时领券，即领即用，买票更优惠</view>
+        <view class="process">{{couponList.length}}张优惠券<view class="arrow"></view>
+        </view>
+    </view>
+    <navigator data-migrate-warn data-need-login catchtap="onTapNavi" class="vip-info" data-url="/pages/membercard/index?eMemberCardId={{item.id}}&cinemaId={{cinema.cinemaId}}&fromShow=1&originType=4" wx:if="{{vipInfo&&vipInfo.length}}" wx:for="{{vipInfo}}">
+        <view class="tag">{{item.tag}}</view>
+        <view class="title text-ellipsis">{{item.title}}</view>
+        <view class="process">{{item.process}}<view class="arrow"></view>
+        </view>
+    </navigator>
+    <navigator catchtap="onTapNavi" class="city-card-info one-px-border-bottom {{vipInfo&&vipInfo.length?'':'one-px-border-top'}}" data-url="/pages/supervip/detail?cityCardId={{item.cityCardId}}&from=%2Fpages%2Fcinema%2Fcinema%3FcinemaId%3D{{cinema.cinemaId}}" wx:if="{{cityCardInfo&&cityCardInfo.length}}" wx:for="{{cityCardInfo}}">
+        <view class="tag">{{item.tag}}</view>
+        <view class="title text-ellipsis">
+            <text>{{item.title[0]}}</text>
+            <text class="highlight-desc">{{item.title[1]}}</text>
+            <text>{{item.title[2]}}</text>
+        </view>
+        <view class="process">{{item.process}}<view class="arrow"></view>
+        </view>
+    </navigator>
+    <view class="show-container" wx:if="{{plist.length}}">
+        <form reportSubmit bindsubmit="collectFormId">
+            <navigator catchtap="onTapNavigator" data-tip="{{item.forbiddenTip}}" data-url="{{item.enterShowSeat?'./seat?showId='+item.showId+'&seqNo='+item.seqNo+(sourceOrderId?'&sourceOrderId='+sourceOrderId+'&source='+source+'&seatCount='+seatCount:''):''}}" wx:for="{{plist}}" wx:key="seqNo">
+                <view class="show {{item.nextDay?'show-has-tip':''}} {{item.preShowTag?'has-pre-show':''}}">
+                    <view class="next-day-tip" wx:if="{{item.nextDay}}">次日放映</view>
+                    <view class="pre-show-tag" wx:if="{{item.preShowTag}}">点映</view>
+                    <view class="show-time">
+                        <view class="start-time">{{item.tm}}</view>
+                        <view class="end-time">{{item.etm}}散场</view>
+                    </view>
+                    <view class="show-info">
+                        <view class="type">{{item.lang}}{{item.tp}}</view>
+                        <view class="hall text-ellipsis">{{item.th}}</view>
+                    </view>
+                    <view class="show-price {{item.vipPrice&&item.vipPriceName?'left':''}}">
+                        <view class="maoyan-price-wrapper flex flex-column flex-bottom">
+                            <view class="maoyan-price">
+                                <text>{{item.sellPr}}</text>
+                                <text class="maoyan-price-suffix" wx:if="item.sellPrSuffix">{{item.sellPrSuffix}}</text>
+                            </view>
+                            <view class="vip-price-wrapper" wx:if="{{item.vipPrice&&item.vipPriceName}}">
+                                <text class="vip-label">{{item.vipPriceNameNew}}</text>
+                                <text class="vip-price">{{item.vipPrice}}元{{item.vipPriceSuffix}}</text>
+                            </view>
+                            <view class="desc text-ellipsis" wx:if="{{item.extraDescNew}}">{{item.extraDescNew}}</view>
+                        </view>
+                    </view>
+                    <view class="show-buy">
+                        <block wx:if="{{item.ticketStatus<=3||item.ticketStatus===5}}">
+                            <button class="buy-but" formType="submit" wx:if="{{item.ticketStatus===0}}">购票</button>
+                            <navigator class="full-seat-but" wx:if="{{item.ticketStatus===1}}">满座</navigator>
+                            <navigator class="stop-seat-but" wx:if="{{item.ticketStatus===2}}">停售</navigator>
+                            <navigator class="stop-seat-but" wx:if="{{item.ticketStatus===3}}">停售</navigator>
+                            <button class="discount-buy-but" formType="submit" wx:if="{{item.ticketStatus===5}}">特惠</button>
+                        </block>
+                        <navigator class="stop-seat-but" wx:else>不支持</navigator>
+                    </view>
+                </view>
+            </navigator>
+        </form>
+    </view>
+    <view class="show-over" wx:if="{{cinema.sell&&movie.id&&!plist.length}}">
+        <view wx:if="{{!movie.globalReleased}}">
+            <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/show-notyet.png" style="width: 77px;height: 72px;"></image>
+            <view class="words">影片未上映</view>
+        </view>
+        <view wx:elif="{{!show.hasShow}}">
+            <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/show-over.png" style="width: 78px;height: 72px;"></image>
+            <view class="words">今日暂无场次</view>
+        </view>
+        <view wx:else>
+            <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/show-over.png" style="width: 78px;height: 72px;"></image>
+            <view class="words">今日场次已映完</view>
+        </view>
+        <view bindtap="dayChangeHandler" class="forward" data-date="{{dates[1].day}}" wx:if="{{dates.length>1}}">点击查看{{dates[1].text}}场次</view>
+    </view>
+    <view wx:if="{{cinema.cinemaId&&(!cinema.sell||!movies.length)}}">
+        <view class="show-recommendcinema-info one-px-border-bottom">暂无该影院的影片信息</view>
+        <block wx:if="{{!!cinemas.length}}">
+            <import src="_cinema-item.wxml"></import>
+            <view class="show-recommendcinema-container one-px-border-bottom">
+                <view class="show-recommendcinema-info one-px-border-both" style="color:#666">为您推荐该影院附近的可选座影院</view>
+                <template is="cinema" data="{{...item}}" wx:for="{{cinemas}}"></template>
+            </view>
+        </block>
+    </view>
+    <template is="deal-list" data="{{dealList:dealList,divideDealList:divideDealList,showingAllDealList:showingAllDealList,activity:activity,cinemaId:cinema.cinemaId,...bid,notDisplayTag:true,refer_page:'pages/cinema/cinema',showCinemaBanner:true}}"></template>
+    <view bindtap="onTapModalOverlay" style="{{modal['overlay-activityListModal']}}"></view>
+    <view catchtouchmove="doNothing" class="activity-list-modal flex flex-column flex-between" style="{{modal.activityListModal}}" wx:if="{{modal.activityListModal}}">
+        <view class="modal-title">活动说明</view>
+        <view class="modal-body">
+            <view bindtap="showActDetail" class="pre-info-item flex {{index<preInfo.length-1?'one-px-border-bottom':''}}" data-url="{{item.preInfoUrl}}" wx:for="{{preInfo}}">
+                <view class="pre-info-icon type-icon-{{item.typeIcon}}"></view>
+                <view class="pre-info-content">
+                    <view class="pre-info-tag text-ellipsis">{{item.tag}}</view>
+                    <view class="pre-info-title text-ellipsis">{{item.title}}</view>
+                </view>
+                <view class="pre-info-right">
+                    <view class="arrow"></view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="hideActivityListModal" class="hide-modal-btn">关闭</view>
+    </view>
+    <view bindtap="onTapModalOverlay" style="{{modal['overlay-couponListModal']}}"></view>
+    <view catchtouchmove="doNothing" class="activity-list-modal flex flex-column flex-between" style="{{modal.couponListModal}}" wx:if="{{modal.couponListModal}}">
+        <view class="modal-title">领券</view>
+        <view class="modal-body">
+            <scroll-view scrollY bindscrolltolower="getCouponList" class="coupon-list" lowerThreshold="50" style="height:388px">
+                <view class="coupon-item" wx:for="{{couponList}}">
+                    <view class="item-left">
+                        <view class="coupon-value" wx:if="{{item.couponType===1}}">
+                            <span>¥</span>{{item.value}}</view>
+                        <view class="coupon-value" wx:else>
+                            <span>通兑券</span>
+                        </view>
+                        <view class="coupon-limit" wx:if="{{!item.limitPrice}}">无门槛</view>
+                        <view class="coupon-limit" wx:elif="{{item.couponType===1}}">满¥{{item.limitPrice}}可用</view>
+                        <view class="coupon-limit" wx:else>¥{{item.limitPrice}}以下可用</view>
+                    </view>
+                    <view class="item-center">
+                        <view class="coupon-name">{{item.title}}</view>
+                        <view class="coupon-scope">{{item.desc}}</view>
+                        <view class="coupon-expire">有效期至{{item.endTime}}</view>
+                    </view>
+                    <view class="item-right" wx:if="{{item.status===0}}">
+                        <view bindtap="drawCoupon" class="t-btn t-btn-primary" data-acode="{{item.activityCode}}" data-aid="{{item.activityId}}" data-index="{{index}}">立即领取</view>
+                    </view>
+                    <view class="item-right aready-right" wx:elif="{{item.status===1}}">
+                        <view bindtap="gotoUse" class="t-btn t-btn-reverse" data-url="{{item.toUserUrl}}">立即使用</view>
+                    </view>
+                    <view class="item-right" wx:elif="{{item.status===2}}">
+                        <view class="t-btn t-btn-disable">已抢光</view>
+                    </view>
+                    <view class="item-right" wx:else>
+                        <view class="t-btn t-btn-disable">已过期</view>
+                    </view>
+                </view>
+                <view class="nomore" wx:if="{{couponListIsLastPage}}">没有更多了</view>
+            </scroll-view>
+        </view>
+        <view bindtap="hideCouponListModal" class="hide-modal-btn">关闭</view>
+    </view>
+    <view bindtap="onTapModalOverlay" style="{{modal['overlay-activityDetailModal']}}"></view>
+    <view catchtouchmove="doNothing" class="activity-detail-modal flex flex-column flex-between" style="{{modal.activityDetailModal}}" wx:if="{{modal.activityDetailModal}}">
+        <view class="modal-title one-px-border-bottom text-ellipsis">
+            <text class="detail-tag">{{preDetail.tag}}</text>
+            <text class="detail-title">{{preDetail.title}}</text>
+        </view>
+        <view class="activity-rules">
+            <view class="rules-item" wx:for="{{preDetail.rules}}">{{item}}</view>
+        </view>
+        <view bindtap="hideActivityDetailModal" class="hide-modal-btn">关闭</view>
+    </view>
+    <view wx:for="scopeDataList" wx:for-item="scopeData">
+        <wx-scope wx:scope-data="{{...scopeData}}">
+            <view></view>
+        </wx-scope>
+    </view>
+</view>
+<template is="access-limit-modal" data="{{...AccessLimit}}"></template>
+<include src="/footer.wxml"></include>

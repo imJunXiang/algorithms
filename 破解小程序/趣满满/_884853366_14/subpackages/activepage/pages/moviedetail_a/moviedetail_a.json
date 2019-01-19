@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "影片详情",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "cinamerlist": "../../component_a/cinamerlist/cinamerlist",
+        "loginsheet": "/component/loginsheet/loginsheet"
+    }
+}

@@ -1,0 +1,14 @@
+<template name="papay-modal">
+    <view catchtouchmove="doNothing" class="papay-modal-layer" wx:if="{{showPapayModal}}">
+        <view class="papay-modal">
+            <view class="papay-modal-body">
+                <view class="warning-text">已开通免密支付，倒计时结束将为你自动扣款<text class="timeout">（{{papayCountDown}}s）</text>
+                </view>
+            </view>
+            <view class="papay-modal-foot">
+                <view bindtap="onPapayCancel" class="papay-modal-cancel" data-val_bid="b_xxy7fu7s">取消支付</view>
+                <view bindtap="onPapayConfirm" class="papay-modal-confirm left-border" data-val_bid="b_pwco1etx">确定支付</view>
+            </view>
+        </view>
+    </view>
+</template>

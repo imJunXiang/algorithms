@@ -1,0 +1,119 @@
+<view class="pay-container">
+    <view class="pay-header">
+        <view class="moviename">{{orderinfor.moviename}}</view>
+        <view class="order-detail">
+            <view class="movie-time">
+                <text class="order-d-l">{{orderinfor.movieplaytime}} （{{orderinfor.halltype}}）</text>
+                <text class="movie-time-r">剩余支付时间</text>
+            </view>
+            <view class="cinema-adrress">
+                <text class="order-d-l">{{orderinfor.cinemaname}}</text>
+                <text class="cinema-adrress-r" style="color:{{colors.maincolor}}">{{minute}}:{{second}}</text>
+            </view>
+            <view class="seat-position">
+                <text class="movie-hall">{{orderinfor.hallname}} </text>
+                <text class="seat">{{orderinfor.seatname}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="pay-body">
+        <view class="pay-body-item">
+            <view class="item-list label-box" wx:if="{{orderinfor.group_msg!=''&&orderinfor.group_msg!=undefined}}">
+                <view class="group-label" style="background-color:{{colors.labelbg}}">拼团</view>
+                <view style="color:{{colors.labelbg}}">{{orderinfor.group_msg}}</view>
+            </view>
+            <view bindtap="handleToDiscount" class="item-list" data-orderid="{{orderid}}">
+                <text class="item-list-title">券码优惠</text>
+                <text class="navigator-icon pay-nav-icon"></text>
+                <text class="item-list-right" style="color:{{orderinfor.cdkey.cdkeyid!=0?colors.maincolor:''}}">{{orderinfor.cdkey.cdname}}</text>
+            </view>
+            <view bindtap="handleToMovieCard" class="item-list" data-orderid="{{orderid}}">
+                <text class="item-list-title">观影卡</text>
+                <text class="navigator-icon  pay-nav-icon"></text>
+                <text class="item-list-right" style="color:{{orderinfor.card_id!=0?colors.maincolor:''}}">{{orderinfor.card_msg}}</text>
+            </view>
+            <view class="item-list">
+                <text class="item-list-title">手机</text>
+                <text class="item-list-right">{{orderinfor.phone}}</text>
+            </view>
+            <view class="item-list">
+                <text class="item-list-title">票价</text>
+                <text class="item-list-right ">￥{{orderinfor.stringprice}}</text>
+            </view>
+            <view class="item-list last-list" wx:if="{{orderinfor.servicecost!=0}}">
+                <text class="item-list-title">影城手续费</text>
+                <text class="item-list-right ">￥{{orderinfor.servicecost}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="warm-reminding">
+        <text class="warm-reminding-title"> 温馨提示</text>
+        <text class="warm-reminding-text">{{orderinfor.text}}</text>
+    </view>
+    <view class="pay-footer">
+        <view class="pay-reminding">
+            <view class="pay-reminding-text">不支持退票改签</view>
+            <view class="pay-reminding-r">
+                <text class="pay-reminding2">还需要支付</text>
+                <text class="pay-reminding-money" style="color:{{colors.maincolor}}">¥{{orderinfor.sumprice}}</text>
+            </view>
+        </view>
+        <view bindtap="confirm" class="pay-btn" data-orderid="{{orderid}}" style="background-color:{{colors.maincolor}}">确认支付</view>
+    </view>
+    <action-sheet bindchange="actionSheetbindchange" hidden="{{actionStatus}}" style="background: #f3f3f3;">
+        <block wx:if="{{showCard===false}}">
+            <view wx:if="{{!showBto}}">
+                <view class="action-btn">
+                    <view class="btnLeft" style="color:{{colors.maincolor}}">{{lottery.length?'使用优惠券':'优惠券'}}</view>
+                    <view bindtap="confirmUse" class="btnConfirm" style="background-color:{{colors.maincolor}}" wx:if="{{lottery.length>0}}">确认</view>
+                </view>
+                <view class="cinemas-box">
+                    <scroll-view bindscrolltolower="handleToMore" scrollY="true" style="height: 440rpx">
+                        <coupon bind:radioChange="radioChange" data="{{item}}" iconDianyingquan="icon-dianyingquan" iconDizhixuanzhong="icon-dizhixuanzhong" iconfont="iconfont" wx:for="{{lottery}}" wx:key="item"></coupon>
+                        <view bindtap="addDiscount" class="btnBto" style="color:{{colors.maincolor}}">点击添加优惠券</view>
+                    </scroll-view>
+                </view>
+            </view>
+            <view class="inputBox-bto" wx:if="{{showBto}}">
+                <view class="action-btn">
+                    <view class="btnLeft" style="color:{{colors.maincolor}}">绑定优惠券</view>
+                    <view bindtap="handleCancel">
+                        <text class="iconfont icon-guanbi"></text>
+                    </view>
+                </view>
+                <view class="input-box">
+                    <input bindinput="getCdkey" class="coupon-input" placeholder="输入优惠券码"></input>
+                </view>
+                <view class="input-box2">
+                    <input bindinput="getPhone" class="coupon-input" placeholder="输入绑定手机号"></input>
+                </view>
+                <view class="input-box2" style="margin-bottom: 20rpx;">
+                    <input bindinput="getCode" class="coupon-input" placeholder="输入验证码"></input>
+                    <view bindtap="requestCode" class="coupon-btn2" style="color:{{colors.maincolor}}">{{codeDes}}</view>
+                </view>
+                <view bindtap="handleTakeCdkey" class="coupon-btn3" style="background-color:{{colors.maincolor}}">兑换</view>
+            </view>
+        </block>
+        <block wx:if="{{showCard===true}}">
+            <view class="action-btn">
+                <view class="btnLeft" style="color:{{colors.maincolor}}">使用观影卡</view>
+                <view bindtap="handleCancel" wx:if="{{cardlist.length==0}}">
+                    <text class="iconfont icon-guanbi"></text>
+                </view>
+                <view bindtap="confirmUse" class="btnConfirm" data-use="card" style="background-color:{{colors.maincolor}}" wx:if="{{cardlist.length>0}}">确认</view>
+            </view>
+            <view class="cinemas-box">
+                <view class="card-msg" style="color:{{colors.maincolor}}" wx:if="{{cardlist.length>0}}">
+                    <text class="iconfont icon-tixing" style="color:{{colors.maincolor}}"></text>
+                    观影卡不能与优惠同时使用
+                </view>
+                <scroll-view scrollY="true" style="height: 440rpx">
+                    <block wx:if="{{cardlist.length>0}}">
+                        <moviecard bind:usecard="usecard" card="{{item}}" iconDizhixuanzhong="icon-dizhixuanzhong" iconfont="iconfont" wx:for="{{cardlist}}" wx:key="item"></moviecard>
+                    </block>
+                    <view class="btnBto cardbtnto" wx:if="{{cardlist.length==0}}">暂无可用观影卡</view>
+                </scroll-view>
+            </view>
+        </block>
+    </action-sheet>
+</view>

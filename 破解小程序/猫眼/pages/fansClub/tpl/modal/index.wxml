@@ -1,0 +1,11 @@
+<view class="modal-container" wx:if="{{showModal}}">
+    <view class="modal-body">
+        <view class="modal-content modal-content-class">
+            <slot></slot>
+        </view>
+        <view class="modal-buttons">
+            <view bindtap="onTapCancel" class="btn cancel" wx:if="{{showCancel}}">{{cancelText}}</view>
+            <view bindtap="onTapConfirm" class="btn confirm confirm-class">{{confirmText}}</view>
+        </view>
+    </view>
+</view>

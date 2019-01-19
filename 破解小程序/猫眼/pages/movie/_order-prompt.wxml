@@ -1,0 +1,35 @@
+<template name="OrderPrompt">
+    <view class="order-prompt {{list.length>1?'order-prompt-condensed':''}}" wx:if="{{isShowOrderPrompt&&list.length}}">
+        <view class="order-prompt-header">
+            <view class="order-prompt-title">
+                <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/order-prompt/icon.png"></image>取票提醒<text class="order-prompt-num" wx:if="{{list.length>1}}">（{{list.length}}个）</text>
+            </view>
+            <image bindtap="onTapOrderPromptClose" class="order-prompt-close" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/order-prompt/close.png"></image>
+        </view>
+        <scroll-view scrollX class="order-prompt-body">
+            <view class="order-prompt-list">
+                <view bindtap="onTapNavi" class="order-prompt-item" data-url="/pages/order/order?orderId={{item.id}}" wx:for="{{list}}">
+                    <view class="order-prompt-item-left">
+                        <view class="order-prompt-name">{{item.cinema.name}}</view>
+                        <view class="order-prompt-time">{{item.timeMsg}}</view>
+                        <view class="order-prompt-code" wx:if="{{item.exchange.originId}}">
+                            <text class="order-prompt-code-key">{{item.exchange.originIdName}}：</text>
+                            <text class="order-prompt-code-value">{{item.exchange.originIdChunk||item.exchange.originId}}</text>
+                        </view>
+                        <view class="order-prompt-code" wx:if="{{item.exchange.exchangeCode}}">
+                            <text class="order-prompt-code-key">{{item.exchange.exchangeCodeName}}：</text>
+                            <text class="order-prompt-code-value">{{item.exchange.exchangeCodeChunk||item.exchange.exchangeCode}}</text>
+                        </view>
+                    </view>
+                    <view class="order-prompt-item-right">
+                        <view class="order-prompt-timediff">
+                            <view>{{item.timediffMsgArr[0]}}</view>
+                            <view>{{item.timediffMsgArr[1]}}</view>
+                        </view>
+                        <image catchtap="onTapOrderPromptQrcode" class="order-prompt-qrcode" data-qrcode="{{item.exchange.qrcode}}" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/order-prompt/qrcode.png" wx:if="{{item.exchange.qrcode}}"></image>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</template>

@@ -1,0 +1,44 @@
+<view class="coupon-container">
+    <view class="coupon-box">
+        <view class="input-box">
+            <input bindinput="getCdkey" class="coupon-input" placeholder="输入优惠券码" value="{{cdkey}}"></input>
+            <view bindtap="handleExchange" class="coupon-btn" style="background-color:{{colors.maincolor}}" wx:if="{{!showStatus}}">兑换 </view>
+        </view>
+        <view class="input-box2" wx:if="{{showStatus}}">
+            <input bindinput="getPhone" class="coupon-input" placeholder="输入绑定手机号" type="number" value="{{phone}}"></input>
+        </view>
+        <view class="input-box2" style="margin-bottom: 20rpx;" wx:if="{{showStatus}}">
+            <input bindinput="getCode" class="coupon-input" placeholder="输入验证码" type="number" value="{{code}}"></input>
+            <view bindtap="requestCode" class="coupon-btn2" style="color:{{colors.maincolor}}">{{codeDes}}</view>
+        </view>
+        <view bindtap="handleTakeCdkey" class="coupon-btn3" style="background-color:{{colors.maincolor}}" wx:if="{{showStatus}}">兑 换</view>
+        <view class="coupon-sell" wx:if="{{!showStatus}}">票券采购电话：010-65351401</view>
+    </view>
+    <view class="nohave" wx:if="{{lottery.length==0}}">暂无优惠券</view>
+    <scroll-view bindscrolltolower="handleToMore" scrollY="true" style="height:{{showStatus?'calc(100% - 452rpx)':'calc(100% - 194rpx)'}}">
+        <view class="coupon-content">
+            <coupon data="{{item}}" iconDianyingquan="icon-dianyingquan" iconfont="iconfont" wx:for="{{lottery}}" wx:key="item"></coupon>
+        </view>
+    </scroll-view>
+</view>
+<view catchtouchmove="catchmove" class="mask_" wx:if="{{showMask}}">
+    <view class="modal_box">
+        <view class="box_info">
+            <image src="../../images/logo.png"></image>
+            <view>
+                <view class="box_title">您有一张电影券待绑定</view>
+                <view class="box_coupon">绑定券码：{{clipCoupon}}</view>
+                <view>一张券只能绑定一个账户</view>
+            </view>
+        </view>
+        <view class="box_bth">
+            <view bindtap="cancelMask" class="box_cancel">暂不绑定</view>
+            <view bindtap="bangdingCoupon" class="box_bangding">立即绑定</view>
+        </view>
+    </view>
+</view>
+<modal bindconfirm="confirm" confirmText="知道了" hidden="{{hiddenmodal}}" noCancel="false" title="兑换规则">
+    <scroll-view scrollY style="max-height: 300rpx; width: 100%;">
+        <view class="desc-box" wx:for="{{desc}}" wx:key="{{item}}">{{item}}</view>
+    </scroll-view>
+</modal>

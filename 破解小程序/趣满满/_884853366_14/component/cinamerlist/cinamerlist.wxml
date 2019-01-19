@@ -1,0 +1,36 @@
+<view class="cinamerlist">
+    <navigator class="cinameritem" url="/pages/cinamermoviedetails/cinamermoviedetails?cinanmerId={{item.cinemaid}}&movieid={{item.movieid}}&ciName={{filters.arrayToString(item.name)}}&ciAdd={{filters.arrayToString(item.address)}}" wx:for="{{cinamer}}" wx:key="item">
+        <text class="special-icon iconfont icon-shoucangjiaobiao" style="color:{{colors.maincolor}}" wx:if="{{item.isMyLike===1}}"></text>
+        <text class="special-icon iconfont icon-tuijianjiaobiao" style="color:{{colors.labelbg}}" wx:if="{{item.isThird===1}}"></text>
+        <view class="cinameritem-info">
+            <view class="cinamer-np flex-between">
+                <view class="cinamer-name" wx:if="{{item.searchData==undefined}}">{{item.name}}</view>
+                <view class="cinamer-name" wx:else>
+                    <text style="{{item_==item.searchData?'color:'+colors.maincolor:''}}" wx:for="{{item.name_}}" wx:for-item="item_" wx:key="item">{{item_}}</text>
+                </view>
+                <view class="cinamer-price" style="color:{{colors.maincolor}}">￥{{item.price}}<text class="qi">起</text>
+                </view>
+            </view>
+            <view class="cinamer-local flex-between">
+                <view class="cinamer-local-name" wx:if="{{item.searchData==undefined}}">{{item.address}}</view>
+                <view class="cinamer-local-name" wx:else>
+                    <text style="{{item_==item.searchData?'color:'+colors.maincolor:''}}" wx:for="{{item.address_}}" wx:for-item="item_" wx:key="item">{{item_}}</text>
+                </view>
+                <view class="cinamer-local-range">{{filters.lengthtokm(item.length)}}</view>
+            </view>
+            <view class="cinamer-compare flex-between">
+                <view class="compare-icon">
+                    <image src="{{item}}" wx:for="{{item.channelicon}}" wx:key="item"></image>
+                    <view class="compare-num">
+                        <text style="color:{{colors.maincolor}}">{{item.channelicon.length}}</text>家比价</view>
+                </view>
+                <view class="cimamer-label">
+                    <view class="activity-icon" style="background-color:{{colors.labelbg}}" wx:for="{{item.labels}}" wx:key="item">
+                            {{item}}
+                        </view>
+                </view>
+            </view>
+        </view>
+    </navigator>
+</view>
+<wxs module="filters" src="../../pages/filter.wxs" />

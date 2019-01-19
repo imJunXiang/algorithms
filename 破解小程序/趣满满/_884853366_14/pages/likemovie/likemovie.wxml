@@ -1,0 +1,11 @@
+<view class="wrap-container">
+    <block wx:if="{{!hasnone}}">
+        <view wx:if="{{!hasnone}}" wx:for="{{movies}}" wx:key="item">
+            <view class="feature-title">{{item.date}}</view>
+            <movielist from="likemovie" movie="{{item_}}" wx:for="{{item.movies}}" wx:for-item="item_" wx:key="item"></movielist>
+        </view>
+    </block>
+    <view class="nodata" wx:else>
+            暂无数据
+        </view>
+</view>

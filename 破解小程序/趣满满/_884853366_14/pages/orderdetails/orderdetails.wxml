@@ -1,0 +1,150 @@
+<view class=""></view>
+<view class="orderdetail-container {{orderinfo.groupid!=undefined&&orderinfo.groupid>0?'pdb100':''}}">
+    <view class="order-details group-box" wx:if="{{orderinfo.groupid!=undefined&&orderinfo.groupid>0}}">
+        <view class="group-title">
+            <text>拼团进度</text>
+            <view class="group-time" wx:if="{{orderinfo.finish_time>0}}">
+                <text>距拼团结束还剩</text>
+                <view style="background-color:{{colors.maincolor}}">{{timeStr}}</view>
+            </view>
+            <view class="group-time" wx:else>
+                <view style="background-color:{{colors.fontcolor}}">已完成</view>
+            </view>
+        </view>
+        <view class="group-info">
+            <view class="sub-group-price">
+                当前<text style="color:{{colors.fontcolor}}">￥{{orderinfo.now_price}}</text>，{{orderinfo.finish_time>0?'预计节省':'已为您节省'}}<text style="color:{{colors.fontcolor}}">￥{{orderinfo.save_money}}</text>
+            </view>
+            <view class="group-progress">
+                <text>0</text>
+                <progress activeColor="{{colors.fontcolor}}" borderRadius="15" class="progress" percent="{{orderinfo.progress}}"></progress>
+                <text>{{orderinfo.best_price_num}}</text>
+            </view>
+            <view class="sub-group-person">
+                <block wx:if="{{orderinfo.finish_time>0}}">
+                    将有<text style="color:{{colors.fontcolor}}">{{orderinfo.partake_num}}人</text>与你一起观影，结束后需支付尾款<text style="color:{{colors.fontcolor}}">￥{{orderinfo.tail_money}}</text>
+                </block>
+                <block wx:else>
+                    本团有<text style="color:{{colors.fontcolor}}">{{orderinfo.partake_num}}人</text>与你一起观影<block wx:if="{{!tail_end}}">，需支付尾款<text style="color:{{colors.fontcolor}}">￥{{orderinfo.tail_money}}</text>
+                    </block>
+                </block>
+            </view>
+            <view class="secret-free" wx:if="{{freepay==0}}">
+                开通免密支付，拼团结束后自动扣除尾款
+            </view>
+        </view>
+    </view>
+    <view class="order-details">
+        <view class="movie_name">{{moviename}}</view>
+        <view class="cinema-name">
+            <text>{{orderinfo.cinemaname}} {{orderinfo.hallname}}</text>
+        </view>
+        <view class="order-details-children1">
+            <text>{{orderinfo.weekindex}}</text>
+            <text>开场时间</text>
+            <text>实付金额</text>
+        </view>
+        <view class="order-details-children2">
+            <text>{{orderinfo.dayindex}}</text>
+            <text>{{orderinfo.performance}}</text>
+            <text>￥{{orderinfo.sumprice}}</text>
+        </view>
+        <view class="seat-info">
+            <text class="seat" style="color:{{colors.fontcolor}}" wx:for="{{orderinfo.seatname}}" wx:key="seatname">{{item}}</text>
+        </view>
+        <view class="status_box {{orderinfo.status>=3&&orderinfo.status!=5?'status_box_gray':''}}" style="{{orderinfo.status>=3&&orderinfo.status!=5?'':'background-color:'+colors.codebg}}">
+            <block wx:if="{{orderinfo.status==5}}">
+                <image class="waringimg" src="../../images/wait.gif"></image>
+                <text class="waringtext" style="color:{{colors.fontcolor}}">正在出票中，请耐心等待</text>
+            </block>
+            <block wx:if="{{orderinfo.status==3}}">
+                <view class="qupiaoma" style="color:{{colors.fontcolor}}" wx:for="{{sms}}" wx:key="sms">{{item}}</view>
+                <text class="waringtext">已放映</text>
+            </block>
+            <block wx:if="{{orderinfo.status==4||orderinfo.status>5}}">
+                <text class="waringtext">{{orderinfo.status==4?'退款中':'已退款'}}</text>
+                <text class="tuikuantip">票款{{orderinfo.status==4?'将':'已'}}退回您的支付账户，请注意查收</text>
+            </block>
+            <block wx:if="{{orderinfo.status==2}}">
+                <text class="qp_title">取票码</text>
+                <text bindlongpress="takeclip" bindtouchend="smstouchend" class="qupiaoma {{clipactive==index?'clipactive':''}}" data-index="{{index}}" data-piaoma="{{item}}" style="color:{{colors.fontcolor}}" wx:for="{{sms}}" wx:key="sms">{{item}}</text>
+                <text class="waringtext">待放映</text>
+                <text class="copytip">长按取票码松开后可进行复制</text>
+            </block>
+        </view>
+        <view class="status_tips" wx:if="{{orderinfo.status!=5}}">
+            {{orderinfo.ticketwarnred}}
+        </view>
+        <view class="status_tips" style="color:{{colors.fontcolor}}" wx:else>
+            小提示：{{orderinfo.serverwarn}}
+        </view>
+        <view class="user-order-info">
+            <view class="order-infor-children">
+                <text class="order-infor-children1">订单号码</text>
+                <text class="oreder-infor-chidren2">{{orderinfo.payorder}}</text>
+            </view>
+            <view class="order-infor-children">
+                <text class="order-infor-children1">下单时间</text>
+                <text class="oreder-infor-chidren2">{{orderinfo.buytime}}</text>
+            </view>
+            <view class="order-infor-children" wx:if="{{orderinfo.paytype!=''}}">
+                <text class="order-infor-children1">支付方式</text>
+                <text class="oreder-infor-chidren2">{{orderinfo.paytype}}</text>
+            </view>
+            <view class="order-infor-children children" wx:if="{{orderinfo.cdkeyname!=''}}">
+                <text class="order-infor-children1">使用优惠</text>
+                <text class="oreder-infor-chidren2 children-text">{{orderinfo.cdkeyname}}</text>
+            </view>
+            <view class="order-infor-children" wx:if="{{orderinfo.servicecost!=''}}">
+                <text class="order-infor-children1">服务费</text>
+                <text class="oreder-infor-chidren2">￥{{orderinfo.servicecost}}</text>
+            </view>
+            <view class="order-infor-children">
+                <text class="order-infor-children1">订单金额</text>
+                <text class="oreder-infor-chidren2">￥{{orderinfo.totalprice}}</text>
+            </view>
+            <view class="order-infor-children">
+                <text class="order-infor-children1">购票手机</text>
+                <text class="oreder-infor-chidren2">{{orderinfo.phone}}</text>
+            </view>
+            <view class="cinema-infor">
+                <view class="cinema-infor-children1">影院信息</view>
+                <view class="cinema-infor-address">
+                    <view class="cinema-infor-address-infor">
+                        <text class="cinema-infor-address1">{{orderinfo.cinemaname}}</text>
+                        <text class="cinema-infor-address2">{{orderinfo.cinemaaddr}}</text>
+                    </view>
+                    <view bindtap="openMap" class="cinema-infor-address-map" data-lat="{{cinamLat}}" data-lon="{{cinamLon}}">
+                        <text class="iconfont icon-dizhi" style="color:{{colors.fontcolor}}"></text>
+                    </view>
+                </view>
+                <view class="cinema-infor-tel">
+                    <text>{{orderinfo.cinemaphone}}</text>
+                    <text bindtap="makePhoneCall" class="iconfont icon-dianhua" data-tel="{{orderinfo.cinemaphone}}" style="color:{{colors.fontcolor}}"></text>
+                </view>
+            </view>
+            <view class="reminder">
+                <view class="order-chidren-title">温馨提示: </view>
+                <view class="order-chidren-list order-chidren-list1" wx:for="{{text}}" wx:key="text">{{item}}</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="backmoney" class="backmoney" wx:if="{{orderinfo.groupid!=undefined&&orderinfo.groupid>0&&orderinfo.finish_time>0}}">
+        申请退款
+    </view>
+    <view class="contact-customer-service">
+        {{orderinfo.serverwarn}}
+    </view>
+</view>
+<modal bindconfirm="confirm" confirmText="知道了" hidden="{{hiddenmodal}}" noCancel="false">
+    <view>{{desMsg}}</view>
+</modal>
+<block wx:if="{{orderinfo.groupid!=undefined&&orderinfo.groupid>0}}">
+    <button class="share clearbutton" openType="share" style="background-color:{{colors.maincolor}}" wx:if="{{orderinfo.finish_time>0}}">
+        邀请好友来拼团，共享最低价
+    </button>
+    <button bindtap="paytail" class="share clearbutton" style="background-color:{{colors.maincolor}}" wx:if="{{orderinfo.tail_money!='0'&&orderinfo.finish_time==0&&!tail_end&&(orderinfo.status==5||orderinfo.status==3||orderinfo.status==2)}}">
+        支付尾款 ￥{{orderinfo.tail_money}}
+    </button>
+    <share-canvas bind:draw="draw" font_color="{{colors.maincolor}}" group_price="{{orderinfo.best_price}}" movie_name="{{orderinfo.moviename}}" movie_pic="{{orderinfo.moviepic}}" price="{{orderinfo.origin_price}}" wx:if="{{orderinfo.finish_time>0}}"></share-canvas>
+</block>

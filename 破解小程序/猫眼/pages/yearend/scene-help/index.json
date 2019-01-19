@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "2018 你和电影的故事",
+    "usingComponents": {
+        "yescene": "../components/YEScene/_index"
+    }
+}

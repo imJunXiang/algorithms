@@ -1,0 +1,52 @@
+<template name="comment">
+    <view class="comment">
+        <image class="head-img" src="{{avatarUrl}}"></image>
+        <view catchtap="gotoComment" class="main {{!noborder?'border':''}}" data-cid="{{id}}" data-type="{{type}}" data-val_bid="b_wwu7bzgs" data-val_lab="{ movieId: '{{movieId}}', commentId: '{{id}}' }">
+            <view class="pro-score" wx:if="{{pro}}">{{score}}</view>
+            <view class="top">
+                <view class="left">
+                    <view class="name">
+                        <text>{{nick}}</text>
+                        <image class="icon" src="{{levelpathBlack}}" wx:if="{{levelpathBlack!=''}}"></image>
+                        <block wx:if="{{!pro}}">
+                            <text class="tag" wx:if="{{tagDy}}">点映</text>
+                            <text class="tag buy" wx:elif="{{tagBuy}}">购</text>
+                        </block>
+                    </view>
+                    <view class="score">
+                        <block wx:if="{{pro}}">{{authInfo}}</block>
+                        <block wx:elif="{{score===0}}">未评分</block>
+                        <text wx:else>给这部电影打了{{score}}分</text>
+                    </view>
+                </view>
+                <view class="right">
+                    <view catchtap="toggleShowShare" class="img" data-cid="{{id}}" data-type="{{type}}" data-val_bid="b_qkoyltdo" data-val_lab="{ movieId: '{{movieId}}', commentId: '{{id}}' }">
+                        <image src="http://p1.meituan.net/scarlett/e77f1bdc7c5aa312448da95c05487fc4135.png"></image>
+                    </view>
+                    <view class="_arrow {{!isComShow?'m-hide':''}}"></view>
+                    <view class="operate {{!isComShow?'m-hide':'m-flex'}}">
+                        <view catchtap="shareTap" class="share" data-cid="{{id}}" data-index="{{index}}" data-tag="0" data-type="{{type}}" data-val_bid="b_u4f6iixo" data-val_lab="{ movieId: '{{movieId}}', commentId: '{{id}}' }">分享</view>
+                        <block wx:if="{{uId===''||uId!=userId}}">
+                            <view class="line"></view>
+                            <view catchtap="shareTap" class="share" data-cid="{{id}}" data-index="{{index}}" data-tag="1" data-type="{{type}}" data-val_bid="b_znajvynx" data-val_lab="{ movieId: '{{movieId}}', commentId: '{{id}}' }">举报</view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <view class="content">{{content}}</view>
+            <view class="footer">
+                <view class="time">{{tm}}</view>
+                <view class="right" wx:if="{{!diy}}">
+                    <view catchtap="toggleApprove" class="approve {{likedByCurrentUser?'approved':''}}" data-cid="{{id}}" data-id="{{id}}" data-index="{{index}}" data-likedbycurrentuser="{{likedByCurrentUser}}" data-type="{{type}}" data-val_bid="b_uf4lro36" data-val_lab="{ movieId: '{{movieId}}', commentId: '{{id}}' }">
+                        <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/{{theme}}{{likedByCurrentUser?'approved':'approve'}}_new.png"></image>{{0>=upCount?likedByCurrentUser?1:'赞':upCount}}<view class="plus" wx:if="{{animation}}">+1</view>
+                        <form bindsubmit="approveCollect" reportSubmit="true">
+                            <button formType="submit"></button>
+                        </form>
+                    </view>
+                    <view catchtap="gotoComment" class="commentnum" data-cid="{{id}}" data-index="{{index}}" data-relay="1" data-type="{{type}}" data-val_bid="b_zxv28sex" data-val_lab="{ movieId: '{{movieId}}', commentId: '{{id}}' }">
+                        <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/{{theme}}reply.png"></image>{{replyCount==0?'回复':replyCount}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

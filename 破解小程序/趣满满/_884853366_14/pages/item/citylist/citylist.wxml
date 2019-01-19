@@ -1,0 +1,40 @@
+<view class="city-container" style="background: #f3f3f3; color: #303030">
+    <view class="city-box">
+        <view class="nowcity">
+            <view style="color: #838383">当前定位：</view>
+            <text bindtap="seleCity" class="hotcity-des" data-name="{{nowCity}}" id="{{nowCityId}}">{{nowCity}}</text>
+        </view>
+        <view class="nowcity">
+            <view style="color: #838383">当前选择：</view>
+            <text bindtap="seleCity" class="hotcity-des" data-name="{{selcity}}" id="{{selcityId}}">{{selcity}}</text>
+        </view>
+    </view>
+    <view class="data-citylist">
+        <view class="hotcity-citylist">
+            <view class="hottext citytext" style="color: #838383">热门城市</view>
+            <view class="hotcity-box">
+                <view bindtap="seleCity" class="hotcity" data-name="{{itemName.cityname}}" id="{{itemName.cityid}}" wx:for="{{hotcity}}" wx:for-index="idx" wx:for-item="itemName" wx:key="{{itemName.cityid}}">
+                    <text class="city-name">{{itemName.cityname}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="citylist-letter">
+            <view class="citylisttext citytext" style="color: #838383">字母顺序</view>
+            <view class="letter-box">
+                <view bindtap="goName" class="first-letter" data-id="{{itemName}}" wx:for="{{cityFirstl}}" wx:for-index="idx" wx:for-item="itemName" wx:key="{{itemName.itemName}}">
+            {{itemName}}
+            </view>
+            </view>
+        </view>
+        <view class="citylist-letter">
+            <view class="father-letter" id="{{itemName1}}" wx:for="{{cityFirstl}}" wx:for-index="idx" wx:for-item="itemName1" wx:key="{{itemName1.itemName1}}">
+                <view class="A" style="color: #838383; margin: 32rpx 0; text-indent: 30rpx">{{itemName1}}</view>
+                <view class="letter-box">
+                    <view bindtap="seleCity" class="first-letter" data-name="{{itemName.cityname}}" id="{{itemName.cityid}}" wx:if="{{itemName.firstletter==itemName1}}" wx:for="{{clitylist}}" wx:for-index="idx" wx:for-item="itemName" wx:key="{{itemName.cityname}}">
+                        <text class="city-name">{{itemName.cityname}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

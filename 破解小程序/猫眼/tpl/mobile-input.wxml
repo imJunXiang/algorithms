@@ -1,0 +1,22 @@
+<template name="mobile-input">
+    <view catchtouchmove="doNothing" class="mobile-input-modal-layer" wx:if="{{isShow}}">
+        <view class="mobile-input-modal">
+            <view class="mobile-input-modal-body">
+                <view class="mobile-input-container line-middle {{errorMsg?'error':''}}">
+                    <view class="mobile-input-label">手机号</view>
+                    <view class="mobile-input-input-container">
+                        <input bindinput="onInputMobile" name="inputMobile" placeholder="用于生成订单" placeholderClass="placeholder" value="{{inputMobile}}"></input>
+                    </view>
+                </view>
+                <view class="mobile-input-error-container">
+                    <view class="line-middle" wx:if="{{errorMsg}}">
+                        <icon size="18" type="warn"></icon>{{errorMsg}}</view>
+                </view>
+            </view>
+            <view class="mobile-input-modal-foot">
+                <navigator bindtap="onMobileInputCancel" class="mobile-input-modal-cancel">取消</navigator>
+                <navigator bindtap="onMobileInputConfirm" class="mobile-input-modal-confirm left-border">确定</navigator>
+            </view>
+        </view>
+    </view>
+</template>

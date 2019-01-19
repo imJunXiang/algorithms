@@ -1,0 +1,317 @@
+<include src="/footer.wxml"></include>
+<view class="page-layer" wx:if="{{$Comp$Layer$showLayer}}">
+    <view class="layer"></view>
+    <view class="layer-outer">
+        <view class="layer-wrapper">
+            <view class="layer-title" wx:if="{{$Comp$Layer$showTitle}}">{{$Comp$Layer$title}}</view>
+            <view class="layer-content">{{$Comp$Layer$content}}</view>
+            <view class="layer-bottom-btn" wx:if="{{$Comp$Layer$showBtns}}">
+                <text bindtap="$Comp$Layer$tapFun" class="ok" wx:if="{{$Comp$Layer$layerType==0}}">{{$Comp$Layer$alertText}}</text>
+                <view class="confirm-btn" wx:else>
+                    <text bindtap="$Comp$Layer$cancelFun" class="cancel">{{$Comp$Layer$cancelText}}</text>
+                    <text bindtap="$Comp$Layer$confirmFun" class="ok">{{$Comp$Layer$confirmText}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="city_pages" wx:if="{{!$CityPanel$isHide}}">
+    <view class="Mo C-p" title="选择城市">
+        <view class="Mo_c flex flex-columns">
+            <view class="Mo_h">
+                <view class="header-title-bar" hidden="{{$CityPanel$focused}}">
+                    <text class="panel-name">选择城市</text>
+                    <text bindtap="$CityPanel$__city_panel_close" class="Modal__close" href="javascript:void(0)" title="关闭">×
+                        </text>
+                </view>
+                <view class="search-enter flex {{$CityPanel$focused?'focused':''}}" wx:if="{{!$CityPanel$useInput}}">
+                    <view class="searcher-bar-input-container {{$CityPanel$focused?'focused':''}}">
+                        <icon class="searcher-bar-input-icon f-l" size="14" type="search"></icon>
+                        <input bindfocus="$CityPanel$__city_panel_searcherFocus" bindinput="$CityPanel$__city_panel_searcher" class="searcher-bar-inputer f-l {{$CityPanel$focused?'focused':''}}" confirmType="search" placeholder="找城市" placeholderStyle="color: #989898" type="text" value="{{$CityPanel$searchKey}}"></input>
+                        <view hidden="{{!$CityPanel$searchKey}}">
+                            <view catchtap="$CityPanel$__city_panel_clearText" class="abrade">
+                                <image src="https://mini.wesai.com/wxApp/input-close.png" style="width: 14px; height: 14px"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="$CityPanel$__city_panel_searcherFocus_cancel" class="searcher-bar-cancel" hidden="{{!$CityPanel$focused}}">
+                        <text>取消</text>
+                    </view>
+                </view>
+            </view>
+            <view class="Modal__content flex-1 {{$CityPanel$searchResult.length>0?'':'pr'}}">
+                <view class="Chooser bg-f">
+                    <view class="city-wrapper" wx:if="{{$CityPanel$showList}}">
+                        <view class="City--location">
+                            <text bindtap="$CityPanel$__city_panel_chooseItem" class="City-ln" data-city-item="{{$CityPanel$location}}" data-statistics-info="{{$CityPanel$locationText||$CityPanel$location.name}}" hidden="{{$CityPanel$showLocationFailed}}">{{$CityPanel$locationText||$CityPanel$location.name}}</text>
+                            <text bindtap="$CityPanel$__city_panel_refreshGeo" class="City-lt">{{$CityPanel$showLocationFailed?'定位失败，请点击重试':'当前定位城市'}}</text>
+                        </view>
+                        <view class="City--Item clear p-r-20">
+                            <view class="City-i">热门城市</view>
+                            <view class="City-li horizontal clear">
+                                <view bindtap="$CityPanel$__city_panel_chooseItem" class="Chooser__City" data-city-item="{{$CityPanel$nationalInfo}}" data-statistics-info="{{'全国'}}">
+                                    <text>全国</text>
+                                </view>
+                                <view bindtap="$CityPanel$__city_panel_chooseItem" class="Chooser__City" data-city-item="{{item}}" data-statistics-info="{{'hotCities:'+(item.city_name||'')}}" data-statistics-item-index="{{idx}}" wx:for="{{$CityPanel$hotCities}}" wx:for-index="idx">
+                                    <text>{{item.city_name}}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="City--Item clear" wx:for="{{$CityPanel$allCities}}" wx:for-index="idx">
+                            <view class="City-i">{{idx}}</view>
+                            <view class="City-li clear">
+                                <view bindtap="$CityPanel$__city_panel_chooseItem" class="Chooser__City" data-city-item="{{itm}}" data-statistics-info="{{item.city_name||''}}" data-statistics-item-index="{{index}}" wx:for="{{item}}" wx:for-item="itm">
+                                    <text>{{itm.city_name}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="city-search-result" wx:if="{{!$CityPanel$showList}}">
+                        <view wx:if="{{$CityPanel$searchResult.length>0}}">
+                            <view bindtap="$CityPanel$__city_panel_chooseItem" class="city-search-result-item" data-city-item="{{item}}" data-statistics-info="{{'searchResult:'+(item.city_name||'')}}" data-statistics-item-index="{{idx}}" wx:for="{{$CityPanel$searchResult}}" wx:for-index="idx">
+                                <text>{{item.city_name}}</text>
+                            </view>
+                        </view>
+                        <view class="middle-warning">
+                            <view class="no-info t-c " wx:if="{{$CityPanel$searchResultNoData}}">
+                                <image class="sc_icon" src="http://p1.meituan.net/movie/130bfe67b02bf8fab41c918a5b0c0d486707.png"></image>
+                                <view class="L error-full">Sorry,未找到相应的城市</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="list-page flex flex-columns" hidden="{{!showPage}}">
+    <view class="ad-component" wx:if="{{topAheadAdvertisingList.length>0}}">
+        <swiper autoplay="{{$AD$autoplay}}" bindchange="$AD$bindSwiperChange" circular="true" class="ad-swiper-container" duration="{{$AD$duration}}" indicatorActiveColor="{{$AD$config.indicatorActiveColor}}" indicatorColor="{{$AD$config.indicatorColor}}" indicatorDots="{{$AD$config.indicatorDots}}" interval="{{$AD$interval}}">
+            <swiper-item bindtap="$AD$swiperItemTap" data-frame="{{index}}" data-statistics-info="{{($AD$advertisingId||'')+(item.url||'')}}" data-statistics-item-index="{{index}}" data-wpyswiperitemtap-a="{{item}}" data-wpyswiperitemtap-b="{{index}}" wx:if="{{item&&item.img}}" wx:for="{{$AD$advertisingList}}">
+                <image class="slide-image" mode="aspectFill" src="{{item.img}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="custom-dots" wx:if="{{$AD$config.customIndicatorDots}}">
+            <view class="custom-dots-item {{index===$AD$swiperActiveIndex?'active':''}}" wx:for="{{$AD$advertisingList}}">{{index}}</view>
+        </view>
+    </view>
+    <view style="height: 70rpx" wx:else></view>
+    <view class="wxMovieHeader">
+        <view bindtap="bindShowCityPanel" class="change-city">
+            <view class="city-icon">
+                <image src="https://mini.wesai.com/wxApp/indexpage/address@2x.png"></image>
+            </view>
+            <text>{{selectCity.city_name||selectCity.name||location.name||'全国'}}</text>
+        </view>
+        <navigator class="fake-search" url="/wesai/pages/search/search?cityId={{selectCity.id||selectCity.city_id}}&cityName={{selectCity.name}}">
+            <view>
+                <view class="icon">
+                    <image class="img-inner" src="https://mini.wesai.com/wxApp/indexpage/search@2x.png"></image>
+                </view>
+                <text>搜索赛事</text>
+            </view>
+        </navigator>
+    </view>
+    <view class="category-items" wx:if="{{categoryItems&&categoryItems.length>0}}">
+        <view bindtap="bindCategoryItemTap" class="category-item" data-statistics-info="{{item.title||''}}" data-statistics-item-index="{{index}}" data-wpybindcategoryitemtap-a="{{item.url}}" data-wpybindcategoryitemtap-b="{{item}}" wx:for="{{categoryItems}}">
+            <view class="category-item-icon">
+                <image class="img-inner" src="{{item.img}}"></image>
+            </view>
+            <view class="category-item-title">{{item.title||''}}</view>
+        </view>
+    </view>
+    <view bindtap="tapToNavAndLogin" class="ad2" data-statistics-info="{{secondAdvertisingId||''}}" data-wpytaptonavandlogin-a="{{secondAdvertisingInfo}}" data-wpytaptonavandlogin-b="{{secondAdvertisingId}}" wx:if="{{secondAdvertisingInfo.img}}">
+        <image class="img" mode="widthFix" src="{{secondAdvertisingInfo.img||''}}"></image>
+    </view>
+    <view class="ad3">
+        <view bindtap="tapToNav" class="ad3_cover" data-statistics-info="{{thirdAdvertisingId||''}}" data-wpytaptonav-a="{{thirdAdvertisingInfo}}" data-wpytaptonav-b="{{thirdAdvertisingId}}" wx:if="{{thirdAdvertisingInfo}}">
+            <image class="img" mode="widthFix" src="{{thirdAdvertisingInfo.img||''}}"></image>
+        </view>
+        <view class="ad3_content ul" wx:if="{{fourthAdvertisingInfo&&fifthAdvertisingInfo&&sixthAdvertisingInfo}}">
+            <view bindtap="tapToNav" class="li" data-statistics-info="{{fourthAdvertisingId||''}}" data-wpytaptonav-a="{{fourthAdvertisingInfo}}" data-wpytaptonav-b="{{fourthAdvertisingId}}">
+                <image class="img" mode="widthFix" src="{{fourthAdvertisingInfo.img||''}}"></image>
+            </view>
+            <view bindtap="tapToNav" class="li" data-statistics-info="{{fifthAdvertisingId||''}}" data-wpytaptonav-a="{{fifthAdvertisingInfo}}" data-wpytaptonav-b="{{fifthAdvertisingId}}">
+                <image class="img" mode="widthFix" src="{{fifthAdvertisingInfo.img||''}}"></image>
+            </view>
+            <view bindtap="tapToNav" class="li" data-statistics-info="{{sixthAdvertisingId||''}}" data-wpytaptonav-a="{{sixthAdvertisingInfo}}" data-wpytaptonav-b="{{sixthAdvertisingId}}">
+                <image class="img" mode="widthFix" src="{{sixthAdvertisingInfo.img||''}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="schedule" wx:if="{{scheduleList&&(scheduleList.weekend||scheduleList.thisweek||scheduleList.thismonth)}}">
+        <view class="h3">
+            <text>活动日历</text>
+            <view bindtap="goToCalendarPage" class="span schedule_entry" data-statistics-info="{{'今天'||''}}" data-statistics-item-index="{{0}}" data-wpygotocalendarpage-a="{{''}}">查看</view>
+        </view>
+        <view class="schedule_content">
+            <scroll-view scrollX="true" scrollY="false" style="width: 100%;height: 100%;">
+                <view class="ul">
+                    <view bindtap="goToCalendarPage" class="li" data-statistics-info="{{'本周末'||''}}" data-statistics-item-index="{{1}}" data-wpygotocalendarpage-a="{{1}}" wx:if="{{scheduleList.weekend}}">
+                        <view class="item-container">
+                            <view class="h5">本周末</view>
+                            <view class="info">
+                                <image class="img" src="{{scheduleList.weekend.images||''}}"></image>
+                                <view class="info_right">
+                                    <view class="title p">{{scheduleList.weekend&&scheduleList.weekend.title_cn||''}}</view>
+                                    <view class="time p">{{scheduleList.weekend&&scheduleList.weekend.show_time||''}}</view>
+                                    <view class="desc p">{{scheduleList.weekend&&scheduleList.weekend.xiao_bian_said||''}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="goToCalendarPage" class="li" data-statistics-info="{{'一周内'||''}}" data-statistics-item-index="{{2}}" data-wpygotocalendarpage-a="{{2}}" wx:if="{{scheduleList.thisweek}}">
+                        <view class="item-container">
+                            <view class="h5">一周内</view>
+                            <view class="info">
+                                <image class="img" src="{{scheduleList.thisweek.images||''}}"></image>
+                                <view class="info_right">
+                                    <view class="title p">{{scheduleList.thisweek&&scheduleList.thisweek.title_cn||''}}</view>
+                                    <view class="time p">{{scheduleList.thisweek&&scheduleList.thisweek.show_time||''}}</view>
+                                    <view class="desc p">{{scheduleList.thisweek&&scheduleList.thisweek.xiao_bian_said||''}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="goToCalendarPage" class="li" data-statistics-info="{{'一月内'||''}}" data-statistics-item-index="{{3}}" data-wpygotocalendarpage-a="{{3}}" wx:if="{{scheduleList.thismonth}}">
+                        <view class="item-container">
+                            <view class="h5">一月内</view>
+                            <view class="info">
+                                <image class="img" src="{{scheduleList.thismonth.images||''}}"></image>
+                                <view class="info_right">
+                                    <view class="title p">{{scheduleList.thismonth&&scheduleList.thismonth.title_cn||''}}</view>
+                                    <view class="time p">{{scheduleList.thismonth&&scheduleList.thismonth.show_time||''}}</view>
+                                    <view class="desc p">{{scheduleList.thismonth&&scheduleList.thismonth.xiao_bian_said||''}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="the-seven-ad" wx:if="{{sevenAdvertisingList.length>0}}">
+        <view class="ad-component">
+            <swiper autoplay="{{$ADSeven$autoplay}}" bindchange="$ADSeven$bindSwiperChange" circular="true" class="ad-swiper-container" duration="{{$ADSeven$duration}}" indicatorActiveColor="{{$ADSeven$config.indicatorActiveColor}}" indicatorColor="{{$ADSeven$config.indicatorColor}}" indicatorDots="{{$ADSeven$config.indicatorDots}}" interval="{{$ADSeven$interval}}">
+                <swiper-item bindtap="$ADSeven$swiperItemTap" data-frame="{{index}}" data-statistics-info="{{($ADSeven$advertisingId||'')+(item.url||'')}}" data-statistics-item-index="{{index}}" data-wpyswiperitemtap-a="{{item}}" data-wpyswiperitemtap-b="{{index}}" wx:if="{{item&&item.img}}" wx:for="{{$ADSeven$advertisingList}}">
+                    <image class="slide-image" mode="aspectFill" src="{{item.img}}"></image>
+                </swiper-item>
+            </swiper>
+            <view class="custom-dots" wx:if="{{$ADSeven$config.customIndicatorDots}}">
+                <view class="custom-dots-item {{index===$ADSeven$swiperActiveIndex?'active':''}}" wx:for="{{$ADSeven$advertisingList}}">{{index}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="venue" wx:if="{{venueData&&venueData.items&&venueData.items.length>0}}">
+        <view class="h5">周边场馆</view>
+        <view bindtap="gotoVenue" class="info_box" data-wpygotovenue-a="{{venueData}}">
+            <view class="info">
+                <view class="avatar" style="{{'background-image:url('+venueData.venue_images||''+')'}}"></view>
+                <view class="title_desc">
+                    <view class="title p">{{venueData.venue_name||''}}</view>
+                    <view class="desc p">{{venueData.items.length||0}}场活动</view>
+                </view>
+                <view class="detail_entry">
+                    <view class="span">查看</view>
+                </view>
+            </view>
+            <image class="bg" mode="widthFix" src="{{venueData.items[0].banner_img||''}}" wx:if="{{venueData.items[0]&&venueData.items[0].banner_img||''}}"></image>
+            <view class="distance_box">
+                <view class="type p" wx:if="{{venueData.items[0]&&venueData.items[0].images}}">{{venueData.items[0].title_cn||''}}</view>
+                <view class="distance p" wx:if="{{venueData.distance}}">{{venueData.distance/1000}}km</view>
+            </view>
+        </view>
+    </view>
+    <view class="project-list-title" wx:if="{{projectListTotalNum>0}}">推荐活动</view>
+    <view class="show-list">
+        <view class="no-info" wx:if="{{$ProjectList$showTipBar}}">
+            <view class="top-warning">
+                <block wx:if="{{!$ProjectList$hasCity}}">
+                    当前城市暂无项目，为您推荐全国项目
+                </block>
+                <block wx:else>
+                    当前城市暂无项目，为您推荐热门项目
+                </block>
+            </view>
+        </view>
+        <view class="ul list-wrapper hot-list" wx:if="{{$ProjectList$list.length>0}}">
+            <view class="li" wx:for="{{$ProjectList$list}}" wx:for-index="idx" wx:key="unique">
+                <view bindtap="$ProjectList$bindADItemTap" class="insertADInfo" data-wpybindaditemtap-a="{{item.insertADInfo}}" data-wpybindaditemtap-b="{{item.insertADInfoID}}" wx:if="{{item.isADInfo}}">
+                    <image class="img-inner" src="{{item.insertADInfo.img}}"></image>
+                </view>
+                <block wx:else>
+                    <view class="recommend-list" wx:if="{{$ProjectList$showRecommendList&&item.idx==0&&!$ProjectList$useSearchFlag}}">
+                        <view class="title">
+                            <view class="i"></view>
+                    热门推荐
+                  </view>
+                    </view>
+                    <view bindtap="$ProjectList$detailUrl" class="a movie-item" data-online-id="{{item.onlineId}}" data-statistics-info="{{item.onlineId||''}}" data-statistics-item-index="{{idx}}" data-wpydetailurl-a="{{item}}" title="项目">
+                        <view class="img">
+                            <image class="img-inner" src="{{item.itemPicUrl}}"></image>
+                        </view>
+                        <view class="item-info">
+                            <view class="h3 n-child">
+                                <text class="b">{{item.itemTitleCN}}</text>
+                            </view>
+                            <view class="p">{{item.itemShowTime}}</view>
+                            <view class="p">{{item.venueName}}</view>
+                            <view class="span item-buy-info">
+                                <view class="span show-charge">
+                                    <text class="i">{{item.priceinfo}}</text>
+                                    <text class="text">元起</text>
+                                </view>
+                                <view class="i seatType" wx:if="{{item.hasRealNameTag=='true'}}">
+                                    <text class="em">实名</text>
+                                </view>
+                                <view class="i seatType" wx:if="{{item.voteType==1}}">
+                                    <text class="em" wx:if="{{item.isSelectSeat==1}}">选区</text>
+                                    <text class="em" wx:else>选座</text>
+                                </view>
+                                <view class="span" wx:if="{{item.itemStatus==2||item.itemStatus==3||item.itemStatus==5}}"></view>
+                                <view class="i seatType btn-type-{{item.itemStatus}}" wx:else>
+                                    <block wx:if="{{item.itemStatus==1}}">暂不可售</block>
+                                    <block wx:elif="{{item.itemStatus==4}}">预约</block>
+                                    <block wx:else>预约</block>
+                                </view>
+                                <view class="i seatType" wx:if="{{item.isYouhuiTag}}">优惠</view>
+                            </view>
+                            <view catchtap="$ProjectList$goToGetBonus" class="bonus-info" data-wpygotogetbonus-a="{{item}}" wx:if="{{item.bonusId&&item.bonusAmount}}">指定项目券，下单立减{{item.bonusAmount&&item.bonusAmount/100}}</view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+            <view class="load-more t-c" hidden="{{!$ProjectList$showScrollLoading}}" wx:if="{{$ProjectList$useSearch}}">加载更多...</view>
+        </view>
+        <view class="middle-warning" wx:elif="{{$ProjectList$defaultNoData&&!($ProjectList$showRecommendList&&$ProjectList$recommendList.length>0)&&!$ProjectList$isLoading}}">
+            <view class="no-data t-c">
+                <view bindtap="$ProjectList$reload" wx:if="{{$ProjectList$netError}}">
+                    <image class="sc_icon" src="/images/lost.png"></image>
+                    <view class="L error-full">
+                        <text>服务器异常，请稍后重试</text>
+                    </view>
+                </view>
+                <block wx:else>
+                    <image class="sc_icon" src="http://p1.meituan.net/movie/130bfe67b02bf8fab41c918a5b0c0d486707.png"></image>
+                    <view class="L error-full">
+                        <text>{{$ProjectList$useSearchFlag?'没有搜索到内容，换个词试试':'暂无赛事项目'}}</text>
+                    </view>
+                    <view bindtap="$ProjectList$changeCity" class="button" wx:if="{{!$ProjectList$useSearchFlag}}">
+                        切换城市
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="scroll-loading" hidden="{{!$ProjectList$showScrollLoading}}" wx:if="{{!$ProjectList$useSearch}}">
+            <view class="i pullUpIcon"></view>
+        </view>
+    </view>
+    <view class="ad-modal modal-container" wx:if="{{ADModalShow}}">
+        <view bindtap="bindADItemTap" class="content" data-statistics-info="{{ADModalInfoID||''}}" data-wpybindaditemtap-a="{{ADModalInfo}}" data-wpybindaditemtap-b="{{ADModalInfoID}}">
+            <image class="img-inner" mode="scaleToFill" src="{{ADModalInfo.img}}"></image>
+        </view>
+        <view catchtap="hideThisModal" class="close">
+            <image class="img-inner" mode="scaleToFill" src="https://mini.wesai.com/wxApp/close-btn-icon-hollow.png"></image>
+        </view>
+    </view>
+</view>

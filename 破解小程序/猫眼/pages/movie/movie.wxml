@@ -1,0 +1,208 @@
+<import src="_comment.wxml"></import>
+<import src="_order-prompt.wxml"></import>
+<import src="/tpl/ad-banner.wxml"></import>
+<view bindtap="onTapModalOverlay" class="overlay" id="myModalDialog" wx:if="{{myModalDialog.display}}">
+    <view class="modal modal-celebrity">
+        <text class="cnm">{{celebrity.cnm}}</text>
+        <text class="enm">{{celebrity.enm}}</text>
+        <image class="img img-avatar pull-right" mode="aspectFill" src="{{celebrity.avatar}}" wx:if="{{celebrity.avatar}}"></image>
+        <text class="roles">{{celebrity.type=='导演'?celebrity.type:celebrity.roles?'饰: '+celebrity.roles:celebrity.type}}</text>
+    </view>
+</view>
+<view class="{{isIphoneX?'iphonex':''}}" wx:if="{{movie}}">
+    <template is="OrderPrompt" data="{{...OrderPrompt}}"></template>
+    <view class="movie-header">
+        <view class="movie-header-bg" style="background-image: url({{movie.img}})"></view>
+        <view class="movie-header-inner">
+            <view class="flex">
+                <image bindload="onImageLoaded" bindtap="onTapMovieImage" class="img movie-img" src="{{movie.img}}">
+                    <navigator catchtap="onTapNavi" data-url="/pages/movie/preview?movieId={{movie.id}}" wx:if="{{movie.vd}}">
+                        <image class="img-play" mode="aspectFill" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/play.png"></image>
+                    </navigator>
+                </image>
+                <view class="movie-info">
+                    <text class="movie-name text-ellipsis">{{movie.nm}}</text>
+                    <text class="movie-name-en text-ellipsis">{{movie.enm}}</text>
+                    <view class="movie-score {{movie.scoreStyle}}">
+                        <view class="movie-score-user">
+                            <image class="star" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/star-{{star}}.png" wx:for="{{movie.stars}}" wx:for-item="star" wx:key="{{ index }}"></image>
+                            <text class="movie-score-value">{{movie.score}}</text>
+                            <text class="movie-score-total">{{movie.snum}}</text>
+                        </view>
+                        <navigator catchtap="onTapNavi" class="movie-score-pro" data-url="./pro-comment?movieId={{movie.id}}&movieName={{movie.nm}}">
+                            <text class="movie-score-value">{{movie.proScoreText}}</text>
+                            <text class="movie-score-total">{{movie.proScoreNum}}</text>
+                        </navigator>
+                        <view class="movie-wish">{{movie.wish}}</view>
+                    </view>
+                    <text class="movie-cat">{{movie.cat}}</text>
+                    <text class="version {{movie.version}}"></text>
+                    <view class="movie-show">
+                        <text>{{movie.src}}</text>
+                        <text wx:if="{{movie.dur}}">/ {{movie.dur}}分钟</text>
+                    </view>
+                    <text class="movie-publish" wx:if="{{movie.pubDesc}}">{{movie.pubDesc}}</text>
+                </view>
+            </view>
+            <view class="movie-button">
+                <view class="btn">
+                    <image class="icon icon-wish" mode="aspectFit" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/heart-{{commentScore&&!diy||movie.wishst?'full':'empty'}}.png"></image>
+                    <text>{{commentScore&&!diy?'看过':movie.wishst?'已想看':'想看'}}</text>
+                    <form bindsubmit="onTapLike" data-val_bid="{{movie.wishst?'b_0elx4l0v':'b_27362wna'}}" data-val_lab="{ ci: {{ci}}}" reportSubmit="true">
+                        <button formType="submit"></button>
+                    </form>
+                </view>
+                <navigator data-ignore-login catchtap="onTapNavi" class="btn {{commentScore?'scored':''}}" data-login-warn="评分前请先登录" data-need-login="{{!diy}}" data-url="{{diy.reviewPage||'/pages/reviewsub/review'}}?movieId={{movie.id}}&required=score" data-val_bid="write-comment" data-val_lab="{ ci: {{ci}}}">
+                    <image class="icon icon-star" mode="aspectFit" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/star-{{commentScore?'full':'empty'}}.png"></image>
+                    <text>{{commentScore.score?commentScore.scoreText:'评分'}}</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="panel movie-tip" wx:if="{{tips.length>0}}">
+        <view class="collapse-tip-content collapse-tip-{{collapseTip}}">
+            <view bindtap="{{tips.length>1&&index==0&&collapseTip?'onTapTip':''}}" class="shadow {{collapseTip?'hide-shadow':''}}" wx:for="{{tips}}" wx:for-item="tip" wx:key="{{ index }}">
+                <navigator catchtap="onTapAd" data-name="{{tip.tipName}}" data-url="{{tip.tipJumpURL}}" wx:if="{{tip.tipJumpURL}}">
+                    <image class="img img-icon" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/tip-{{tip.iconType}}.png"></image>
+                    <text>{{tip.content}}</text>
+                </navigator>
+                <view bindtap="onMge" data-name="{{tip.tipName}}" wx:else>
+                    <image class="img img-icon tip-icon" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/tip-{{tip.iconType}}.png"></image>
+                    <text>{{tip.content}}</text>
+                </view>
+                <image class="img tip-arrow-d" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/arrow-down.png" wx:if="{{tips.length>1&&index==0&&collapseTip}}"></image>
+                <image class="img tip-arrow-r" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/arrow-right.png" wx:if="{{!collapseTip&&tip.tipJumpURL}}"></image>
+            </view>
+        </view>
+    </view>
+    <view catchtap="onTapNavi" class="vod-play" data-url="/pages/vod/detail/index?movieId={{movie.id}}" data-val_bid="b_uvasf86d" wx:if="{{movie.vodPlay||reserveEntryData.type===2}}">
+        <image class="vp-icon" mode="aspectFit" src="http://p0.meituan.net/scarlett/dfae514bb9d508ce34996f76c0bce31d2798.png"></image>
+        <text class="vp-desc">可在线播放</text>
+        <text class="vp-sologn">独家视频</text>
+        <view class="vp-arrow text-arrow"></view>
+    </view>
+    <view catchtap="onTapNavi" class="vod-play" data-url="{{reserveEntryData.content[0].schema}}" data-val_bid="b_uvasf86d" wx:if="{{reserveEntryData.type===1&&!movie.vodPlay&&reserveEntryData.content[0]}}">
+        <image class="vp-icon" mode="aspectFit" src="http://p0.meituan.net/scarlett/dfae514bb9d508ce34996f76c0bce31d2798.png"></image>
+        <text class="vp-desc">{{reserveEntryData.leftContent}}</text>
+        <text class="vp-sologn">{{reserveEntryData.rightContent}}</text>
+        <view class="vp-arrow text-arrow"></view>
+    </view>
+    <view bindtap="onTapIntro" class="panel movie-intro collapse collapse-{{collapse}}" data-val_bid="b_l45iiim4" data-val_lab="{ movieId: {{movie.id}}, isCollapse: {{collapse?1:0}} }" wx:if="{{movie.dra&&movie.dra!='暂无剧情简介'}}">
+        <text class="panel-content collapse-content">{{movie.dra}}</text>
+    </view>
+    <view catchtap="onTapAdsMiddle" class="movie-ads-middle" data-url="{{adsMiddle[0].link}}" style="margin-top: {{movie.dra&&movie.dra!='暂无剧情简介'&&tips.length>0?0:'20rpx'}}" wx:if="{{adsMiddle.length}}">
+        <image mode="aspectFit" src="{{adsMiddle[0].image}}"></image>
+    </view>
+    <view class="panel panel-no-split panel-full-width movie-celebrity" wx:if="{{celebrities.length}}">
+        <text class="panel-title">演职人员</text>
+        <scroll-view class="panel-content" scrollX="true">
+            <view class="panel-scroll">
+                <view bindtap="onTapCelebrity" class="celebrity" data-avatar="{{item.still}}" data-cnm="{{item.cnm}}" data-enm="{{item.enm}}" data-roles="{{item.roles}}" data-type="{{item.type}}" data-val_bid="b_pioynxbn" wx:for="{{celebrities}}" wx:key="{{ item.id }}">
+                    <image class="img" mode="aspectFill" src="{{item.avatar}}"></image>
+                    <text class="celebrity-cnm">{{item.cnm?item.cnm:item.enm}}</text>
+                    <text class="celebrity-enm">{{item.roles?item.roles:item.type}}</text>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="panel panel-no-split movie-box" wx:if="{{mbox.length}}">
+        <text class="panel-title">票房</text>
+        <view class="panel-content">
+            <view class="box box-{{!!box.rank}}" wx:for="{{mbox}}" wx:for-item="box" wx:key="{{ index }}">
+                <text class="box-rank">{{box.rank?box.rank:'暂无'}}</text>
+                <text class="box-text">{{box.text}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="panel panel-no-split panel-full-width movie-preview" wx:if="{{movie.photos.length||movie.vd}}">
+        <view class="panel-title">
+            <text>视频和剧照</text>
+            <navigator catchtap="onTapNavi" class="pull-right text-arrow" data-url="/pages/movie/photo?movieId={{movie.id}}&movieName={{movie.nm}}" data-val_bid="b_sih3agmh">{{movie.pn}}</navigator>
+        </view>
+        <scroll-view bindscroll="onScrollView" class="panel-content" scrollX="true">
+            <view class="panel-scroll">
+                <navigator catchtap="onTapNavi" class="inline" data-url="/pages/movie/preview?movieId={{movie.id}}" data-val_bid="b_ztuh6431" wx:if="{{movie.vd}}">
+                    <image class="img img-video" mode="aspectFill" src="{{movie.videoImg}}">
+                        <image class="img-play" mode="aspectFill" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/play.png"></image>
+                    </image>
+                </navigator>
+                <image bindtap="onTapPhoto" class="img img-photo-stats scroll-view-stats" data-index="{{index}}" data-val_bid="b_isl6c93g" data-val_lab="{ movie_id: {{movie.id}}}" data-view_bid="b_1otr2f42" mode="aspectFill" src="{{photo}}" wx:for="{{movie.photos}}" wx:for-item="photo" wx:key="{{ photo }}"></image>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="panel movie-comments">
+        <view class="panel_title">
+            <text>讨论</text>
+            <view catchtap="myReplyTap" class="{{isHasMyComment?'panel_title-editreply':'panel_title-reply'}}" data-val_bid="b_bhy76d38" data-val_lab="{movieId: {{movie.id}}}">{{isHasMyComment?'编辑我的讨论':'参与讨论'}}</view>
+        </view>
+        <view class="tag-list" wx:if="{{tags.length>0&&t1total>0}}">
+            <navigator catchtap="tagTap" data-tag="0" data-url="{{'/pages/movie/comment'}}?movieId={{movie.id}}&movieName={{movie.nm}}&tag=0" data-val_bid="b_yst5cq6y" hoverClass="none">全部</navigator>
+            <navigator catchtap="tagTap" class="{{item.tag===tag?'selected':''}}" data-tag="{{item.tag}}" data-url="{{'/pages/movie/comment'}}?movieId={{movie.id}}&movieName={{movie.nm}}&tag={{item.tag}}" data-val_bid="b_yst5cq6y" hoverClass="none" wx:for="{{tags}}">{{item.tagName}}{{item.count}}</navigator>
+        </view>
+        <view class="_line" wx:if="{{t1total>0||isHasMyComment}}"></view>
+        <view class="list-view panel-content" wx:if="{{isHasMyComment}}">
+            <view catchtap="closeTip" class="list-view-title">我的讨论</view>
+            <view class="list-view-item _list">
+                <template is="comment" data="{{...myComment,theme:theme,diy:diy,uId:uId,type:'myComment',noborder:comments.length>0?false:true}}"></template>
+            </view>
+        </view>
+        <view class="list-view panel-content" wx:if="{{comments&&comments.length>0}}">
+            <view catchtap="closeTip" class="list-view-title">精选</view>
+            <view class="list-view-item _list" wx:for="{{comments}}" wx:for-item="comment" wx:key="{{ index }}">
+                <template is="comment" data="{{...comment,index:index,theme:theme,diy:diy,uId:uId,type:'comments',noborder:index==comments.length-1}}"></template>
+            </view>
+        </view>
+        <view class="all-empty" wx:if="{{total==0&&!isHasMyComment}}">暂无精选讨论，去参与讨论发布一条吧</view>
+        <view class="all-empty" wx:elif="{{t1total==0&&t2total>0&&!isHasMyComment}}">暂无精选讨论<navigator catchtap="onTapNavi" class="look" data-url="{{diy.commentPage||'/pages/movie/comment'}}?movieId={{movie.id}}&movieName={{movie.nm}}" data-val_bid="b_5rsusw9m" data-val_lab="{ movieId: '{{movie.id}}' }" hoverClass="none">查看全部</navigator>
+        </view>
+        <navigator catchtap="onTapNavi" class="panel-footer lookmore" data-url="{{diy.commentPage||'/pages/movie/comment'}}?movieId={{movie.id}}&movieName={{movie.nm}}" hoverClass="none" wx:elif="{{t1total==0&&t2total>0&&isHasMyComment||t1total>0}}">查看全部 {{total}} 条讨论<image src="http://p0.meituan.net/scarlett/e885ccdd0aa081c49d64d0e9bef49ff1571.png"></image>
+        </navigator>
+    </view>
+    <view class="enjoyContainer" wx:if="{{activityList.length}}">
+        <view class="enjoyTitle">
+            <view class="titleContent">会员专享活动</view>
+            <view bindtap="gotoMoreActivityTap" class="titleMore" data-val_bid="b_7apoytjn">更多活动<image src="http://p0.meituan.net/scarlett/478db81b265b3cca3ac729025fc8e6d0583.png"></image>
+            </view>
+        </view>
+        <view class="activeContainer">
+            <view catchtap="activityItemTap" class="act scroll-view-stats" data-position="{{index}}" data-val_bid="b_8d1rz8uj" data-val_lab="{activity_id:'{{item.id}}',status:'{{item.status}}'}" data-view_bid="b_pis81ifx" data-view_lab="{activity_id:'{{item.id}}',status:'{{item.status}}'}" wx:for="{{activityList}}" wx:key="{{index}}">
+                <image src="{{item.iconImageUrl}}"></image>
+                <view class="actText">{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+    <template is="ad-banner" data="{{...AdBanner}}"></template>
+    <view class="panel movie-reviews" wx:if="{{proTotal}}">
+        <text class="panel-title">专业评论</text>
+        <view class="list-view panel-content">
+            <view class="list-view-item _list" wx:for="{{procomments}}" wx:for-item="comment" wx:key="{{ index }}">
+                <template is="comment" data="{{...comment,index:index,theme:theme,type:'procomments'}}"></template>
+            </view>
+        </view>
+        <navigator catchtap="onTapNavi" class="panel-footer more" data-url="./pro-comment?movieId={{movie.id}}&movieName={{movie.nm}}" data-val_bid="b_acj2mbya" wx:if="{{proTotal>3}}">查看全部{{proTotal}}条专业评论</navigator>
+    </view>
+    <view class="placeholder" wx:if="{{movie.buy||movie.vodPlay&&buyButton&&!available&&!groupButton.status&&groupButton.deal_id}}"></view>
+    <view class="buy-block fixed fixed-bottom">
+        <form bindsubmit="onBuyFormSubmit" data-btn_login="{{true}}" data-url="/pages/cinema/movie?movieId={{movie.id}}" reportSubmit="true">
+            <button data-ignore-login-fail catchgetuserinfo="onGetUserInfo" class="btn btn-block" data-url="/pages/cinema/movie?movieId={{movie.id}}" formType="submit" hoverClass="none" openType="{{isLogin?'':'getUserInfo'}}" wx:if="{{movie.buy}}">特惠购票</button>
+        </form>
+    </view>
+    <view class="online-video-block fixed fixed-bottom" wx:if="{{!movie.buy&&movie.vodPlay&&buyButton&&!available&&groupButton.status!=1&&groupButton.deal_id}}">
+        <view class="online-video-title">在线观看</view>
+        <form bindsubmit="buyOnlineVideo" data-btn_login="{{true}}" reportSubmit="true">
+            <button data-ignore-login-fail catchgetuserinfo="onGetUserInfo" class="buy-btn btn-block" data-url="/pages/goods/buy?movieId={{movie.id}}&dealId={{buyButton.dealId}}&type=online_video" formType="submit" hoverClass="none" openType="{{isLogin?'':'getUserInfo'}}">{{buyButton.originSellPrice*1}}元<text>任意看</text>
+            </button>
+        </form>
+        <form bindsubmit="buyOnlineVideo" data-btn_login="{{true}}" reportSubmit="true" wx:if="{{groupButton.deal_id}}">
+            <button data-ignore-login-fail catchgetuserinfo="onGetUserInfo" class="buy-btn bargain-btn beat-class btn-block" data-url="/pages/goods/buy?movieId={{movie.id}}&dealId={{groupButton.deal_id}}&activityId={{groupButton.activityId}}&type=group_buy" formType="submit" hoverClass="none" openType="{{isLogin?'':'getUserInfo'}}">{{groupButton.pay_money/100}}元<text>{{groupButton.group_user_num}}人拼团看</text>
+            </button>
+        </form>
+    </view>
+    <view catchtap="onTapAdsHang" class="movie-ads-hang" data-url="{{adsHang[0].link}}" wx:if="{{adsHang.length}}">
+        <image mode="aspectFit" src="{{adsHang[0].image}}"></image>
+    </view>
+</view>
+<wx-scope wx:scope-data="{{...scopeData}}">
+    <view></view>
+</wx-scope>
+<include src="/footer.wxml"></include>

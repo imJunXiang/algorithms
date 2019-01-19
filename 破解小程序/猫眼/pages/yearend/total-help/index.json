@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "2018 你和电影的故事",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "yoda-slider": "../../../components/yoda-sdk/component/slider/slider"
+    }
+}

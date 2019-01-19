@@ -1,0 +1,40 @@
+<template name="_publicClassForm">
+    <view class="pub-cls-form">
+        <view class="pub-cls-title sinline-b">参会人员信息<view class="pub-cls-tips">我方将根据法律法规保护用户个人信息安全，以下填写内容将会提交至本项目主办单位并且仅在本项目服务范围内合理使用。</view>
+        </view>
+        <view class="pub-cls-item sinline-b">
+            <view class="pub-cls-label">参会身份</view>
+            <view class="pub-cls-content">
+                <radio-group bindchange="onPubClsInputBlur" data-name="userType">
+                    <label class="pub-cls-radio-label" wx:for="{{userTypes}}">
+                        <radio checked="{{item.type==userType}}" class="pub-cls-radio" color="#f03d37" value="{{item.type}}"></radio>{{item.name}}</label>
+                </radio-group>
+            </view>
+        </view>
+        <view class="pub-cls-item sinline-b" wx:if="{{userType==2}}">
+            <view class="pub-cls-label">企业机构</view>
+            <view class="pub-cls-content">
+                <input bindblur="onPubClsInputBlur" data-name="companyName" placeholder="请填写企业机构名称" type="text" value="{{companyName}}"></input>
+            </view>
+        </view>
+        <view class="pub-cls-item sinline-b" wx:if="{{userType==2}}">
+            <view class="pub-cls-label">职位</view>
+            <view class="pub-cls-content">
+                <input bindblur="onPubClsInputBlur" data-name="position" maxlength="15" placeholder="请填写所在企业职位" type="text" value="{{position}}"></input>
+            </view>
+        </view>
+        <view class="pub-cls-item sinline-b">
+            <view class="pub-cls-label">参会人姓名</view>
+            <view class="pub-cls-content">
+                <input bindblur="onPubClsInputBlur" data-name="name" placeholder="请填写参会人真实姓名" placeholderClass="pub-cls-placeholder" type="text" value="{{name}}"></input>
+            </view>
+        </view>
+        <view class="pub-cls-item sinline-b">
+            <view class="pub-cls-label pub-cls-select">你所在的城市</view>
+            <view class="pub-cls-content">
+                <picker bindchange="onPubClsInputBlur" class="picker" data-name="city" mode="region" value="{{[18,0,0]}}">{{city||''}}<text wx:if="{{!city}}">请选择</text>
+                </picker>
+            </view>
+        </view>
+    </view>
+</template>

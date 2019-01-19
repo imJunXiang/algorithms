@@ -1,0 +1,6 @@
+<view class="login-button">
+    <button data-btn_login data-ignore-login-fail bindgetuserinfo="onGetUserInfo" class="show-operation-btn" data-fresh="{{true}}" openType="{{isLogin?'':'getUserInfo'}}" wx:if="{{!isLogin}}">
+        <slot name="login"></slot>
+    </button>
+    <slot name="other" wx:if="{{isLogin}}"></slot>
+</view>

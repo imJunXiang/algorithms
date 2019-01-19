@@ -1,0 +1,7 @@
+<view class="no-remind-prior" wx:if="{{priorBuyStatus===1}}">
+    <view bindtap="priorTap" class="prior-buy">
+        <image class="prior-buy-text" mode="aspectFit" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/show/newDetail/buy-prior@2x.png"></image>
+    </view>
+    <view bindtap="normalTap" class="buynow">{{btnText}}</view>
+</view>
+<view bindtap="normalTap" class="no-remind-no-prior" wx:if="{{priorBuyStatus===0}}">{{btnText}}</view>

@@ -1,0 +1,6 @@
+<view class="detail-unknown-err-page" wx:if="{{show}}">
+    <view class="detail-unknown-err-image-container">
+        <image class="detail-unknown-err-image" mode="aspectFit" src="../pics/error-image.png"></image>
+    </view>
+    <view class="detail-unknown-err-tips">说起来你不信，不知道怎么的页面挂了</view>
+</view>

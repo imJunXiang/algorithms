@@ -1,0 +1,116 @@
+<import src="_movie.wxml"></import>
+<import src="/pages/search/_search-bar.wxml"></import>
+<import src="/tpl/ad-banner.wxml"></import>
+<import src="/tpl/access-limit.wxml"></import>
+<import src="/tpl/operation/embedded-component/special-topic.wxml"></import>
+<import src="/tpl/movie-remind-modal.wxml"></import>
+<import src="/tpl/movie-remind-card.wxml"></import>
+<view style="position: {{disableScroll}};">
+    <view class="topRemind {{closeRemind?'close-remind':''}}" wx:if="{{showAddMiniRemind}}">
+        <view bindtap="closeRemind" class="close-button-out"></view>
+        <view class="close-button-box">
+            <image class="close-button" src="http://p1.meituan.net/scarlett/95181544e9dd4348e41d378f785e7880316.png"></image>
+        </view>
+        <text class="remind-text">添加到“我的小程序”电影演出赛事信息即时掌握</text>
+        <image class="mini-hand" src="http://p0.meituan.net/scarlett/edcdb2aa81aa911a8c52b2f2914d510f1287.png"></image>
+    </view>
+    <template is="search-bar" data="{{city:city,isShowCityToast:isShowCityToast,cbtcAnimationHide:cbtcAnimationHide,type:-1,placeholder:'找影视剧、影院',from:'movie',adsHeaderBg:adsHeaderBg}}"></template>
+    <template is="ad-banner" data="{{...AdBanner}}" wx:if="{{movies&&movies.length}}"></template>
+    <template is="access-limit-modal" data="{{...AccessLimit}}"></template>
+    <view class="header-tabs-container {{closeRemind?'closeRemindTab':''}}" style="top: {{showAddMiniRemind?100:0}}rpx;">
+        <view bindtap="switchToHot" class="header-tab {{activeTab==='hot'?'active':''}}" data-val_bid="b_h4xc6w04" data-val_lab="{ type: 'hot' }">正在上映</view>
+        <view bindtap="switchToComing" class="header-tab {{activeTab==='coming'?'active':''}}" data-val_bid="b_h4xc6w04" data-val_lab="{ type: 'coming' }">即将上映</view>
+    </view>
+    <template is="special-topic" data="{{...specialTopic,isLogin:isLogin}}" wx:if="{{specialTopic.showActivity}}"></template>
+    <template is="movie-remind-card" data="{{...MovieRemindCard}}"></template>
+    <view hidden="{{activeTab==='coming'}}">
+        <view class="list-view">
+            <view class="list-view-item {{passAd.length&&index===8?'bg-tr':''}}" wx:for="{{movies}}" wx:for-item="movie" wx:key="{{index}}">
+                <template is="movie" data="{{...movie,from:'hotMovies',bid:'b_yfrrrhw1',supportLoginBtn:supportLoginBtn,isLogin:isLogin,showPassAd:showPassAd,passAd:passAd,index:index}}"></template>
+            </view>
+            <view bindtap="onReachBottom" class="load-more" wx:if="{{movies&&movies.length}}">
+                <view wx:if="{{hasMore}}">加载更多...</view>
+                <view class="no-more" wx:else>没有更多了</view>
+            </view>
+        </view>
+        <template is="city-error" data="{{isShowCityErrorPage:isShowCityErrorPage,isShowOpenLocationAlertMoal:isShowOpenLocationAlertMoal,isShowUseLocationCityConfirmModal:isShowUseLocationCityConfirmModal,locationCity:locationCity}}"></template>
+        <view class="error-page middle-center-page" style="z-index: -1;" wx:if="{{movies&&movies.length===0}}">
+            <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/home-empty.png"></image>
+            <text class="title">暂无热映电影</text>
+        </view>
+    </view>
+    <view hidden="{{activeTab==='hot'}}">
+        <template is="city-error" data="{{isShowCityErrorPage:isShowCityErrorPage,isShowOpenLocationAlertMoal:isShowOpenLocationAlertMoal,isShowUseLocationCityConfirmModal:isShowUseLocationCityConfirmModal,locationCity:locationCity}}"></template>
+        <view class="most-expected-recently" wx:if="{{mostExpected.length}}">
+            <view class="title">近期最受欢迎</view>
+            <scroll-view scrollX="true">
+                <view class="panel-scroll">
+                    <navigator catchtap="onTapNavi" class="most-expected-movie" data-url="/pages/movie/movie?movieId={{item.id}}&from=mostExpected" data-val_bid="b_yar04buh" wx:for="{{mostExpected}}" wx:key="expected-{{index}}">
+                        <image catchtap="toggleWishFromMostExpected" class="wish-status" data-index="{{index}}" data-movieid="{{item.id}}" data-wishst="{{item.wishst}}" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/poster-wish-{{item.wishst}}.png"></image>
+                        <image class="poster" src="{{item.img}}"></image>
+                        <text class="name text-ellipsis">{{item.nm}}</text>
+                        <text class="wish text-ellipsis">{{item.wish}}人想看</text>
+                        <text class="date text-ellipsis">{{item.date}}</text>
+                    </navigator>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="coming" wx:if="{{coming.length}}">
+            <view wx:for="{{coming}}" wx:key="coming-{{ index }}">
+                <view class="title">{{item.comingTitle}}</view>
+                <view class="list-view-item" wx:for="{{item.movies}}" wx:for-index="i" wx:for-item="movie" wx:key="movie-{{i}}">
+                    <template is="movie" data="{{...movie,index:index,subIndex:i,from:'coming',bid:'b_rbr9fpy9'}}"></template>
+                </view>
+            </view>
+        </view>
+        <view bindtap="onReachBottom" class="load-more" wx:if="{{movieIds.length}}">加载更多...</view>
+    </view>
+</view>
+<navigator catchtap="onTapNavi" class="gamesnatch" data-url="/pages/gamesnatch/index/login" data-val_bid="b_j1dd9grh" wx:if="{{showGameEntry}}">
+    <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/gamesnatch/gamesnatch-enter.gif" style="width: 220rpx; height: 220rpx;"></image>
+</navigator>
+<view wx:if="{{isShowSigninVideo}}">
+    <dialog customClass="dialog-signin-video" id="dialogSigninVideo">
+        <view slot="body">
+            <video bindended="closeSigninVideo" binderror="closeSigninVideo" controls="{{false}}" direction="0" enableProgressGesture="{{false}}" id="signInVideo" showFullscreenBtn="{{false}}" showProgress="{{false}}" src="http://maoyan.meituan.net/movie/videos/aa575c1e389e455aa585e0bcb2f0b09f.mp4" style="width:600rpx;height:528.5rpx;"></video>
+        </view>
+    </dialog>
+</view>
+<template is="city-error-modal" data="{{isShowCityErrorPage:isShowCityErrorPage,isShowOpenLocationAlertMoal:isShowOpenLocationAlertMoal,isShowUseLocationCityConfirmModal:isShowUseLocationCityConfirmModal,locationCity:locationCity}}"></template>
+<view catchtap="onTapNavi" class="favourite" data-url="/pages/usersub/favourite" data-val_bid="b_7pnugujg" wx:if="{{showGuid}}">
+    <image class="favourite-logo" src="http://p0.meituan.net/mmdb/26b59647112ab7c91a1d1412dcd54bcd1768.png"></image>
+    <view class="favourite-text favourite-main-text">收藏小程序</view>
+    <view class="favourite-text favourite-sub-text">赠送100点成长值</view>
+    <view class="favourite-button">点击查看</view>
+    <image catchtap="closeFavourite" class="favourite-close" src="http://p1.meituan.net/mmdb/6b9c91a41867b02ce152bc40246485c7294.png"></image>
+</view>
+<view class="favourite-success" wx:if="{{showAward}}">
+    <view class="favourite-success-title">您的成长值已提升</view>
+    <view class="favourite-success-score">
+        <view class="score">+</view>
+        <view class="score-nums score">
+            <view class="score-bit three">
+                <view>1</view>
+            </view>
+            <view class="score-bit two">
+                <view wx:for="{{[0,1,2,3,4,5,6,7,8,9,0]}}">{{item}}</view>
+            </view>
+            <view class="score-bit one">
+                <view wx:for="{{[0,1,2,3,4,5,6,7,8,9,0]}}">{{item}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="fist-login-pop" wx:if="{{firstLogin&&movies.length}}">
+    <image class="fist-login-pop-icon" src="http://p1.meituan.net/scarlett/c17ab9abb2ff85c7c0e7ee436336e56f2975.png"></image>
+    <view class="fist-login-pop-title">每日登录</view>
+    <view class="fist-login-pop-title">成长值+2</view>
+</view>
+<navigator catchtap="onTapNavi" data-url="/pages/usersys/growth/index" hoverClass="none" wx:if="{{hasShowButton}}">
+    <view class="nav-to-latest">
+        <image class="back-icon" src="http://p1.meituan.net/scarlett/9adc3b1cc9167c5b87ebdddb012ff07d1049.png"></image>
+        <view class="back-text">返回上页</view>
+    </view>
+</navigator>
+<template is="movie-remind-modal" data="{{...MovieRemindModal}}"></template>
+<include src="/footer.wxml"></include>

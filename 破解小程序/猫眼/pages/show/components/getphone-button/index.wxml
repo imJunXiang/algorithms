@@ -1,0 +1,6 @@
+<button bindgetphonenumber="onGetPhoneNumber" class="getPhoneButton" openType="getPhoneNumber" wx:if="{{isGetPhoneButton}}">
+    <slot name="getPhoneUi"></slot>
+</button>
+<button bindtap="onNormalButtonTap" class="getPhoneButton" wx:else>
+    <slot name="normalUi"></slot>
+</button>

@@ -1,0 +1,8 @@
+{
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "订单详情",
+    "usingComponents": {
+        "share-canvas": "../../../component/sharecanvas/sharecanvas"
+    }
+}

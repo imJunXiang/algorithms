@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "原来我最帅的时候长这样,你呢",
+    "backgroundColor": "#efefef",
+    "usingComponents": {
+        "upload-img": "./components/upload-img/index",
+        "draw-img": "./components/draw-img/index",
+        "login-button": "./../../../show/components/login-button/index",
+        "activity-rule": "./components/activity-rule/index"
+    }
+}

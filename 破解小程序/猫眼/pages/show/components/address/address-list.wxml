@@ -1,0 +1,19 @@
+<view class="address">
+    <view class="address__addwrapper">
+        <view catchtap="onAddTap" class="address__addbtn {{addressList.length>=maxAddrCount?'address__addbtn--disabled':''}}">
+            <span class="address__plus">+</span> 添加邮寄地址</view>
+    </view>
+    <view class="address__reminder">
+        <span class="address__hot">*</span> 提前编辑/添加所需邮寄地址, 抢票时可一键支付<view class="address__tips">最多保存5个地址，若需新增，请去修改</view>
+    </view>
+    <view class="address__list" wx:if="addressList.length">
+        <view class="address__item {{item.isDefault?'address__item--default':''}}" wx:for="{{addressList}}">
+            <view class="address__content">
+                <text class="address__name">{{item.recipientNameDisplay}}</text>
+                <view class="address__addr">{{item.provinceName}}{{item.cityName}}{{item.districtName}}{{item.detailedAddress}}</view>
+            </view>
+            <view catchtap="onEditTap" class="address__edit" data-index="{{index}}"></view>
+            <view catchtap="onDelTap" class="address__del" data-index="{{index}}"></view>
+        </view>
+    </view>
+</view>

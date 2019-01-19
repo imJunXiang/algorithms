@@ -1,0 +1,19 @@
+<view bindtap="closeShareModal" catchtouchmove="emptyFunc" class="share-modal" style="top: {{generatingImg?'-2000px':'0'}}" wx:if="{{showFlag>0}}">
+    <canvas canvasId="background" style="position: absolute;top: -2000px;width: {{backgroundWidth}}px;height: {{backgroundHeight}}px;"></canvas>
+    <canvas canvasId="my-canvas" style="position: absolute;top: -2000px;width: {{screenWidth}}px;height: {{screenHeight}}px;"></canvas>
+    <image catchtap="emptyFunc" class="share-image" src="{{shareImgUrl}}" style="width: {{screenWidth*0.63}}px !important;height: {{screenHeight*0.63}}px !important" wx:if="{{shareImgUrl}}"></image>
+    <text catchtap="saveShareImg" class="share-button" wx:if="{{shareImgUrl}}">保存图片</text>
+    <view class="bottom-button-wrapper" wx:if="{{showFlag===1}}">
+        <view catchtap="emptyFunc" class="bottom-logo-wrapper" style="justify-content: {{performance.posterUrl?'space-between':'center'}}">
+            <button catchtap="shareToFriend" class="logo" data-name="shareBtn" openType="share">
+                <image src="http://p1.meituan.net/moviesh/79e181bd2ea344f13e05d5d8b3034e577352.png"></image>
+                <text>推荐给好友</text>
+            </button>
+            <view catchtap="startDraw" class="logo" wx:if="{{performance.posterUrl}}">
+                <image src="http://p1.meituan.net/moviesh/af9a20a1a2c75d2ace3d3fe534da6f027851.png"></image>
+                <text>保存图片分享</text>
+            </view>
+        </view>
+        <view catchtap="closeShareModal" class="cancel-button">取消</view>
+    </view>
+</view>

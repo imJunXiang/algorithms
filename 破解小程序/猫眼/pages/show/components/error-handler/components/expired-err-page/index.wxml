@@ -1,0 +1,6 @@
+<view class="detail-expired-err-page" wx:if="{{show}}">
+    <view class="detail-expired-err-image-container">
+        <image class="detail-expired-err-image" mode="aspectFit" src="../pics/miao.png"></image>
+    </view>
+    <view class="detail-expired-err-tips">项目不存在或已下架</view>
+</view>

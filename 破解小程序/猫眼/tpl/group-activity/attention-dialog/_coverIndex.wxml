@@ -1,0 +1,18 @@
+<template name="attentionDialog">
+    <cover-view bindtap="hideAttentionDialog" catchtouchmove="doNothing" class="cus-modal-layer" wx:if="{{showAttentionModal}}">
+        <cover-view catchtap="doNothing" class="cus-modal modal-attention">
+            <cover-view class="cus-modal-body">
+                <cover-view class="cus-modal-text">{{attentionMessage}}</cover-view>
+                <cover-image bindtap="hideAttentionDialog" class="cover-close" src="http://p1.meituan.net/scarlett/4004d18e615324176403419470b0b093186.png"></cover-image>
+                <cover-image class="cat" src="http://p0.meituan.net/scarlett/0c1fbc5d569b17591dee6d0ac70d469140366.png"></cover-image>
+                <cover-view class="">
+                    <cover-view class="des">
+                        <cover-view>进入客服消息，发送1，点击回复的</cover-view>
+                        <cover-view>消息，即可扫码关注公众号</cover-view>
+                    </cover-view>
+                </cover-view>
+                <button bindtap="hideAttentionDialog" data-to_attention="true" openType="contact">马上去关注</button>
+            </cover-view>
+        </cover-view>
+    </cover-view>
+</template>

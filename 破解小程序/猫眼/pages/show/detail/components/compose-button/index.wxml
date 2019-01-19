@@ -1,0 +1,8 @@
+<view class="compose-button">
+    <view class="compose-button-left">
+        <slot name="left"></slot>
+    </view>
+    <view class="compose-button-right">
+        <slot name="right"></slot>
+    </view>
+</view>

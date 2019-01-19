@@ -1,0 +1,17 @@
+<view class="wrap-container" wx:if="{{!hasnone}}">
+    <navigator class="cinameritem" url="/pages/cinamermoviedetails/cinamermoviedetails?cinanmerId={{item.id}}&ciName={{item.name}}&ciAdd={{item.address}}" wx:for="{{cinemas}}" wx:key="item">
+        <view class="cinamer-info">
+            <view class="cinamer-name">
+                    {{item.name}}
+                </view>
+            <view class="cinamer-local">
+                <view class="cinamer-local-name">{{item.address}}</view>
+                <view class="cinamer-local-range">{{filters.lengthtokm(item.length)}}</view>
+            </view>
+        </view>
+    </navigator>
+</view>
+<view class="nodata" wx:else>
+        暂无数据
+    </view>
+<wxs module="filters" src="../filter.wxs" />

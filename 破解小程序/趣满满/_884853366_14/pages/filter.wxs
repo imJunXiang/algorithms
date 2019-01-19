@@ -1,0 +1,49 @@
+var filters = ({
+    toFix: (function(value) {
+        return (value.toFixed(1))
+    }),
+    movietype: (function(str) {
+        if (str != undefined) {
+            return (str.split(" "))
+        } else {
+            return ([])
+        }
+    }),
+    toNumber: (function(val1, val2) {
+        return (Number)(val1) + Number(val2)
+    }),
+    arrayToString: (function(val) {
+        return (val.toString().replace(getRegExp(',', 'g'), ""))
+    }),
+    lengthtokm: (function(val) {
+        if (val < 1000) {
+            return (val + 'm')
+        } else {
+            var km = val / 1000;
+            return (km.toFixed(1) + 'Km')
+        }
+    }),
+});
+
+function myformatTime(time) {
+    console.log(time);
+    if (typeof time !== 'number' || time < 0) {
+        return (time)
+    };
+    var hour = parseInt(time / 3600, 10);
+    time = time % 3600;
+    var minute = parseInt(time / 60, 10);
+    if (hour == 0) {
+        return (minute + '分')
+    } else {
+        return (hour + '小时' + minute + '分')
+    }
+};
+module.exports = ({
+    toFix: filters.toFix,
+    movietype: filters.movietype,
+    toNumber: filters.toNumber,
+    myformatTime: myformatTime,
+    arrayToString: filters.arrayToString,
+    lengthtokm: filters.lengthtokm,
+});

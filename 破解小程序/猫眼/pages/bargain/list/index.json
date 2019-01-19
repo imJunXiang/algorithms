@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "砍价0元看电影",
+    "usingComponents": {
+        "bannerAd": "../../../../components/bannerAd/index"
+    }
+}

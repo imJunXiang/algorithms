@@ -1,0 +1,44 @@
+<template name="mobile-confirm">
+    <view class="phone-confirm{{showImage?' hide':''}}" wx:if="{{showPhone}}">
+        <view class="title">
+            <text>请验证手机号</text>
+            <view bindtap="hidePhoneVerify" class="close-btn">
+                <image class="close-tag" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/mobileclose.png"></image>
+            </view>
+        </view>
+        <form bindsubmit="verifySms" class="sms-form">
+            <view class="sms-form-group phone-number-group">
+                <form bindsubmit="getSms">
+                    <input bindinput="checkMobile" class="phone-input" confirmType="send" maxlength="11" name="mobile" placeholder="请输入您的手机号" placeholderStyle="color: #b2b2b2; font-size: 26rpx;" type="number" value="{{defaultMobile}}"></input>
+                    <button class="getSms{{sendSmsDisable?' disabled':''}}" disabled="{{sendSmsDisable}}" formType="submit">{{sendSmsDisable&&count?count+'秒后重试':'获取验证码'}}</button>
+                </form>
+            </view>
+            <view class="sms-form-group">
+                <input name="smscode" placeholder="请输入验证码" placeholderStyle="color: #b2b2b2; font-size: 26rpx;" type="number"></input>
+            </view>
+            <view class="sms-btn">
+                <button formType="submit">确认</button>
+            </view>
+        </form>
+    </view>
+    <view class="image-confirm" wx:if="{{showImage}}">
+        <form bindreset="hideImageVerify" bindsubmit="verifyImage">
+            <view class="image-confirm-content">
+                <input class="image-confirm-content-input" name="captchacode" placeholder="请输入验证码" placeholderStyle="font-size: 28rpx; color: #ccc;" type="text"></input>
+                <view class="image-confirm-content-captcha">
+                    <image src="{{imgUrl}}"></image>
+                </view>
+                <image bindtap="getImage" class="image-confirm-content-refresh" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/refresh.png"></image>
+            </view>
+            <view class="alert-info" wx:if="{{showImageAlert}}">
+                <image class="alert-info-icon" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/alert.png"></image>
+                <text class="alert-info-text">验证码不正确</text>
+            </view>
+            <view class="image-confirm-btn-group">
+                <button plain class="image-confirm-btn-group-close" formType="reset">关闭</button>
+                <button plain class="image-confirm-btn-group-confirm" formType="submit">确定</button>
+            </view>
+        </form>
+    </view>
+    <view class="blacker" wx:if="{{showImage||showPhone}}"></view>
+</template>

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "报名结果",
+    "usingComponents": {
+        "fans-modal": "../../tpl/modal/index"
+    }
+}

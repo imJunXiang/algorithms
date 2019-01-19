@@ -1,0 +1,8 @@
+<view class="detail-network-err-page" wx:if="{{showPage}}">
+    <view class="detail-network-err-image-container">
+        <image class="detail-network-err-image" mode="aspectFit" src="../../detail/pics/miao.png"></image>
+    </view>
+    <view class="detail-network-err-tips">喵～ 本场演出热度冲天</view>
+    <view class="detail-network-err-tips">页面挤爆了，喵喵建议稍后再试</view>
+    <view bindtap="onMaskTap" class="detail-network-err-button">{{btnText}}</view>
+</view>

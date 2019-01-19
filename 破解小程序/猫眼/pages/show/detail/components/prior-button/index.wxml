@@ -1,0 +1,3 @@
+<view bindtap="tap" class="prior-buy">
+    <image class="prior-buy-text" mode="aspectFit" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/show/newDetail/buy-prior@2x.png"></image>
+</view>

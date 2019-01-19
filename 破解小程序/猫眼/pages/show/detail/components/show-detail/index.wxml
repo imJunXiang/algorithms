@@ -1,0 +1,15 @@
+<view class="new_detail_show_detail">
+    <view class="title">
+        <text class="title-text">演出详情</text>
+        <view catchtap="onTapPhoto" class="seat" wx:if="{{!!seatUrl}}">
+            <text class="seat-text">查看座位图</text>
+            <image class="seat-img" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/arrow-right.png"></image>
+        </view>
+    </view>
+    <view class="content">
+        <view style="{{item.style}}" wx:for="{{showDetail}}" wx:key="{{ index }}">
+            <text wx:if="{{item.type==1}}">{{item.content}}</text>
+            <image bindload="bindImgLoaded" data-index="{{index}}" lazyLoad="{{true}}" mode="scaleToFill" src="{{item.content}}" style="width: {{item.w||720}}rpx; height: {{item.h||500}}rpx" wx:if="{{item.type==2}}"></image>
+        </view>
+    </view>
+</view>

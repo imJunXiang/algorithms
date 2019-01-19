@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "收藏的影院",
+    "usingComponents": {
+        "cinamerlist": "../../component/cinamerlist/cinamerlist"
+    }
+}

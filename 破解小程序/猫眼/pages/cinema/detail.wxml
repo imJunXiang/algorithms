@@ -1,0 +1,31 @@
+<view class="cinema-name-container one-px-border-bottom">
+    <view class="cinema-nm text-ellipsis">{{cinema.nm}}</view>
+</view>
+<view class="cinema-address-container one-px-border-both">
+    <view bindtap="showMap" class="address one-px-border-bottom flex flex-middle">
+        <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/map.png"></image>
+        <text>{{cinema.addr}}</text>
+        <image class="path" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/path.png"></image>
+    </view>
+    <view bindtap="onTapPhone" class="phone flex flex-middle">
+        <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/phone.png"></image>
+        <text>{{cinema.tel}}</text>
+        <image class="path" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/path.png"></image>
+    </view>
+</view>
+<view class="cinema-detail-list one-px-border-both">
+    <view class="detail-list-header one-px-border-bottom">特色信息</view>
+    <view class="features">
+        <view class="feature-item {{index+1<cinema.featureTags.length?'one-px-border-bottom':''}} {{item.type===0?'text-ellipsis':''}}" wx:for="{{cinema.featureTags}}" wx:key="tag">
+            <view class="feature-tag">{{item.tag}}</view>
+            <view class="feature-desc">{{item.desc}}</view>
+        </view>
+    </view>
+</view>
+<view class="cinema-detail-list one-px-border-both" wx:if="{{cinema.notice.length}}">
+    <view class="detail-list-header one-px-border-bottom">影院公告</view>
+    <view class="notice">
+        <text wx:for="{{cinema.notice}}">{{item}}</text>
+    </view>
+</view>
+<include src="/footer.wxml"></include>

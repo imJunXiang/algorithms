@@ -1,0 +1,10 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff5500",
+    "backgroundColor": "#ff5500",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "cinamerlist": "../../component/cinamerlist/cinamerlist"
+    }
+}

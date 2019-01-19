@@ -1,0 +1,77 @@
+<import src="/pages/movie/_movie.wxml"></import>
+<import src="/pages/cinema/_cinema-item.wxml"></import>
+<import src="/pages/show/list/tpl/_show-search.wxml"></import>
+<view class="header-search">
+    <view bindtap="cancel" class="cancel">取消</view>
+    <form>
+        <icon size="13" type="search"></icon>
+        <view>
+            <input bindblur="onInputBlur" bindinput="getKeyword" focus="{{focus}}" placeholder="{{placeholder||''}}" placeholderStyle="color: #B2B2B2" value="{{keyword}}"></input>
+        </view>
+    </form>
+</view>
+<scroll-view scrollY bindscrolltolower="onReachBottom" class="main-body">
+    <block wx:if="{{showSuggestion}}">
+        <view class="history" wx:if="{{history.length>0}}">
+            <view class="history-item" wx:for="{{history}}">
+                <view bindtap="tapToSearch" class="history-tags text-ellipsis" data-keyword="{{item}}">
+                    <icon color="#aaa" size="15" type="waiting_circle"></icon>
+                    <text>{{item}}</text>
+                </view>
+                <view bindtap="delSearchHistory" class="del-history" data-index="{{index}}">×</view>
+            </view>
+        </view>
+        <view class="hotMovies" wx:if="{{hotMovies.length}}">
+            <view class="sub-title">
+                <text>热门搜索</text>
+            </view>
+            <view class="hotMovies-tags">
+                <navigator bindtap="tapHot" data-id="{{item.id}}" data-index="{{index}}" redirect="true" url="/pages/movie/movie?movieId={{item.id}}" wx:if="{{index<6}}" wx:for="{{hotMovies}}">{{item.nm}}</navigator>
+            </view>
+        </view>
+    </block>
+    <view class="correction" wx:if="{{correctionV2&&correctionType===1}}">您要找的是不是<text bindtap="tapToSearch" data-iscorrected="true" data-keyword="{{correctionV2}}">{{correctionV2}}</text>
+    </view>
+    <view class="correction" wx:if="{{correctionV2&&correctionType===2}}">已显示<text bindtap="tapToSearch" data-iscorrected="true" data-keyword="{{correctionV2}}">{{correctionV2}}</text>的搜索结果， 仍然搜索<text bindtap="tapToSearch" data-iscorrected="true" data-keyword="{{keyword}}">{{keyword}}</text>
+    </view>
+    <block wx:for="{{results}}" wx:for-item="result" wx:key="index">
+        <view class="search-result" wx:if="{{result.type===0&&result.total>0}}">
+            <view class="head" wx:if="{{type===-1}}">
+                <text>电影/电视剧/综艺</text>
+            </view>
+            <block wx:for="{{result.list}}" wx:key="index">
+                <view capture-bind:tap="tapItem" data-index="{{index}}" data-item="{{item}}" data-stype="{{result.type}}">
+                    <template is="movie" data="{{...item,index:index,isRedName:true,keyword:keyword}}"></template>
+                </view>
+                <view class="line" wx:if="{{index<result.list.length-1}}"></view>
+            </block>
+            <navigator bindtap="tapAll" class="foot" data-stype="{{result.type}}" url="/pages/search/movie?query={{keyword}}&searchId={{searchId}}" wx:if="{{result.list.length<result.total&&result.type!==lastType}}">查看全部{{result.total}}部影视剧</navigator>
+        </view>
+        <view class="search-result" wx:if="{{result.type===2&&result.total>0}}">
+            <view class="head" wx:if="{{type===-1}}">
+                <text>影院</text>
+            </view>
+            <view bindtap="tapItem" data-index="{{index}}" data-item="{{item}}" data-stype="{{result.type}}" wx:for="{{result.list}}" wx:key="index">
+                <template is="cinema" data="{{...item,noline:index===result.list.length-1,isRedName:true,keyword:keyword}}"></template>
+            </view>
+            <navigator bindtap="tapAll" class="foot" data-stype="{{result.type}}" url="/pages/search/cinema?query={{keyword}}&searchId={{searchId}}" wx:if="{{result.list.length<result.total&&result.type!==lastType}}">查看全部{{result.total}}家影院</navigator>
+        </view>
+        <view class="search-result" wx:if="{{result.type===6&&result.total>0}}">
+            <view class="head" wx:if="{{type===-1}}">
+                <text>演出</text>
+            </view>
+            <block wx:for="{{result.list}}" wx:key="index">
+                <view capture-bind:tap="tapItem" data-index="{{index}}" data-item="{{item}}" data-stype="{{4}}">
+                    <template is="show-search" data="{{...item,index:index,isRedName:true,keyword:keyword}}"></template>
+                </view>
+                <view class="line" wx:if="{{index<result.list.length-1}}"></view>
+            </block>
+            <navigator bindtap="tapAll" class="foot" data-stype="{{result.type}}" url="/pages/search/show?query={{keyword}}&searchId={{searchId}}" wx:if="{{result.list.length<result.total&&result.type!==lastType}}">查看全部{{result.total}}条演出结果</navigator>
+        </view>
+    </block>
+    <view class="no-result" wx:if="{{!hasResults&&keyword}}">
+        <image src="http://p1.meituan.net/movie/130bfe67b02bf8fab41c918a5b0c0d486707.png"></image>
+        <view>{{metaMap[type].noWord}}</view>
+    </view>
+</scroll-view>
+<include src="/footer.wxml"></include>

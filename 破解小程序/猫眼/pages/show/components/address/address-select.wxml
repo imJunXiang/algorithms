@@ -1,0 +1,17 @@
+<form bindsubmit="onSubmit" class="select">
+    <radio-group class="select__list" name="selectedAddrID" wx:if="addressList.length">
+        <view class="select__item {{item.isDefault?'select__item--default':''}}" wx:for="{{addressList}}" wx:key="{{item.recipientAddressId}}">
+            <view bindtap="onAddrTap" class="select__radio {{item.isChecked?'select__radio--checked':''}}" data-index="{{index}}"></view>
+            <view class="select__content">
+                <text class="select__name">{{item.recipientNameDisplay}}</text>
+                <view class="select__addr">{{item.provinceName}}{{item.cityName}}{{item.districtName}}{{item.detailedAddress}}</view>
+            </view>
+            <view catchtap="onEditTap" class="select__edit" data-index="{{index}}"></view>
+            <view catchtap="onDelTap" class="select__del" data-index="{{index}}"></view>
+        </view>
+    </radio-group>
+    <view catchtap="onAddTap" class="select__add">添加邮寄人地址</view>
+    <view class="select__confirmwrapper">
+        <button class="select__confirm {{!selectedAddr?'select__confirm--disabled':''}}" formType="submit">确认选择</button>
+    </view>
+</form>

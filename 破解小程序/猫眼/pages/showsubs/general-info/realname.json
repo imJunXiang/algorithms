@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "添加购票人",
+    "usingComponents": {
+        "add-realname": "../../show/components/realname/add"
+    }
+}

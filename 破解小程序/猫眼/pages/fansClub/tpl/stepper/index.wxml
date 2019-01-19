@@ -1,0 +1,8 @@
+<view class="container-class container">
+    <view class="label-class label">{{label}}</view>
+    <view class="stepper-class stepper">
+        <view catchtap="onMinus" class="minus-class minus {{!disabled&&value>min?'':'minus-disabled'}}"></view>
+        <text class="value-class value">{{value}}</text>
+        <view catchtap="onPlus" class="plus-class plus {{!disabled&&value<max?'':'plus-disabled'}}"></view>
+    </view>
+</view>

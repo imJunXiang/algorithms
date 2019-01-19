@@ -1,0 +1,7 @@
+<view class="error-handler" wx:if="{{!!pageError&&hintType!=='toast'}}">
+    <unknown-err-page show="{{true}}" wx:if="{{pageError==='unknown'}}"></unknown-err-page>
+    <network-err-page bind:reloadButtonTap="reload" show="{{true}}" wx:if="{{pageError==='network'}}"></network-err-page>
+    <view wx:if="{{pageError==='expired'}}">
+        <expired-err-page show="{{true}}"></expired-err-page>
+    </view>
+</view>

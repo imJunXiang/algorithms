@@ -1,0 +1,8 @@
+<view class="footer-login{{isIphoneX?' iphoneX':''}}" wx:if="{{needLogin&&!isLogin}}">
+    <view class="footer-login-blacker"></view>
+    <view class="footer-login-content">
+        <view class="footer-login-content-title">请先登录</view>
+        <button bindgetuserinfo="onGetUserInfo" class="footer-login-content-btn" data-fresh="{{true}}" data-ignore-login="{{ignoreLogin}}" data-ignore-login-fail="{{ignoreLoginFail}}" data-login-warn="{{loginWarn}}" openType="getUserInfo">
+            <image src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/wechat-logo-white.png"></image>微信快捷登录</button>
+    </view>
+</view>
