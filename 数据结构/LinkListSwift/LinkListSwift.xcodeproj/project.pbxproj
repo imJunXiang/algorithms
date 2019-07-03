@@ -14,6 +14,7 @@
 		3333E69022CC9C8C00E6DF34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3333E68E22CC9C8C00E6DF34 /* LaunchScreen.storyboard */; };
 		3333E69922CC9CEF00E6DF34 /* AddTwoNum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333E69822CC9CEF00E6DF34 /* AddTwoNum.swift */; };
 		3333E69B22CC9D9100E6DF34 /* ListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333E69A22CC9D9100E6DF34 /* ListNode.swift */; };
+		C70DF48F22CCE28D00EA5754 /* twoSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70DF48E22CCE28D00EA5754 /* twoSum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3333E69122CC9C8C00E6DF34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3333E69822CC9CEF00E6DF34 /* AddTwoNum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTwoNum.swift; sourceTree = "<group>"; };
 		3333E69A22CC9D9100E6DF34 /* ListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNode.swift; sourceTree = "<group>"; };
+		C70DF48E22CCE28D00EA5754 /* twoSum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = twoSum.swift; path = LinkListSwift/Problems/twoSum.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		3333E68422CC9C8A00E6DF34 /* linklistSwift */ = {
 			isa = PBXGroup;
 			children = (
+				3333E69A22CC9D9100E6DF34 /* ListNode.swift */,
 				3333E69722CC9CD400E6DF34 /* Problems */,
 				3333E68522CC9C8B00E6DF34 /* AppDelegate.swift */,
 				3333E68722CC9C8B00E6DF34 /* ViewController.swift */,
@@ -72,8 +75,8 @@
 		3333E69722CC9CD400E6DF34 /* Problems */ = {
 			isa = PBXGroup;
 			children = (
-				3333E69A22CC9D9100E6DF34 /* ListNode.swift */,
 				3333E69822CC9CEF00E6DF34 /* AddTwoNum.swift */,
+				C70DF48E22CCE28D00EA5754 /* twoSum.swift */,
 			);
 			path = Problems;
 			sourceTree = "<group>";
@@ -113,7 +116,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3333E67D22CC9C8A00E6DF34 /* Build configuration list for PBXProject "linklistSwift" */;
+			buildConfigurationList = 3333E67D22CC9C8A00E6DF34 /* Build configuration list for PBXProject "LinkListSwift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -153,6 +156,7 @@
 				3333E68622CC9C8B00E6DF34 /* AppDelegate.swift in Sources */,
 				3333E69922CC9CEF00E6DF34 /* AddTwoNum.swift in Sources */,
 				3333E69B22CC9D9100E6DF34 /* ListNode.swift in Sources */,
+				C70DF48F22CCE28D00EA5754 /* twoSum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +335,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3333E67D22CC9C8A00E6DF34 /* Build configuration list for PBXProject "linklistSwift" */ = {
+		3333E67D22CC9C8A00E6DF34 /* Build configuration list for PBXProject "LinkListSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3333E69222CC9C8C00E6DF34 /* Debug */,
