@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "抽奖商品",
-    "usingComponents": {
-        "bannerAd": "../../../../components/bannerAd/index"
-    }
-}

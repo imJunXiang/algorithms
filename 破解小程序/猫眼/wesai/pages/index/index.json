@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "赛事",
-    "backgroundColor": "#f7f7f7",
-    "backgroundTextStyle": "dark",
-    "enablePullDownRefresh": true,
-    "onReachBottomDistance": 70
-}

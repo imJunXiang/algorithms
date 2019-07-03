@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "砍价0元看电影",
-    "usingComponents": {
-        "singleImageAd": "../../../../components/singleImageAd/index"
-    }
-}

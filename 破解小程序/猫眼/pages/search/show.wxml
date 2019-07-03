@@ -1,9 +1,0 @@
-<import src="/pages/show/list/tpl/_show-search.wxml"></import>
-<view class="list-view">
-    <view class="list-view-item" wx:for="{{shows}}" wx:for-item="show" wx:key="{{index}}">
-        <view capture-bind:tap="tapItem" data-id="{{show.id}}" data-index="{{index}}">
-            <template is="show-search" data="{{...show,index:index,isRedName:true,keyword:query}}"></template>
-        </view>
-    </view>
-</view>
-<include src="/footer.wxml"></include>

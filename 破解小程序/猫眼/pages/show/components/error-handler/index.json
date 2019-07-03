@@ -1,8 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "expired-err-page": "./components/expired-err-page/index",
-        "network-err-page": "./components/network-err-page/index",
-        "unknown-err-page": "./components/unknown-err-page/index"
-    }
-}

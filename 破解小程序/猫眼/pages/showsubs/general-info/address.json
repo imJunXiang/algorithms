@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "添加邮寄地址",
-    "usingComponents": {
-        "address-edit": "../../show/components/address/address-edit"
-    }
-}

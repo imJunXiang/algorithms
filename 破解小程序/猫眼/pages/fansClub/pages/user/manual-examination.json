@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText": "待报名审核",
-    "onReachBottomDistance": 0,
-    "usingComponents": {
-        "my-input": "../../tpl/input/index",
-        "fans-modal": "../../tpl/modal/index"
-    }
-}

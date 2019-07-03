@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "签到",
-    "usingComponents": {
-        "my-input": "../../tpl/input/index",
-        "fans-modal": "../../tpl/modal/index"
-    }
-}

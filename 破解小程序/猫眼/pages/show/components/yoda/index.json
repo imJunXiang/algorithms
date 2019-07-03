@@ -1,6 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "yoda-slider": "../../../../components/yoda-sdk/component/slider/slider"
-    }
-}

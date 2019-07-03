@@ -1,7 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "login-button": "../../../components/login-button/index",
-        "getphone-button": "../../../components/getphone-button/index"
-    }
-}

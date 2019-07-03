@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText": "",
-    "enablePullDownRefresh": true,
-    "backgroundTextStyle": "dark",
-    "usingComponents": {
-        "loginsheet": "/component/loginsheet/loginsheet"
-    }
-}

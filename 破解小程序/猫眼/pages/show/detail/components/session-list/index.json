@@ -1,6 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "v-mask": "../../../components/v-mask/index"
-    }
-}

@@ -1,1 +1,0 @@
-<map showLocation id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" scale="17"></map>

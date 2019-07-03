@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "明星面对面",
-    "usingComponents": {
-        "dialog": "../../../components/dialog/_index"
-    }
-}

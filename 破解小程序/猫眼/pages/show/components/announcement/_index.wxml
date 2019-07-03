@@ -1,7 +1,0 @@
-<template name="_showSystemAnnouncement">
-    <view class="show-system-announcement" style="background-color: {{bgColor}}">
-        <view class="show-system-announcement-icon" style="background-image: url('{{icon}}')" wx:if="{{icon}}"></view>
-        <view class="show-system-announcement-text" style="color: {{textColor}}">{{content}}</view>
-    </view>
-</template>
-<block wx:if="{{isValid}}"></block>

@@ -1,3 +1,0 @@
-<view class="viedo-container">
-    <video autoplay id="myvideo" src="{{viedoList}}"></video>
-</view>

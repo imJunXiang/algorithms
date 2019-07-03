@@ -1,1 +1,0 @@
-<view bindtap="ontap" class="buy-now">{{btnText}}</view>

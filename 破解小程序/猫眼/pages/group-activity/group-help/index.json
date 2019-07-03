@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText": "拼团抽大奖",
-    "enablePullDownRefresh": true,
-    "usingComponents": {
-        "singleImageAd": "../../../../components/singleImageAd/index",
-        "dialog": "../../../../components/dialog/_index"
-    }
-}

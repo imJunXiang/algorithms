@@ -1,7 +1,0 @@
-{
-    "enablePullDownRefresh": true,
-    "usingComponents": {
-        "dialog": "../../components/dialog/_index",
-        "nav": "../../tpl/navigator"
-    }
-}

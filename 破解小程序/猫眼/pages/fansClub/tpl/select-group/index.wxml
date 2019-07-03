@@ -1,6 +1,0 @@
-<view class="container-class container">
-    <view class="label-class label">{{label}}</view>
-    <view class="group-class group">
-        <view catchtap="onClick" class="node-class text-ellipsis node {{value===item[sValue]?' active':''}}" data-index="{{index}}" data-label="{{item[sLabel]}}" data-value="{{item[sValue]}}" wx:for="{{source}}" wx:key="{{item[sValue]}}">{{item[sLabel]}}</view>
-    </view>
-</view>

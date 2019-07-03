@@ -1,9 +1,0 @@
-<import src="/pages/movie/_movie.wxml"></import>
-<view class="list-view">
-    <view class="list-view-item" wx:for="{{movies}}" wx:for-item="movie" wx:key="{{index}}">
-        <view capture-bind:tap="tapItem" data-id="{{movie.id}}" data-index="{{index}}">
-            <template is="movie" data="{{...movie,index:index,isRedName:true,keyword:query}}"></template>
-        </view>
-    </view>
-</view>
-<include src="/footer.wxml"></include>

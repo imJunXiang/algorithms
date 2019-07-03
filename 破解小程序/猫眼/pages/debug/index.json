@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "调试面板",
-    "usingComponents": {
-        "debug-pannel": "./debug-pannel/_index"
-    }
-}

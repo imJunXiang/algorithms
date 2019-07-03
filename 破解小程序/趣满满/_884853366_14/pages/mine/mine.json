@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "我的",
-    "navigationBarTextStyle": "#fff",
-    "usingComponents": {
-        "loginsheet": "../../component/loginsheet/loginsheet"
-    }
-}

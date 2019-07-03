@@ -1,7 +1,0 @@
-<login-button data-btn_login data-ignore-login-fail bind:userinfo="onGetUserInfo" class="login-button-class" data-fresh="{{true}}" data-val_bid="b_diuse2s1" isLogin="{{isLogin}}">
-    <slot name="loginUi" slot="login"></slot>
-    <getphone-button bind:getPhoneNumber="onGetPhoneNumber" bind:normalButtonTap="onNormalButtonTap" isGetPhoneButton="{{isGetPhoneButton}}" slot="other">
-        <slot name="getPhoneUi" slot="getPhoneUi"></slot>
-        <slot name="normalUi" slot="normalUi"></slot>
-    </getphone-button>
-</login-button>

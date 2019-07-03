@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "活动报名",
-    "usingComponents": {
-        "select-group": "../../tpl/select-group/index"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText": "活动列表页",
-    "enablePullDownRefresh": true,
-    "navigationBarTextStyle": "white",
-    "usingComponents": {
-        "fans-tabbar": "../../tpl/tabbar/index"
-    }
-}

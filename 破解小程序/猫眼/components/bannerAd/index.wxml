@@ -1,9 +1,0 @@
-<view class="bargain-banner" wx:if="{{show}}">
-    <swiper autoplay circular bindchange="onBannerChange" class="ad-banner" current="{{banners.current}}" duration="500" indicatorActiveColor="rgba(255,255,255,0.9)" indicatorColor="rgba(255,255,255,0.4)" indicatorDots="{{indicatorDots}}" interval="3500">
-        <swiper-item wx:for="{{banners}}" wx:for-item="bannerItem" wx:key="index">
-            <view catchtap="goToAdDetail" data-idx="{{index}}" data-url="{{bannerItem.link}}">
-                <image class="ad-banner" mode="aspectFill" src="{{bannerItem.image}}"></image>
-            </view>
-        </swiper-item>
-    </swiper>
-</view>

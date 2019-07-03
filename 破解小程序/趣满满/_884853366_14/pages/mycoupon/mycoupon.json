@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "我的票券",
-    "usingComponents": {
-        "coupon": "/component/coupon/coupon"
-    }
-}

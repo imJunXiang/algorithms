@@ -1,8 +1,0 @@
-<view bindtap="handleHidden" catchtouchmove="preventD" class="mask"></view>
-<view class="loginbox">
-    <text class="login-title">---- 请先登录趣满满 ----</text>
-    <button bindgetuserinfo="getUserInfoFun" class="login-btn" openType="getUserInfo">
-        <image class="weixin-img" src="../../images/weixinlogin.png"></image>
-            微信快捷登录
-        </button>
-</view>

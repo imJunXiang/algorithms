@@ -1,9 +1,0 @@
-<template name="locate-banner">
-    <view bindtap="onTapFresh" class="locatebanner" wx:if="{{isShow&&content}}">
-        <image class="locatebanner-arrow" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/locate.png"></image>
-        <text class="locatebanner-content">{{content}}</text>
-        <view class="locatebanner-refresh-wrap">
-            <image class="locatebanner-refresh" src="https://static.meituan.net/bs/MYFE/wxapp-wallet/file/images/locate-refresh.png"></image>
-        </view>
-    </view>
-</template>

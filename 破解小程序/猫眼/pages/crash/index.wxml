@@ -1,4 +1,0 @@
-<button bindtap="triggerError">测试onerror</button>
-<button bindtap="triggerAnotherError">测试anothererror</button>
-<button bindtap="gotoIndex">回到首页</button>
-<include src="/footer.wxml"></include>

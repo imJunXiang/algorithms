@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "常用信息",
-    "usingComponents": {
-        "realname-list": "../../show/components/realname/index",
-        "address-list": "../../show/components/address/address-list"
-    }
-}

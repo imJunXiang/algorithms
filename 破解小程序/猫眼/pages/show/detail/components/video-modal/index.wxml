@@ -1,8 +1,0 @@
-<view class="new_detail_video_info">
-    <view class="title">
-        <text class="title-text">精彩视频</text>
-    </view>
-    <view class="content">
-        <image bindtap="goToVideo" src="{{projectVideoInfo.picUrl}}"></image>
-    </view>
-</view>

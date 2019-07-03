@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "",
-    "usingComponents": {
-        "countdown": "../components/count-down-list/_index"
-    }
-}

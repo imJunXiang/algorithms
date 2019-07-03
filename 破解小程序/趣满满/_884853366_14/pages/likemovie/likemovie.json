@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "想看的影片",
-    "usingComponents": {
-        "movielist": "../../component/movielist/movielist"
-    }
-}

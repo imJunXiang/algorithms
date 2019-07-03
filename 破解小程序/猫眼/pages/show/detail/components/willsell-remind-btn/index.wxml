@@ -1,4 +1,0 @@
-<view bindtap="ontap" class="remind-me-button">
-    <view class="remindme">{{btnText}}</view>
-    <view class="remindyou">开售前第一时间通知您</view>
-</view>

@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "成长中心",
-    "usingComponents": {
-        "ec-canvas": "../ec-canvas/ec-canvas"
-    }
-}

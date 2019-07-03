@@ -1,5 +1,0 @@
-<template name="rain">
-    <block wx:if="{{show}}">
-        <image animation="{{item.animationData}}" class="rain-point" src="{{item.imgURL}}" style="position: fixed;width:80rpx;height:80rpx;z-index:888;left:{{item.left}}px;top:{{item.top}}px;" wx:for="{{points}}"></image>
-    </block>
-</template>

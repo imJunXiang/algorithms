@@ -1,7 +1,0 @@
-<view class="detail-network-err-page" wx:if="{{show}}">
-    <view class="detail-network-err-image-container">
-        <image class="detail-network-err-image" mode="aspectFit" src="../pics/miao.png"></image>
-    </view>
-    <view class="detail-network-err-tips">网络正在开小差</view>
-    <view bindtap="tap" class="detail-network-err-button">点击刷新</view>
-</view>
