@@ -14,8 +14,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // 创建链表
-        let link = createLink([4,2,6,8,5])
-        printLink(link)
+        let link = ListNode.createLink([4,2,6,8,5])
+        ListNode.printLink(link)
     }
 }
 
