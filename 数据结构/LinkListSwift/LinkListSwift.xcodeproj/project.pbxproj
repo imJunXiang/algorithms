@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3333E68222CC9C8A00E6DF34 /* LinKListSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinKListSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3333E68222CC9C8A00E6DF34 /* linklistSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linklistSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3333E68522CC9C8B00E6DF34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3333E68722CC9C8B00E6DF34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3333E68A22CC9C8B00E6DF34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		3333E67922CC9C8A00E6DF34 = {
 			isa = PBXGroup;
 			children = (
-				3333E68422CC9C8A00E6DF34 /* LinKListSwift */,
+				3333E68422CC9C8A00E6DF34 /* linklistSwift */,
 				3333E68322CC9C8A00E6DF34 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		3333E68322CC9C8A00E6DF34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3333E68222CC9C8A00E6DF34 /* LinKListSwift.app */,
+				3333E68222CC9C8A00E6DF34 /* linklistSwift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3333E68422CC9C8A00E6DF34 /* LinKListSwift */ = {
+		3333E68422CC9C8A00E6DF34 /* linklistSwift */ = {
 			isa = PBXGroup;
 			children = (
 				3333E69722CC9CD400E6DF34 /* Problems */,
@@ -66,7 +66,7 @@
 				3333E68E22CC9C8C00E6DF34 /* LaunchScreen.storyboard */,
 				3333E69122CC9C8C00E6DF34 /* Info.plist */,
 			);
-			path = LinKListSwift;
+			path = linklistSwift;
 			sourceTree = "<group>";
 		};
 		3333E69722CC9CD400E6DF34 /* Problems */ = {
@@ -81,9 +81,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3333E68122CC9C8A00E6DF34 /* LinKListSwift */ = {
+		3333E68122CC9C8A00E6DF34 /* linklistSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3333E69422CC9C8C00E6DF34 /* Build configuration list for PBXNativeTarget "LinKListSwift" */;
+			buildConfigurationList = 3333E69422CC9C8C00E6DF34 /* Build configuration list for PBXNativeTarget "linklistSwift" */;
 			buildPhases = (
 				3333E67E22CC9C8A00E6DF34 /* Sources */,
 				3333E67F22CC9C8A00E6DF34 /* Frameworks */,
@@ -93,9 +93,9 @@
 			);
 			dependencies = (
 			);
-			name = LinKListSwift;
-			productName = LinKListSwift;
-			productReference = 3333E68222CC9C8A00E6DF34 /* LinKListSwift.app */;
+			name = linklistSwift;
+			productName = linklistSwift;
+			productReference = 3333E68222CC9C8A00E6DF34 /* linklistSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +113,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3333E67D22CC9C8A00E6DF34 /* Build configuration list for PBXProject "LinKListSwift" */;
+			buildConfigurationList = 3333E67D22CC9C8A00E6DF34 /* Build configuration list for PBXProject "linklistSwift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,7 +126,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3333E68122CC9C8A00E6DF34 /* LinKListSwift */,
+				3333E68122CC9C8A00E6DF34 /* linklistSwift */,
 			);
 		};
 /* End PBXProject section */
@@ -299,12 +299,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = LinKListSwift/Info.plist;
+				INFOPLIST_FILE = linklistSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JX.LinKListSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = JX.linklistSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -316,12 +316,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = LinKListSwift/Info.plist;
+				INFOPLIST_FILE = linklistSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JX.LinKListSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = JX.linklistSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -331,7 +331,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3333E67D22CC9C8A00E6DF34 /* Build configuration list for PBXProject "LinKListSwift" */ = {
+		3333E67D22CC9C8A00E6DF34 /* Build configuration list for PBXProject "linklistSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3333E69222CC9C8C00E6DF34 /* Debug */,
@@ -340,7 +340,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3333E69422CC9C8C00E6DF34 /* Build configuration list for PBXNativeTarget "LinKListSwift" */ = {
+		3333E69422CC9C8C00E6DF34 /* Build configuration list for PBXNativeTarget "linklistSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3333E69522CC9C8C00E6DF34 /* Debug */,

@@ -15,7 +15,10 @@ class ViewController: UIViewController {
         
         // 创建链表
         let link = ListNode.createLink([4,2,6,8,5])
-        ListNode.printLink(link)
+        let link2 = ListNode.createLink([3,6,7,9])
+        let linkSum = addTwoNumbers(link, link2)
+        
+        ListNode.printLink(linkSum)
     }
 }
 
