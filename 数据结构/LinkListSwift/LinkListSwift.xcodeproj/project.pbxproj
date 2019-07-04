@@ -14,7 +14,8 @@
 		3333E69022CC9C8C00E6DF34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3333E68E22CC9C8C00E6DF34 /* LaunchScreen.storyboard */; };
 		3333E69922CC9CEF00E6DF34 /* AddTwoNum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333E69822CC9CEF00E6DF34 /* AddTwoNum.swift */; };
 		3333E69B22CC9D9100E6DF34 /* ListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333E69A22CC9D9100E6DF34 /* ListNode.swift */; };
-		C70DF48F22CCE28D00EA5754 /* twoSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70DF48E22CCE28D00EA5754 /* twoSum.swift */; };
+		3333E69F22CD971100E6DF34 /* LengthOfLongestSubstring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333E69E22CD971100E6DF34 /* LengthOfLongestSubstring.swift */; };
+		C70DF48F22CCE28D00EA5754 /* TwoSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70DF48E22CCE28D00EA5754 /* TwoSum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		3333E69122CC9C8C00E6DF34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3333E69822CC9CEF00E6DF34 /* AddTwoNum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTwoNum.swift; sourceTree = "<group>"; };
 		3333E69A22CC9D9100E6DF34 /* ListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNode.swift; sourceTree = "<group>"; };
-		C70DF48E22CCE28D00EA5754 /* twoSum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = twoSum.swift; path = LinkListSwift/Problems/twoSum.swift; sourceTree = SOURCE_ROOT; };
+		3333E69E22CD971100E6DF34 /* LengthOfLongestSubstring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LengthOfLongestSubstring.swift; path = LinkListSwift/Problems/LengthOfLongestSubstring.swift; sourceTree = SOURCE_ROOT; };
+		C70DF48E22CCE28D00EA5754 /* TwoSum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TwoSum.swift; path = LinkListSwift/Problems/TwoSum.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +77,9 @@
 		3333E69722CC9CD400E6DF34 /* Problems */ = {
 			isa = PBXGroup;
 			children = (
+				C70DF48E22CCE28D00EA5754 /* TwoSum.swift */,
 				3333E69822CC9CEF00E6DF34 /* AddTwoNum.swift */,
-				C70DF48E22CCE28D00EA5754 /* twoSum.swift */,
+				3333E69E22CD971100E6DF34 /* LengthOfLongestSubstring.swift */,
 			);
 			path = Problems;
 			sourceTree = "<group>";
@@ -156,7 +159,8 @@
 				3333E68622CC9C8B00E6DF34 /* AppDelegate.swift in Sources */,
 				3333E69922CC9CEF00E6DF34 /* AddTwoNum.swift in Sources */,
 				3333E69B22CC9D9100E6DF34 /* ListNode.swift in Sources */,
-				C70DF48F22CCE28D00EA5754 /* twoSum.swift in Sources */,
+				C70DF48F22CCE28D00EA5754 /* TwoSum.swift in Sources */,
+				3333E69F22CD971100E6DF34 /* LengthOfLongestSubstring.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ import Foundation
 // 如果，我们将这两个数相加起来，
 // 则会返回一个新的链表来表示它们的和。
 
-//您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+// 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 
 func addTwoNumbers(_ l1:ListNode?,_ l2:ListNode?) -> ListNode? {
     if l1 == nil || l2 == nil {
@@ -44,8 +44,8 @@ func addTwoNumbers(_ l1:ListNode?,_ l2:ListNode?) -> ListNode? {
             y = n2?.val
         }
         
-        current?.next = ListNode((x! + y! + carry) % 10)
-        current = current?.next!
+        current.next = ListNode((x! + y! + carry) % 10)
+        current = current.next!
         carry = (x! + y! + carry) / 10
         if n1 != nil {
             n1 = n1?.next
@@ -57,7 +57,7 @@ func addTwoNumbers(_ l1:ListNode?,_ l2:ListNode?) -> ListNode? {
     }
     
     if carry > 0 {
-        current?.next = ListNode(carry % 10)
+        current.next = ListNode(carry % 10)
     }
     
     return head.next
